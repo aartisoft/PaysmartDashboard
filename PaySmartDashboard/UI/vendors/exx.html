@@ -1,0 +1,473 @@
+﻿
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <script type="text/javascript" src="/js.axd?path=%2fScripts%2fjquery.js"></script>
+    <script type="text/javascript" src="/js.axd?path=%2fScripts%2fjquery.cookie.js"></script>
+    <script type="text/javascript" src="/js.axd?path=%2fScripts%2fjquery.validate.min.js"></script>
+    <script type="text/javascript" src="/js.axd?path=%2fScripts%2fjquery-jtemplates.js"></script>
+    <script type="text/javascript" src="/js.axd?path=%2fScripts%2fjson2.js"></script>
+    <link type="text/css" href="/themes/Stanley/css.axd?name=/Styles/Global2.5.0.6.css" rel="stylesheet" />
+    <title>
+        AngularJS - Pagination Example with Logic like Google | Jason Watmore&#39;s Blog - Web Development Sydney Australia
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="author" href="https://plus.google.com/105285862613636033893" />
+
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.png" type="image/png">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/themes/Stanley/assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/themes/Stanley/assets/css/main.css?v=3" rel="stylesheet">
+
+    <script src="/themes/Stanley/assets/js/jquery.min.js"></script>
+    <script src="/themes/Stanley/assets/js/hover.zoom.js"></script>
+    <script src="/themes/Stanley/assets/js/hover.zoom.conf.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="keywords" content="AngularJS,Pagination,Bootstrap,JavaScript" />
+    <meta name="description" content="Google style pagination logic in AngularJS and JavaScript." />
+    <meta name="author" content="Jason Watmore" />
+    <link rel="last" title="Angular - CKEditor Directive with ngModel Binding" href="/post/2016/05/26/Angular-CKEditor-Directive-with-ngModel-Binding.aspx" />
+    <link rel="first" title="Validate date dropdown lists with JavaScript / jQuery " href="/post/2011/11/18/Validate-date-dropdown-lists-with-JavaScript-jQuery.aspx" />
+    <link rel="next" title="CSS3 - Sticky Header on Scroll Example" href="/post/2016/02/09/CSS3-Sticky-Header-on-Scroll-Example.aspx" />
+    <link rel="prev" title="Angular ngAnimate Tutorial with UI Router" href="/post/2016/01/20/Angular-ngAnimate-Tutorial-with-UI-Router.aspx" />
+    <link type="application/rss+xml" rel="alternate" title="AngularJS - Pagination Example with Logic like Google | Jason Watmore&amp;#39;s Blog - Web Development Sydney Australia (RSS)" href="/post/feed/2016/01/31/AngularJS-Pagination-Example-with-Logic-like-Google.aspx?format=ATOM" />
+    <link type="application/rss+xml" rel="alternate" title="AngularJS - Pagination Example with Logic like Google | Jason Watmore&amp;#39;s Blog - Web Development Sydney Australia (ATOM)" href="/post/feed/2016/01/31/AngularJS-Pagination-Example-with-Logic-like-Google.aspx?format=ATOM" />
+    <link rel="contents" title="Archive" href="/archive.aspx" />
+    <link rel="start" title="Jason Watmore&#39;s Blog" href="/" />
+    <link type="application/rdf+xml" rel="meta" title="SIOC" href="http://jasonwatmore.com/sioc.axd" />
+    <link type="application/apml+xml" rel="meta" title="APML" href="http://jasonwatmore.com/apml.axd" />
+    <link type="application/rdf+xml" rel="meta" title="FOAF" href="http://jasonwatmore.com/foaf.axd" />
+    <link type="application/rss+xml" rel="alternate" title="Jason Watmore&#39;s Blog (RSS)" href="http://jasonwatmore.com/syndication.axd?format=rss" />
+    <link type="application/atom+xml" rel="alternate" title="Jason Watmore&#39;s Blog (ATOM)" href="http://jasonwatmore.com/syndication.axd?format=atom" />
+    <link type="application/rsd+xml" rel="edituri" title="RSD" href="http://jasonwatmore.com/rsd.axd" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link type="application/opensearchdescription+xml" rel="search" title="Jason Watmore&#39;s Blog" href="http://jasonwatmore.com/opensearch.axd" />
+    <link type="text/css" rel="stylesheet" href="/Styles/syntaxhighlighter/shCore.css" />
+    <link type="text/css" rel="stylesheet" href="/Styles/syntaxhighlighter/shThemeDefault.css" />
+    <script type="text/javascript" src="/Scripts/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="/Scripts/syntaxhighlighter/shBrushCSharp.js"></script>
+    <script type="text/javascript" src="/Scripts/syntaxhighlighter/shBrushCss.js"></script>
+    <script type="text/javascript" src="/Scripts/syntaxhighlighter/shBrushJScript.js"></script>
+    <script type="text/javascript" src="/Scripts/syntaxhighlighter/shBrushPlain.js"></script>
+    <script type="text/javascript" src="/Scripts/syntaxhighlighter/shBrushSql.js"></script>
+    <script type="text/javascript" src="/Scripts/syntaxhighlighter/shBrushVb.js"></script>
+    <script type="text/javascript" src="/Scripts/syntaxhighlighter/shBrushXml.js"></script>
+</head>
+<body>
+
+    <form name="aspnetForm" method="post" action="/post/2016/01/31/AngularJS-Pagination-Example-with-Logic-like-Google.aspx" id="aspnetForm" class="body">
+        <div>
+            <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+            <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1OTYzNzA2NjYPZBYCZg9kFgICAQ9kFgICAw9kFgQCBQ9kFgQCAQ8PFgYeC05hdmlnYXRlVXJsBT8vcG9zdC8yMDE2LzAxLzIwL0FuZ3VsYXItbmdBbmltYXRlLVR1dG9yaWFsLXdpdGgtVUktUm91dGVyLmFzcHgeBFRleHQFMiZsdDsmbHQ7IEFuZ3VsYXIgbmdBbmltYXRlIFR1dG9yaWFsIHdpdGggVUkgUm91dGVyHgdUb29sVGlwBQ1QcmV2aW91cyBwb3N0ZGQCAw8PFgYfAAU6L3Bvc3QvMjAxNi8wMi8wOS9DU1MzLVN0aWNreS1IZWFkZXItb24tU2Nyb2xsLUV4YW1wbGUuYXNweB8BBS9DU1MzIC0gU3RpY2t5IEhlYWRlciBvbiBTY3JvbGwgRXhhbXBsZSAmZ3Q7Jmd0Ox8CBQlOZXh0IHBvc3RkZAILDw8WAh4HVmlzaWJsZWhkFgICAg9kFgQCDQ8PFgIfA2hkZAIODxYCHgVWYWx1ZQUkZWQ4OTQ5MDAtM2JiZi00NjBiLWExMGQtMGIxMmRkYjk2MTA3ZGS42mKOw/SiBroSJp7nTZB63nZCgw==" />
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            var theForm = document.forms['aspnetForm'];
+            if (!theForm) {
+                theForm = document.aspnetForm;
+            }
+            function __doPostBack(eventTarget, eventArgument) {
+                if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                    theForm.__EVENTTARGET.value = eventTarget;
+                    theForm.__EVENTARGUMENT.value = eventArgument;
+                    theForm.submit();
+                }
+            }
+            //]]>
+        </script>
+
+
+        <script src="/js.axd?path=http%3a%2f%2fjasonwatmore.com%2fWebResource.axd%3fd%3dVjwlIqi7esLpp02YYsQj5vb-ws10arl6pmfvuDlShTmJbrmWkcW18HyiP3-g-C-LuV80Q3XQAy-AV4njmeyBLCbw27o1%26amp%3bt%3d635875869181218729" type="text/javascript"></script>
+
+
+
+        <!-- Static navbar -->
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="/pics/jason-watmore.jpg" />
+                        <span>Jason Watmore's Blog</span>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/page/Code-Snippets.aspx">Code Snippets</a></li>
+                        <li><a href="/archive.aspx">Archive</a></li>
+                        <li><a href="http://jasonwatmore.com/syndication.axd">RSS</a></li>
+                        <li><a href="/contact.aspx">Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div id="white" style="padding-bottom:0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1 blog-post">
+                        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=jasonwatmore" id="_carbonads_js"></script>
+                        <p class="post-date"><bd>January 31, 2016</bd></p>
+                        <div class="clearfix"></div>
+                        <h1>AngularJS - Pagination Example with Logic like Google</h1>
+                        <p>This is an example of how to implement pagination in AngularJS or javascript with logic like Google's search results.</p>
+                        <p>The example is written in AngularJS, but the pagination logic is pure javascript so it could easily be used with other javascript tools and frameworks such as NodeJS, ReactJS, EmberJS etc. The front end pagination component in the example is styled using Bootstrap.</p>
+                        <p>To see a similar example written in C# and ASP.NET MVC you can check out&nbsp;<a href="http://jasonwatmore.com/post/2015/10/30/ASPNET-MVC-Pagination-Example-with-Logic-like-Google.aspx">ASP.NET MVC - Pagination Example with Logic like Google</a>.</p>
+                        <p>Here it is in action: <iframe class="plunker" style="width: 100%;" src="//codepen.io/cornflourblue/embed/KVeaQL/?height=543&amp;theme-id=0&amp;default-tab=result" frameborder="no" scrolling="no" height="543"></iframe> <span class="small-text">(See on CodePen at <a href="http://codepen.io/cornflourblue/pen/KVeaQL/" rel="nofollow" target="_blank">http://codepen.io/cornflourblue/pen/KVeaQL/</a>)</span></p>
+                        <h2>Google's Pagination Logic</h2>
+                        <p>The logic in Google's pagination is as follows:</p>
+                        <ul>
+                            <li>there are 10 page links shown at any time (e.g. 1 2 3 4 5 6 7 8 9 10)&nbsp;unless there are less than 10 total pages</li>
+                            <li>the active link (current page) is in the 6th position, except for when the active link is below 6 or less than 4 from the last position</li>
+                        </ul>
+                        <p><br />Here's what it looks like for each page if there are 15 total pages:</p>
+                        <p><strong><span style="color: #ff0000;">[1]</span></strong>&nbsp;2 3 4 5 6 7 8 9 10<br />1 <strong><span style="color: #ff0000;">[2]</span></strong> 3 4 5 6 7 8 9 10<br />1 2 <span style="color: #ff0000;"><strong>[3]</strong></span> 4 5 6 7 8 9 10<br />1 2 3 <span style="color: #ff0000;"><strong>[4]</strong></span> 5 6 7 8 9 10<br />1 2 3 4 <span style="color: #ff0000;"><strong>[5]</strong></span> 6 7 8 9 10<br />1 2 3 4 5 <span style="color: #ff0000;"><strong>[6]</strong></span> 7 8 9 10<br />2 3 4 5 6 <span style="color: #ff0000;"><strong>[7]</strong></span> 8 9 10 11<br />3 4 5 6 7 <span style="color: #ff0000;"><strong>[8]</strong></span> 9 10 11 12<br />4 5 6 7 8 <span style="color: #ff0000;"><strong>[9]</strong></span> 10 11 12 13<br />5 6 7 8 9 <span style="color: #ff0000;"><strong>[10]</strong></span> 11 12 13 14<br />6 7 8 9 10 <span style="color: #ff0000;"><strong>[11]</strong></span> 12 13 14 15<br />6 7 8 9 10&nbsp;11 <span style="color: #ff0000;"><strong>[12]</strong></span> 13 14 15<br />6 7 8 9 10&nbsp;11 12 <span style="color: #ff0000;"><strong>[13]</strong></span> 14 15<br />6 7 8 9 10&nbsp;11 12 13 <span style="color: #ff0000;"><strong>[14]</strong></span> 15<br />6 7 8 9 10&nbsp;11 12 13 14 <span style="color: #ff0000;"><strong>[15]</strong></span>&nbsp;</p>
+                        <h2><br />AngularJS Pager Service - Pagination Logic in JavaScript like Google</h2>
+                        <p>To make it easy to reuse the pagination logic in different angularjs controllers or applications, I wrapped the pagination logic in an angular service.</p>
+<pre class="brush: js;">function PagerService() {
+	// service definition
+	var service = {};
+	service.GetPager = GetPager;
+	return service;
+	// service implementation
+	function GetPager(totalItems, currentPage, pageSize) {
+		// default to first page
+		currentPage = currentPage || 1;
+		// default page size is 10
+		pageSize = pageSize || 10;
+		// calculate total pages
+		var totalPages = Math.ceil(totalItems / pageSize);
+		var startPage, endPage;
+		if (totalPages &lt;= 10) {
+			// less than 10 total pages so show all
+			startPage = 1;
+			endPage = totalPages;
+		} else {
+			// more than 10 total pages so calculate start and end pages
+			if (currentPage &lt;= 6) {
+				startPage = 1;
+				endPage = 10;
+			} else if (currentPage + 4 &gt;= totalPages) {
+				startPage = totalPages - 9;
+				endPage = totalPages;
+			} else {
+				startPage = currentPage - 5;
+				endPage = currentPage + 4;
+			}
+		}
+		// calculate start and end item indexes
+		var startIndex = (currentPage - 1) * pageSize;
+		var endIndex = startIndex + pageSize;
+		// create an array of pages to ng-repeat in the pager control
+		var pages = _.range(startPage, endPage + 1);
+		// return object with all pager properties required by the view
+		return {
+			totalItems: totalItems,
+			currentPage: currentPage,
+			pageSize: pageSize,
+			totalPages: totalPages,
+			startPage: startPage,
+			endPage: endPage,
+			startIndex: startIndex,
+			endIndex: endIndex,
+			pages: pages
+		};
+	}
+}</pre>
+                        <h2><br />AngularJS Controller that uses the Pager Service&nbsp;</h2>
+                        <p>An example angular controller that uses the above pager service to paginate a list of items.</p>
+<pre class="brush: js;">function ExampleController(PagerService) {
+	var vm = this;
+	vm.dummyItems = _.range(1, 151); // dummy array of items to be paged
+	vm.pager = {};
+	vm.setPage = setPage;
+	initController();
+	function initController() {
+		// initialize to page 1
+		vm.setPage(1);
+	}
+	function setPage(page) {
+		if (page &lt; 1 || page &gt; vm.pager.totalPages) {
+			return;
+		}
+		// get pager object from service
+		vm.pager = PagerService.GetPager(vm.dummyItems.length, page);
+		// get current page of items
+		vm.items = vm.dummyItems.slice(vm.pager.startIndex, vm.pager.endIndex);
+	}
+}</pre>
+                        <h2><br />AngularJS HTML Template with paged items and pager navigation</h2>
+                        <p>An example angular view that shows a list of paged items and the pagination links for navigating between pages.</p>
+<pre class="brush: xml;">&lt;div ng-controller="ExampleController as vm" class="container"&gt;
+	&lt;div class="text-center"&gt;
+		&lt;h1&gt;AngularJS - Pagination Example with logic like Google&lt;/h1&gt;
+		&lt;!-- items being paged --&gt;
+		&lt;div ng-repeat="item in vm.items"&gt;Item {{item}}&lt;/div&gt;
+		
+		&lt;!-- pager --&gt;
+		&lt;ul ng-if="vm.pager.pages.length" class="pagination"&gt;
+			&lt;li ng-class="{disabled:vm.pager.currentPage === 1}"&gt;
+				&lt;a ng-click="vm.setPage(1)"&gt;First&lt;/a&gt;
+			&lt;/li&gt;
+			&lt;li ng-class="{disabled:vm.pager.currentPage === 1}"&gt;
+				&lt;a ng-click="vm.setPage(vm.pager.currentPage - 1)"&gt;Previous&lt;/a&gt;
+			&lt;/li&gt;
+			&lt;li ng-repeat="page in vm.pager.pages" ng-class="{active:vm.pager.currentPage === page}"&gt;
+				&lt;a ng-click="vm.setPage(page)"&gt;{{page}}&lt;/a&gt;
+			&lt;/li&gt;                
+			&lt;li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}"&gt;
+				&lt;a ng-click="vm.setPage(vm.pager.currentPage + 1)"&gt;Next&lt;/a&gt;
+			&lt;/li&gt;
+			&lt;li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}"&gt;
+				&lt;a ng-click="vm.setPage(vm.pager.totalPages)"&gt;Last&lt;/a&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+                        <h2><br />AngularJS Development Sydney</h2>
+                        <p>Feel free to drop me a line if you're looking for <a href="http://jasonwatmore.com/contact.aspx">AngularJS development services in Sydney</a>, I also provide remote web development services for clients outside Sydney and Australia.</p>
+                        <br />
+                        <div class="blog-post-footer">
+                            <p>By <a href="https://plus.google.com/105285862613636033893?rel=author" target="_blank">Jason Watmore</a></p>
+                            <p>TAGS: <a href="/?tag=/AngularJS" rel="tag">AngularJS</a>, <a href="/?tag=/Pagination" rel="tag">Pagination</a>, <a href="/?tag=/Bootstrap" rel="tag">Bootstrap</a>, <a href="/?tag=/JavaScript" rel="tag">JavaScript</a> </p>
+                            <p class="social-share-buttons">
+                                <span>Share on: </span>
+                                <a class="facebook-button" href="http://facebook.com/sharer.php?u=http://jasonwatmore.com/post.aspx?id=d81fe765-7e54-4dd4-9e03-e85d863f3b3f">Facebook</a>
+                                <a class="twitter-button" href="http://twitter.com/intent/tweet?url=http://jasonwatmore.com/post.aspx?id=d81fe765-7e54-4dd4-9e03-e85d863f3b3f&text=AngularJS - Pagination Example with Logic like Google">Twitter</a>
+                                <a class="googleplus-button" href="https://plus.google.com/share?url=http://jasonwatmore.com/post.aspx?id=d81fe765-7e54-4dd4-9e03-e85d863f3b3f">Google+</a>
+                            </p>
+                        </div>
+                        <hr />
+                    </div>
+                </div><!-- /row -->
+            </div> <!-- /container -->
+        </div><!-- /white -->
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+            <rdf:Description rdf:about="http://jasonwatmore.com/post/2016/01/31/AngularJS-Pagination-Example-with-Logic-like-Google.aspx" dc:identifier="http://jasonwatmore.com/post/2016/01/31/AngularJS-Pagination-Example-with-Logic-like-Google.aspx" dc:title="AngularJS - Pagination Example with Logic like Google" trackback:ping="http://jasonwatmore.com/trackback.axd?id=d81fe765-7e54-4dd4-9e03-e85d863f3b3f" />
+        </rdf:RDF>
+        -->
+
+
+
+
+
+
+        <div id="white" style="padding-top:0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <div id="ctl00_cphBody_disqus_box">
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                                var disqus_url = 'http://jasonwatmore.com/post.aspx?id=d81fe765-7e54-4dd4-9e03-e85d863f3b3f';
+                                var disqus_developer = '0';
+                                (function () {
+                                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                    dsq.src = 'http://jasonwatmoresblog.disqus.com/embed.js';
+                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=jasonwatmoresblog">comments powered by Disqus.</a></noscript>
+                            <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                    </div>
+                </div><!-- /row -->
+            </div> <!-- /container -->
+        </div><!-- /white -->
+
+
+
+
+
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone">
+                        <div class="col-lg-4">
+
+                            <h4>About me</h4>
+                            <p>
+
+                            <p>I'm a web developer in Sydney Australia and the owner of <a href="https://www.pointblankdevelopment.com.au" target="_blank">Point Blank Development</a>, I've been building websites and web applications in Sydney since 1998.</p>
+
+                            </p>
+                        </div>
+
+                        <div class="col-lg-4">
+
+                            <h4>Month List</h4>
+                            <p>
+
+                                <ul id="monthList">
+                                    <li class="year" onclick="BlogEngine.toggleMonth(&#39;year2016&#39;)">
+                                        2016<ul id="year2016" class="open">
+                                            <li><a href="/2016/05/default.aspx">May</a> (1)</li>
+                                            <li><a href="/2016/04/default.aspx">April</a> (1)</li>
+                                            <li><a href="/2016/03/default.aspx">March</a> (1)</li>
+                                            <li><a href="/2016/02/default.aspx">February</a> (1)</li>
+                                            <li><a href="/2016/01/default.aspx">January</a> (2)</li>
+                                        </ul>
+                                    </li>
+                                    <li class="year" onclick="BlogEngine.toggleMonth(&#39;year2015&#39;)">
+                                        2015<ul id="year2015">
+                                            <li><a href="/2015/12/default.aspx">December</a> (2)</li>
+                                            <li><a href="/2015/11/default.aspx">November</a> (1)</li>
+                                            <li><a href="/2015/10/default.aspx">October</a> (1)</li>
+                                            <li><a href="/2015/07/default.aspx">July</a> (1)</li>
+                                            <li><a href="/2015/06/default.aspx">June</a> (1)</li>
+                                            <li><a href="/2015/04/default.aspx">April</a> (1)</li>
+                                            <li><a href="/2015/03/default.aspx">March</a> (2)</li>
+                                            <li><a href="/2015/01/default.aspx">January</a> (1)</li>
+                                        </ul>
+                                    </li>
+                                    <li class="year" onclick="BlogEngine.toggleMonth(&#39;year2014&#39;)">
+                                        2014<ul id="year2014">
+                                            <li><a href="/2014/12/default.aspx">December</a> (1)</li>
+                                            <li><a href="/2014/09/default.aspx">September</a> (1)</li>
+                                            <li><a href="/2014/08/default.aspx">August</a> (1)</li>
+                                            <li><a href="/2014/07/default.aspx">July</a> (1)</li>
+                                            <li><a href="/2014/05/default.aspx">May</a> (2)</li>
+                                            <li><a href="/2014/04/default.aspx">April</a> (3)</li>
+                                            <li><a href="/2014/03/default.aspx">March</a> (2)</li>
+                                            <li><a href="/2014/02/default.aspx">February</a> (2)</li>
+                                        </ul>
+                                    </li>
+                                    <li class="year" onclick="BlogEngine.toggleMonth(&#39;year2013&#39;)">
+                                        2013<ul id="year2013">
+                                            <li><a href="/2013/11/default.aspx">November</a> (1)</li>
+                                            <li><a href="/2013/10/default.aspx">October</a> (1)</li>
+                                            <li><a href="/2013/07/default.aspx">July</a> (1)</li>
+                                            <li><a href="/2013/04/default.aspx">April</a> (1)</li>
+                                        </ul>
+                                    </li>
+                                    <li class="year" onclick="BlogEngine.toggleMonth(&#39;year2012&#39;)">
+                                        2012<ul id="year2012">
+                                            <li><a href="/2012/10/default.aspx">October</a> (1)</li>
+                                            <li><a href="/2012/09/default.aspx">September</a> (1)</li>
+                                            <li><a href="/2012/08/default.aspx">August</a> (1)</li>
+                                            <li><a href="/2012/07/default.aspx">July</a> (1)</li>
+                                            <li><a href="/2012/06/default.aspx">June</a> (1)</li>
+                                            <li><a href="/2012/05/default.aspx">May</a> (1)</li>
+                                            <li><a href="/2012/04/default.aspx">April</a> (1)</li>
+                                            <li><a href="/2012/03/default.aspx">March</a> (1)</li>
+                                            <li><a href="/2012/02/default.aspx">February</a> (1)</li>
+                                        </ul>
+                                    </li>
+                                    <li class="year" onclick="BlogEngine.toggleMonth(&#39;year2011&#39;)">
+                                        2011<ul id="year2011">
+                                            <li><a href="/2011/12/default.aspx">December</a> (1)</li>
+                                            <li><a href="/2011/11/default.aspx">November</a> (3)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </p>
+                        </div>
+
+                        <div class="col-lg-4">
+
+                            <h4>Tag cloud</h4>
+                            <p>
+
+                                <ul id="widgetContainerf61e79ca309d4665aa77e8d80029c648_f61e79ca309d4665aa77e8d80029c648_ulTags"><li><a href="/?tag=/Altairis-Web-Security-Toolkit" class="smallest" title="Tag: Altairis Web Security Toolkit">Altairis Web Security Toolkit</a> </li><li><a href="/?tag=/Angular-Directive" class="smallest" title="Tag: Angular Directive">Angular Directive</a> </li><li><a href="/?tag=/Angular-UI-Router" class="smallest" title="Tag: Angular UI Router">Angular UI Router</a> </li><li><a href="/?tag=/AngularJS" class="big" title="Tag: AngularJS">AngularJS</a> </li><li><a href="/?tag=/ASPNET" class="biggest" title="Tag: ASP.NET">ASP.NET</a> </li><li><a href="/?tag=/ASPNET-Web-API" class="medium" title="Tag: ASP.NET Web API">ASP.NET Web API</a> </li><li><a href="/?tag=/Authentication-and-Authorization" class="small" title="Tag: Authentication and Authorization">Authentication and Authorization</a> </li><li><a href="/?tag=/Bootstrap" class="smallest" title="Tag: Bootstrap">Bootstrap</a> </li><li><a href="/?tag=/C" class="big" title="Tag: C#">C#</a> </li><li><a href="/?tag=/Chai" class="smallest" title="Tag: Chai">Chai</a> </li><li><a href="/?tag=/CSS3" class="smallest" title="Tag: CSS3">CSS3</a> </li><li><a href="/?tag=/Dynamic-LINQ" class="smallest" title="Tag: Dynamic LINQ">Dynamic LINQ</a> </li><li><a href="/?tag=/ELMAH" class="smallest" title="Tag: ELMAH">ELMAH</a> </li><li><a href="/?tag=/Exchange" class="smallest" title="Tag: Exchange">Exchange</a> </li><li><a href="/?tag=/Facebook" class="smallest" title="Tag: Facebook">Facebook</a> </li><li><a href="/?tag=/Fluent-NHibernate" class="smallest" title="Tag: Fluent NHibernate">Fluent NHibernate</a> </li><li><a href="/?tag=/Google-Analytics" class="smallest" title="Tag: Google Analytics">Google Analytics</a> </li><li><a href="/?tag=/Google-API" class="smallest" title="Tag: Google API">Google API</a> </li><li><a href="/?tag=/Google-Maps-API" class="smallest" title="Tag: Google Maps API">Google Maps API</a> </li><li><a href="/?tag=/Google-Plus" class="smallest" title="Tag: Google Plus">Google Plus</a> </li><li><a href="/?tag=/Heroku" class="smallest" title="Tag: Heroku">Heroku</a> </li><li><a href="/?tag=/HTML5" class="smallest" title="Tag: HTML5">HTML5</a> </li><li><a href="/?tag=/HTTP" class="smallest" title="Tag: HTTP">HTTP</a> </li><li><a href="/?tag=/IIS" class="smallest" title="Tag: IIS">IIS</a> </li><li><a href="/?tag=/Insecure-Content" class="smallest" title="Tag: Insecure Content">Insecure Content</a> </li><li><a href="/?tag=/Instagram-API" class="smallest" title="Tag: Instagram API">Instagram API</a> </li><li><a href="/?tag=/Ionic-Framework" class="smallest" title="Tag: Ionic Framework">Ionic Framework</a> </li><li><a href="/?tag=/iOS" class="smallest" title="Tag: iOS">iOS</a> </li><li><a href="/?tag=/iPhone" class="smallest" title="Tag: iPhone">iPhone</a> </li><li><a href="/?tag=/JavaScript" class="medium" title="Tag: JavaScript">JavaScript</a> </li><li><a href="/?tag=/jQuery" class="small" title="Tag: jQuery">jQuery</a> </li><li><a href="/?tag=/JWT" class="smallest" title="Tag: JWT">JWT</a> </li><li><a href="/?tag=/LINQ" class="smallest" title="Tag: LINQ">LINQ</a> </li><li><a href="/?tag=/Login" class="smallest" title="Tag: Login">Login</a> </li><li><a href="/?tag=/MEAN-Stack" class="smallest" title="Tag: MEAN Stack">MEAN Stack</a> </li><li><a href="/?tag=/Mocha" class="smallest" title="Tag: Mocha">Mocha</a> </li><li><a href="/?tag=/Moq" class="smallest" title="Tag: Moq">Moq</a> </li><li><a href="/?tag=/MVC" class="smallest" title="Tag: MVC">MVC</a> </li><li><a href="/?tag=/MVC3" class="small" title="Tag: MVC3">MVC3</a> </li><li><a href="/?tag=/MVC4" class="smallest" title="Tag: MVC4">MVC4</a> </li><li><a href="/?tag=/MVC5" class="smallest" title="Tag: MVC5">MVC5</a> </li><li><a href="/?tag=/ngAnimate" class="smallest" title="Tag: ngAnimate">ngAnimate</a> </li><li><a href="/?tag=/ngMock" class="smallest" title="Tag: ngMock">ngMock</a> </li><li><a href="/?tag=/NHibernate" class="smallest" title="Tag: NHibernate">NHibernate</a> </li><li><a href="/?tag=/Ninject" class="smallest" title="Tag: Ninject">Ninject</a> </li><li><a href="/?tag=/NodeJS" class="smallest" title="Tag: NodeJS">NodeJS</a> </li><li><a href="/?tag=/Pagination" class="smallest" title="Tag: Pagination">Pagination</a> </li><li><a href="/?tag=/Pinterest" class="smallest" title="Tag: Pinterest">Pinterest</a> </li><li><a href="/?tag=/Redmine" class="smallest" title="Tag: Redmine">Redmine</a> </li><li><a href="/?tag=/Registration" class="smallest" title="Tag: Registration">Registration</a> </li><li><a href="/?tag=/Repository" class="smallest" title="Tag: Repository">Repository</a> </li><li><a href="/?tag=/Security" class="smallest" title="Tag: Security">Security</a> </li><li><a href="/?tag=/Sinon" class="smallest" title="Tag: Sinon">Sinon</a> </li><li><a href="/?tag=/SinonJS" class="smallest" title="Tag: SinonJS">SinonJS</a> </li><li><a href="/?tag=/Subversion" class="smallest" title="Tag: Subversion">Subversion</a> </li><li><a href="/?tag=/TDD" class="smallest" title="Tag: TDD">TDD</a> </li><li><a href="/?tag=/Twitter" class="smallest" title="Tag: Twitter">Twitter</a> </li><li><a href="/?tag=/Umbraco" class="smallest" title="Tag: Umbraco">Umbraco</a> </li><li><a href="/?tag=/Unit-of-Work" class="smallest" title="Tag: Unit of Work">Unit of Work</a> </li><li><a href="/?tag=/Unit-Testing" class="smallest" title="Tag: Unit Testing">Unit Testing</a> </li><li><a href="/?tag=/URL-Rewrite" class="smallest" title="Tag: URL Rewrite">URL Rewrite</a> </li><li><a href="/?tag=/Validation" class="smallest" title="Tag: Validation">Validation</a> </li><li><a href="/?tag=/Windows-Server-2008" class="smallest" title="Tag: Windows Server 2008">Windows Server 2008</a> </li></ul>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center copyright">
+            &copy; 2016 JasonWatmore.com
+            &nbsp;-&nbsp;
+            Powered by <a href="http://pointblankdevelopment.com.au" target="_blank">Point Blank Development</a>
+        </div>
+
+        <script src="/themes/Stanley/assets/js/bootstrap.min.js"></script>
+
+
+
+        <div>
+
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+        </div>
+        <script type="text/javascript" src="/js.axd?path=%2fScripts%2fblog.js&amp;minify="></script>
+        <script type="text/javascript" src="http://jasonwatmore.com/res.axd?lang=en-us"></script>
+        <script type="text/javascript">
+
+            //<![CDATA[
+            (function() { var links = document.getElementsByTagName('a'); var query = '?'; for(var i = 0; i < links.length; i++) { if(links[i].href.indexOf('#disqus_thread') >= 0) { query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&'; }}document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/jasonwatmoresblog/get_num_replies.js' + query + '"></' + 'script>'); })();
+            //]]>
+        </script>
+
+        <!-- Begin Google scripts -->
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-30211492-1']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        <!-- End Google scripts -->
+
+
+
+        <script type="text/javascript">
+            SyntaxHighlighter.config.clipboardSwf='/Scripts/syntaxhighlighter/clipboard.swf';
+            SyntaxHighlighter.defaults['gutter'] = true;
+            SyntaxHighlighter.defaults['smart-tabs'] = true;
+            SyntaxHighlighter.defaults['auto-links'] = true;
+            SyntaxHighlighter.defaults['collapse'] = false;
+            SyntaxHighlighter.defaults['light'] = false;
+            SyntaxHighlighter.defaults['tab-size'] = 4;
+            SyntaxHighlighter.defaults['toolbar'] = true;
+            SyntaxHighlighter.defaults['wrap-lines'] = true;
+            SyntaxHighlighter.all();
+        </script>
+
+
+
+        <script type="text/javascript">
+            //<![CDATA[
+
+            WebForm_InitCallback();//]]>
+        </script>
+    </form>
+
+</body>
+</html>
