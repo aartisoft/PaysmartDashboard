@@ -15,4 +15,604 @@ namespace PaySmartDashboard.Models
         public string Active { set; get; }
 
     }
+    public class allocatedriver
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+
+
+        public int CompanyId { get; set; }
+        public int BookingNo { get; set; }
+
+        public string CustomerName { get; set; }
+        public string CusID { get; set; }
+        public string PhoneNo { get; set; }
+        public string AltPhoneNo { get; set; }
+        public string Address { get; set; }
+        public string PickupAddress { get; set; }
+        public string LandMark { get; set; }
+        public string PickupPlace { get; set; }
+        public string DropPlace { get; set; }
+        public string Package { get; set; }
+        public string VehicleType { get; set; }
+        public int NoofVehicle { get; set; }
+        public int VechID { get; set; }
+        public string RegistrationNo { get; set; }
+        public string DriverName { get; set; }
+        public int DriverId { get; set; }
+        public string PresentDriverLandMark { get; set; }
+        public string ExecutiveName { get; set; }
+        public DateTime EffectiveDate { get; set; }
+        public DateTime EffectiveTill { get; set; }
+        public string VehicleModelId { get; set; }
+        public string ServiceTypeId { get; set; }
+        public string VehicleGroupId { get; set; }
+    }
+    public class VehicleDocuments
+    {
+
+        public int Id { get; set; }
+        public int VehicleId { get; set; }
+        public int createdById { get; set; }
+        public int UpdatedById { get; set; }
+        public int docTypeId { get; set; }
+        public string docType { get; set; }
+        public string FileName { get; set; }
+        public int IsExpired { get; set; }
+        public string FileContent { get; set; }
+        public DateTime? expiryDate { get; set; }
+        public DateTime? dueDate { get; set; }
+        public string insupddelflag { get; set; }
+        public string DocumentNo { get; set; }
+        public string DocumentNo2 { get; set; }
+        public int isVerified { get; set; }
+        public int IsApproved { get; set; }
+        public int DriverId { get; set; }
+
+    }
+
+    public class DriverDocuments
+    {
+
+        public int Id { get; set; }
+        public int DriverId { get; set; }
+        public int createdById { get; set; }
+        public int UpdatedById { get; set; }
+
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+
+        public int docTypeId { get; set; }
+        public string docType { get; set; }
+        public string docName { get; set; }
+        public int IsExpired { get; set; }
+        public string docContent { get; set; }
+
+        public DateTime? expiryDate { get; set; }
+        public DateTime? dueDate { get; set; }
+        public string insupddelflag { get; set; }
+        public string DocumentNo { get; set; }
+        public string DocumentNo2 { get; set; }
+        public int isVerified { get; set; }
+        public int IsApproved { get; set; }
+    }
+    public class vehiclemas
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int VID { get; set; }
+        public int CompanyId { get; set; }
+        public int OwnerId { get; set; }
+        public int VehicleTypeId { get; set; }
+        public string RegistrationNo { get; set; }
+        public int HasAC { get; set; }
+        public int StatusId { get; set; }
+        public int IsVerified { get; set; }
+        public string VehicleCode { get; set; }
+        public string Type { get; set; }
+        public string OwnerName { get; set; }
+        public string ChasisNo { get; set; }
+        public string Engineno { get; set; }
+        public float RoadNo { get; set; }
+        public DateTime RoadTaxDate { get; set; }
+        public string InsuranceNo { get; set; }
+        public DateTime InsDate { get; set; }
+        public string PolutionNo { get; set; }
+        public DateTime PolExpDate { get; set; }
+        public string RCBookNo { get; set; }
+        public DateTime RCExpDate { get; set; }
+        public int CompanyVechile { get; set; }
+        public string OwnerPhoneNo { get; set; }
+        public string HomeLandmark { get; set; }
+        public string ModelYear { get; set; }
+        public string DayOnly { get; set; }
+        public string VechMobileNo { get; set; }
+        public DateTime EntryDate { get; set; }
+        public string NewEntry { get; set; }
+        public int VehicleModelId { get; set; }
+        public int ServiceTypeId { get; set; }
+        public int VehicleGroupId { get; set; }
+        public string photo { get; set; }
+        public string Status { get; set; }
+        public string Fleetcode { get; set; }
+        public int isDriverOwned { get; set; }
+        public int VehicleMakeId { get; set; }
+        public string Photo { get; set; }
+        public int CountryId { get; set; }
+        public string FrontImage { get; set; }
+        public string BackImage { get; set; }
+        public string RightImage { get; set; }
+        public string LeftImage { get; set; }
+    }
+    public class VehicleConfig
+    {
+        public int? needFleetDetails { get; set; }
+        public int? needRoutes { get; set; }
+        public int? needRoles { get; set; }
+        public int? needusers { get; set; }
+        public int? needfleetowners { get; set; }
+        public int? needvehicleType { get; set; }
+        public int? needvehicleRegno { get; set; }
+        public int? needServiceType { get; set; }
+        public int? needCompanyName { get; set; }
+        public int? needVehicleLayout { get; set; }
+        public int? needFleetRoute { get; set; }
+        public int? needRouteName { get; set; }
+        public int? needHireVehicle { get; set; }
+        public int? needbtpos { get; set; }
+        public int? cmpId { get; set; }
+        public int? fleetownerId { get; set; }
+        public int? needfleetownerroutes { get; set; }
+        public int? needvehicleMake { get; set; }
+        public int? needVehicleGroup { get; set; }
+
+        public int? needDocuments { get; set; }
+
+
+    }
+    public class Approvals
+    {
+        public string change { get; set; }
+        public int IsApproved { get; set; }
+        public int DId { get; set; }
+        public string RegistrationNo { get; set; }
+        public string MobileNo { get; set; }
+        public int VID { get; set; }
+    }
+    public class ChargesDiscounts
+    {
+        public string Type;
+        public string Value;
+
+        public int Id { get; set; }
+
+        public string Code { get; set; }
+
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+        public int cdTypeId { get; set; }
+        public int CategoryId { get; set; }
+
+        public int ApplyAsId { get; set; }
+
+        public string cdType { get; set; }
+        public string Category { get; set; }
+
+        public string ApplyAs { get; set; }
+        public decimal cdValue { get; set; }
+        public DateTime FromDate { get; set; }
+
+        public DateTime ToDate { get; set; }
+
+        public string Flag { get; set; }
+    }
+    public class Country
+    {
+        //Id, Name, Latitude, Longitude,ISOCode, HasOperations
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string ISOCode { get; set; }
+        public string HasOperations { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+
+
+        public string Flag { get; set; }
+
+        public string Code { get; set; }
+
+        public string flg { get; set; }
+    }
+    public class Promotionaldisc
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int OpCode { get; set; }
+        public string Condition { get; set; }
+        public int ValueType { get; set; }
+        public int FromValue { get; set; }
+        public string ToValue { get; set; }
+        public int TypeId { get; set; }
+        public int ApplyOn { get; set; }
+        public int Value { get; set; }
+        public int Applicability { get; set; }
+        public string Code { get; set; }
+    }
+    public class CompanyGroups
+    {
+        public CompanyGroups[] m = null;
+        //public List<CompanyGroups> list { get; set; }
+        public int active { get; set; }
+
+        public string admin { get; set; }
+
+        public int adminId { get; set; }
+
+        public string code { get; set; }
+
+        public string desc { get; set; }
+
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Address { get; set; }
+        public string ContactNo1 { get; set; }
+        public string ContactNo2 { get; set; }
+        public string Fax { get; set; }
+        public string EmailId { get; set; }
+        public string Title { get; set; }
+        public string Caption { get; set; }
+        public string Country { get; set; }
+        public string ZipCode { get; set; }
+        public string State { get; set; }
+
+        public int FleetSize { get; set; }
+        public int StaffSize { get; set; }
+        public string AlternateAddress { get; set; }
+        //public string TemporaryAddress{get;set;} 
+        public string Logo { get; set; }
+
+        public string insupdflag { get; set; }
+
+    }
+
+
+    //Jagan Updated On18th Aug Start
+    public class DriversGroups
+    {
+
+        public DriversGroups[] p = null;
+        //public List<DriversGroups> list { get; set; }
+        public string flag { get; set; }
+        public int DId { get; set; }
+        public string CompanyId { get; set; }
+        public string NAme { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Pin { get; set; }
+        public string PAddress { get; set; }
+        public string PCity { get; set; }
+        public string PPin { get; set; }
+        public string OffMobileNo { get; set; }
+        public string PMobNo { get; set; }
+        public DateTime? DOB { get; set; }
+        public DateTime? DOJ { get; set; }
+        public string BloodGroup { get; set; }
+        public string LicenceNo { get; set; }
+        public DateTime? LiCExpDate { get; set; }
+        public string BadgeNo { get; set; }
+        public DateTime? BadgeExpDate { get; set; }
+        public string Remarks { get; set; }
+        public string VehicleModelId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MobileNumber { get; set; }
+        public string PermanentAddress { get; set; }
+        public string PermanentPin { get; set; }
+        public string EmailId { get; set; }
+        public string DriverCode { get; set; }
+        public string FleetOwner { get; set; }
+        public int CurrentStateId { get; set; }
+        public string Country { get; set; }
+
+    }
+    //Jagan Updated On18th Aug End
+
+    public class VehiclesGroups
+    {
+
+        public VehiclesGroups[] o = null;
+        //public List<VehiclesGroups> list3 { get; set; }
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string CompanyId { get; set; }
+        public int VID { get; set; }
+        public string RegistrationNo { get; set; }
+        public string vehicleType { get; set; }
+        public int FleetOwner { get; set; }
+        public string ChasisNo { get; set; }
+        public string Engineno { get; set; }
+        public DateTime? RoadTaxDate { get; set; }
+        public int HasAC { get; set; }
+        public DateTime? InsDate { get; set; }
+        public string PolutionNo { get; set; }
+        public DateTime? PolExpDate { get; set; }
+        public string RCBookNo { get; set; }
+        public DateTime? RCExpDate { get; set; }
+        public int StatusId { get; set; }
+        public int IsVerified { get; set; }
+        public string VehicleCode { get; set; }
+        public string ModelYear { get; set; }
+        public int IsDriverowned { get; set; }
+        public int DriverId { get; set; }
+        public DateTime? EntryDate { get; set; }
+        public string Country { get; set; }
+        public string VehicleModel { get; set; }
+        public string VehicleMake { get; set; }
+        public string VehicleGroup { get; set; }
+    }
+    public class faqs
+    {
+
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Question { get; set; }
+
+        public string Answer { get; set; }
+        public string CreatedBy { get; set; }
+        public int AppType { get; set; }
+        public int Category { get; set; }
+        public int SubCategory { get; set; }
+        public int active { get; set; }
+        public int category { get; set; }
+
+    }
+    public class TypeGroups
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public string Active { get; set; }
+        public string insupddelflag { get; set; }
+    }
+
+    public class Types
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public string Active { get; set; }
+
+
+
+        public string TypeGroupId { get; set; }
+
+        public string ListKey { get; set; }
+
+        public string Listvalue { get; set; }
+        public string insupddelflag { get; set; }
+    }
+    public class PackageCharges
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int PackageId { get; set; }
+        public int TypeId { get; set; }
+        public int ApplyOn { get; set; }
+        public int Value { get; set; }
+        public string Code { get; set; }
+        public int UnitTypeId { get; set; }
+        public int UnitId { get; set; }
+        public int FromValue { get; set; }
+        public int ToValue { get; set; }
+        public DateTime? EffectiveDate { get; set; }
+        public DateTime? ExpiryDate { get; set; }
+        public int ChargeTypeId { get; set; }
+        public string ChargeCode { get; set; }
+    }
+    public class PackageDiscount
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int PackageId { get; set; }
+        public int TypeId { get; set; }
+        public int ApplyOn { get; set; }
+        public int Value { get; set; }
+        public string Code { get; set; }
+        public int UnitTypeId { get; set; }
+        public int UnitId { get; set; }
+        public DateTime? EffectiveDate { get; set; }
+        public DateTime? ExpiryDate { get; set; }
+        public int DiscountTypeId { get; set; }
+
+    }
+    public class UsersGroup
+    {
+
+        //public UsersGroup[] U = null;
+        public List<UsersGroup> U { get; set; }
+        public int Id { set; get; }
+        public string FirstName { set; get; }
+        public string LastName { set; get; }
+        public string MiddleName { set; get; }
+        public string EmpNo { set; get; }
+        public string Email { set; get; }
+        public string ContactNo1 { set; get; }
+        public string ContactNo2 { set; get; }
+        public int? mgrId { set; get; }
+        public int ManagerName { set; get; }
+        public string Country { get; set; }
+        public string ZipCode { get; set; }
+        public string State { get; set; }
+        public int StateId { set; get; }
+        public int CountryId { set; get; }
+        public int Active { get; set; }
+        public int GenderId { get; set; }
+        public string UserType { set; get; }
+        public int UserTypeId { set; get; }
+        public string Address { set; get; }
+        public string AltAdress { set; get; }
+        public string Photo { get; set; }
+        public string Role { set; get; }
+        public int RoleId { set; get; }
+        public DateTime? RFromDate { get; set; }
+        public DateTime? RToDate { get; set; }
+        public string DUserName { get; set; }
+        public string DPassword { get; set; }
+        public string WUserName { get; set; }
+        public string WPassword { get; set; }
+        public string insupdflag { get; set; }
+        public int cmpId { set; get; }
+        public string Company { set; get; }
+
+    }
+    public class CardsGroup
+    {
+
+        public CardsGroup[] cg = null;
+        //public List<VehiclesGroups> list3 { get; set; }
+        public int Id { get; set; }
+        public string CardNumber { get; set; }
+        public string CardModel { get; set; }
+        public string CardType { get; set; }
+        public string CardCategory { get; set; }
+        public int Status { get; set; }
+        public int UserId { get; set; }
+        public string Customer { get; set; }
+        public DateTime? EffectiveFrom { get; set; }
+        public DateTime? EffectiveTo { get; set; }
+        public string insupdflag { get; set; }
+    }
+
+    public class DriverVehicleAssignGroup
+    {
+        public DriverVehicleAssignGroup[] dva = null;
+        public string inspudflag { get; set; }
+        public string RegistrationNo { get; set; }
+        public string vehicleType { get; set; }
+        public int FleetOwner { get; set; }
+        public string ChasisNo { get; set; }
+        public string Engineno { get; set; }
+        public int HasAC { get; set; }
+        public int StatusId { get; set; }
+        public int IsVerified { get; set; }
+        public string VehicleCode { get; set; }
+        public string ModelYear { get; set; }
+        public int IsDriverowned { get; set; }
+        public int DriverId { get; set; }
+        public DateTime? EntryDate { get; set; }
+        public string Country { get; set; }
+        public string VehicleModel { get; set; }
+        public string VehicleMake { get; set; }
+        public string VehicleGroup { get; set; }
+        public DateTime? EffectiveDate { get; set; }
+        public DateTime? EffectiveTill { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MobileNumber { get; set; }
+        public string PermanentAddress { get; set; }
+        public string PermanentPin { get; set; }
+        public string EmailId { get; set; }
+        public string DriverCode { get; set; }
+        public string Address { get; set; }
+        public string Pin { get; set; }
+        public int CurrentStateId { get; set; }
+
+    }
+    public class driverdetails
+    {
+        public string flag { get; set; }
+        public int DId { get; set; }
+        public int Country { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Pin { get; set; }
+        public string PermanentAddress { get; set; }
+        public string PCity { get; set; }
+        public string PermanentPin { get; set; }
+        public float OffMobileNo { get; set; }
+        public string Mobilenumber { get; set; }
+        public DateTime? DOB { get; set; }
+        public DateTime? DOJ { get; set; }
+        public string BloodGroup { get; set; }
+        public string LicenceNo { get; set; }
+        public DateTime LiCExpDate { get; set; }
+        public string BadgeNo { get; set; }
+        public DateTime BadgeExpDate { get; set; }
+        public string Remarks { get; set; }
+        public string Photo { get; set; }
+        public string licenseimage { get; set; }
+        public string badgeimage { get; set; }
+        public string drivercode { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string EmailId { get; set; }
+        public int Status { get; set; }
+        public int VehicleGroup { get; set; }
+        public int IsVerified { get; set; }
+        public int IsApproved { get; set; }
+        public int CurrentStateId { get; set; }
+
+        public int PaymentTypeId { get; set; }
+    }
+    public class bankdetails
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Accountnumber { get; set; }
+        public string BankName { get; set; }
+        public string BranchAddress { get; set; }
+        public string Bankcode { get; set; }
+        public string Country { get; set; }
+        public int IsActive { get; set; }
+        public int DriverId { get; set; }
+        public string DriverCode { get; set; }
+        public string qrcode { get; set; }
+    }
+    public class ConfigData
+    {
+        public int includeStatus { get; set; }
+        public int includeCategories { get; set; }
+        public int includeLicenseCategories { get; set; }
+        public int includeVehicleGroup { get; set; }
+        public int includeGender { get; set; }
+        public int includeFrequency { get; set; }
+        public int includePricingType { get; set; }
+        public int includeTransactionType { get; set; }
+        public int includeApplicability { get; set; }
+        public int includeFeeCategory { get; set; }
+        public int includeTransChargeType { get; set; }
+        public int includeVehicleType { get; set; }
+        public int includeVehicleModel { get; set; }
+        public int includeVehicleMake { get; set; }
+        public int includeDocumentType { get; set; }
+        public int includePaymentType { get; set; }
+        public int includeMiscellaneousTypes { get; set; }
+        public int includeCardCategories { get; set; }
+        public int includeCardTypes { get; set; }
+        public int includeVehicleLayoutType { get; set; }
+        public int includeLicenseFeatures { get; set; }
+        public int includeCardModels { get; set; }
+        public int includeCards { get; set; }
+        public int includeTransactions { get; set; }
+        public int includeCountry { get; set; }
+        public int includeActiveCountry { get; set; }
+        public int includeFleetOwner { get; set; }
+        public int includeUserType { get; set; }
+        public int includeAuthType { get; set; }
+        public int includeState { get; set; }
+
+        public int includePackageNames { get; set; }
+
+        public int includePackageTypeName { get; set; }
+    }
 }
