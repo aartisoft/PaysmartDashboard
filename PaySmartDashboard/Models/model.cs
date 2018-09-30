@@ -615,6 +615,83 @@ namespace PaySmartDashboard.Models
 
         public int includePackageTypeName { get; set; }
     }
+    public class MandUserDocs
+    {
+        public int VehicleGroupId { get; set; }
+        public string flag { get; set; }
+
+        public int Id { get; set; }
+
+        public int DocTypeId { get; set; }
+
+        public int Countryid { get; set; }
+
+        public int UserTypeId { get; set; }
+
+        public string FileContent { get; set; }
+
+        public int IsMandatory { get; set; }
+    }
+
+    public class MandVehicleDocs
+    {
+
+        public string flag { get; set; }
+
+        public int Id { get; set; }
+
+        public int Countryid { get; set; }
+
+        public int VehicleGroupId { get; set; }
+
+        public int DocTypeId { get; set; }
+        public string FileContent { get; set; }
+        public int IsMandatory { get; set; }
+    }
+    public class UserAccount
+    {
+        public string flag { get; set; }
+        public int id { get; set; }
+        public int userId { get; set; }
+        public string Username { get; set; }
+
+        public string Email { get; set; }
+        public string Mobilenumber { get; set; }
+        public string Password { get; set; }
+        public String EVerificationCode { get; set; }
+        public DateTime EVerifiedOn { get; set; }
+        public int IsEmailVerified { get; set; }
+        public String MVerificationCode { get; set; }
+        public string Passwordotp { get; set; }
+        public DateTime MVerifiedOn { get; set; }
+        public int IsMobileVerified { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+        public int ENoOfAttempts { get; set; }
+        public int MNoOfAttempts { get; set; }
+        public string Firstname { get; set; }
+        public string lastname { get; set; }
+        public int AuthTypeId { get; set; }
+        public string AltPhonenumber { get; set; }
+        public string Altemail { get; set; }
+        public string AccountNo { get; set; }
+        public string NewPassword { get; set; }
+        public object Mobileotp { get; set; }
+
+        public object Emailotp { get; set; }
+
+        public int Gender { get; set; }
+        public string UserPhoto { get; set; }
+
+        public decimal Amount { get; set; }
+        public int CountryId { get; set; }
+        public int PaymentModeId { get; set; }
+        public int CurrentStateId { get; set; }
+        public int Active { get; set; }
+        public string CCode { get; set; }
+        public string UserAccountNo { get; set; }
+
+    }
     public class DemoRequest
     {
         public string flag { get; set; }

@@ -3596,6 +3596,8 @@
     <Content Include="UI\js\jquery-ui.js" />
     <Content Include="UI\js\login.js" />
     <Content Include="UI\js\main.js" />
+    <Content Include="UI\js\MandatoryUserDoc.js" />
+    <Content Include="UI\js\MandatoryVehicleDocs.js" />
     <Content Include="UI\js\ngStorage.js" />
     <Content Include="UI\js\PSPricing.js" />
     <Content Include="UI\js\source.js" />
@@ -3605,6 +3607,8 @@
     <Content Include="UI\js\ui-bootstrap-tpls-1.3.3.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\VehicleList.js" />
+    <Content Include="UI\MandatoryUserDocs.html" />
+    <Content Include="UI\MandatoryVehicleDocs.html" />
     <Content Include="UI\pricingcredentials.html" />
     <Content Include="UI\TypeGroups.html" />
     <Content Include="UI\Types.html" />
@@ -5003,6 +5007,7 @@
     <Compile Include="Controllers\DriverMasterController.cs" />
     <Compile Include="Controllers\faqsController.cs" />
     <Compile Include="Controllers\LOGINController.cs" />
+    <Compile Include="Controllers\MandatoryDocsController.cs" />
     <Compile Include="Controllers\TypeGroupsController.cs" />
     <Compile Include="Controllers\TypesController.cs" />
     <Compile Include="Controllers\VehicleConfigController.cs" />
