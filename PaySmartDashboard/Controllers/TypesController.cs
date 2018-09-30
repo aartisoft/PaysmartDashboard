@@ -364,11 +364,11 @@ namespace PaySmartDashboard.Controllers
                 cmd.Parameters.Add(vdid2);
 
 
-                SqlParameter vdid3 = new SqlParameter();
-                vdid3.ParameterName = "@includeFleetOwner";
-                vdid3.SqlDbType = SqlDbType.Int;
-                vdid3.Value = vc.includeFleetOwner;
-                cmd.Parameters.Add(vdid3);
+                //SqlParameter vdid3 = new SqlParameter();
+                //vdid3.ParameterName = "@includeFleetOwner";
+                //vdid3.SqlDbType = SqlDbType.Int;
+                //vdid3.Value = vc.includeFleetOwner;
+                //cmd.Parameters.Add(vdid3);
 
                 SqlParameter vdid4 = new SqlParameter("@includeUserType", SqlDbType.Int);
                 vdid4.Value = vc.includeUserType;

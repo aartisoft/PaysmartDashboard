@@ -35,29 +35,29 @@ namespace PaySmartDashboard.Controllers
             return dt;
         }
 
-        [HttpGet]
-        [Route("api/VehicleMaster/GetVehcileMaster")]
-        public DataTable GetVehcileMaster(int VID)
-        {
-            DataTable dt = new DataTable();
+        //[HttpGet]
+        //[Route("api/VehicleMaster/GetVehcileMaster")]
+        //public DataTable GetVehcileMaster(int VID)
+        //{
+        //    DataTable dt = new DataTable();
 
-            SqlConnection conn = new SqlConnection();
+        //    SqlConnection conn = new SqlConnection();
 
-            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+        //    conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PSgetvehilcetypes";
-            cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
-            cmd.Connection = conn;
-            DataSet ds = new DataSet();
-            SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(ds);
-            dt = ds.Tables[0];
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.CommandText = "PSgetvehilcetypes";
+        //    cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
+        //    cmd.Connection = conn;
+        //    DataSet ds = new DataSet();
+        //    SqlDataAdapter db = new SqlDataAdapter(cmd);
+        //    db.Fill(ds);
+        //    dt = ds.Tables[0];
 
-            return dt;
+        //    return dt;
 
-        }
+        //}
 
         [HttpGet]
         [Route("api/VehicleMaster/GetVehcileDetails")]

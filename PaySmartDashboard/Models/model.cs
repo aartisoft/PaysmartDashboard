@@ -615,4 +615,55 @@ namespace PaySmartDashboard.Models
 
         public int includePackageTypeName { get; set; }
     }
+    public class DemoRequest
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Businessname { get; set; }
+        public string email { get; set; }
+        public string mobile { get; set; }
+        public int countryid { get; set; }
+        public string LoginNo { get; set; }
+        public string Reviewed { get; set; }
+        public string notification { get; set; }
+        public int statusid { get; set; }
+
+    }
+    public class UserLocation
+    {
+        public string flag { get; set; }
+
+        public int BNo { get; set; }
+        public string BookingType { get; set; }
+
+        public string ReqVehicle { get; set; }
+        public string Customername { get; set; }
+        public string CusID { get; set; }
+        public string PhoneNo { get; set; }
+        public string AltPhoneNo { get; set; }
+        public string CAddress { get; set; }
+        public string PickupAddress { get; set; }
+        public string LandMark { get; set; }
+        public string Package { get; set; }
+        public string PickupPalce { get; set; }
+        public string DropPalce { get; set; }
+        public string ReqType { get; set; }
+        public int ExtraCharge { get; set; }
+        public int NoofVehicle { get; set; }
+        public string ExecutiveName { get; set; }
+        public int VID { get; set; }
+        public string BookingStatus { get; set; }
+        public string CustomerSMS { get; set; }
+        public string CancelReason { get; set; }
+        public decimal CBNo { get; set; }
+        public string ModifiedBy { get; set; }
+        public string CancelBy { get; set; }
+        public string ReconfirmedBy { get; set; }
+        public string AssignedBy { get; set; }
+
+        public float lat { get; set; }
+        public float lng { get; set; }
+
+        public object Mobileotp { get; set; }
+    }
 }

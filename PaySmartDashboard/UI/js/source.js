@@ -246,6 +246,38 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
         $scope.currGroup = null;
     };
 
+    $scope.SendDemoMail = function (d) {
+
+        var demo = {
+
+            Id: d.Id,
+            email: d.Email,
+            Mobile: d.MobileNumber,
+            statusid: d.Status,
+            flag: 'U',
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/DemoRequest/SaveDemoDetails',
+            data: demo
+        }
+        $http(req).then(function (response) {
+            alert("Saved successfully! ");
+            $scope.GetDemoRequest();
+
+            $scope.Group = null;
+            // $scope.FirstPage();
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your details are incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            $scope.showDialog(errmssg);
+        });
+    }
+
+
     $scope.showDialog = function (message) {
 
         var modalInstance = $uibModal.open({
