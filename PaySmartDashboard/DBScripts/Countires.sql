@@ -1,5 +1,5 @@
 Set IDENTITY_INSERT [Country] OFF
-INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('AF','33.93911','67.709953','Afghanistan','Afghanistan.png')
+INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('AF','33.93911','67.709953','Afghanistan','Afghanistan.png','93','Flags\flags_iso\16\af.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('AL','41.153332','20.168331','Albania','Albania.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('DZ','28.033886','1.659626','Algeria','Algeria.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('AS','-14.270972','-170.132217','American Samoa','American Samoa.png')
@@ -99,7 +99,7 @@ INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALU
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('HK','22.396428','114.109497','Hong Kong','Hong Kong.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('HU','47.162494','19.503304','Hungary','Hungary.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('IS','64.963051','-19.020835','Iceland','Iceland.png')
-INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('IN','20.593684','78.96288','India','India.png')
+INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('IN','20.593684','78.96288','India','India.png','91','Flags\flags_iso\16\in.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('ID','-0.789275','113.921327','Indonesia','Indonesia.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('IR','32.427908','53.688046','Iran','Iran.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('IQ','33.223191','43.679291','Iraq','Iraq.png')
@@ -243,5 +243,5 @@ INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALU
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('EH','24.215527','-12.885834','Western Sahara','Western Sahara.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('YE','15.552727','48.516388','Yemen','Yemen.png')
 INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('ZM','-13.133897','27.849332','Zambia','Zambia.png')
-INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('ZW','-19.015438','29.154857','Zimbabwe','Zimbabwe.png')
+INSERT INTO [dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name], [flag])VALUES('ZW','-19.015438','29.154857','Zimbabwe','Zimbabwe.png','243','Flags\flags_iso\16\zw.png')
 Set IDENTITY_INSERT  [Country] OFF
