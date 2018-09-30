@@ -3677,9 +3677,6 @@
     <Content Include="UI\vendors\bootstrap-daterangepicker\moment.js" />
     <Content Include="UI\vendors\bootstrap-daterangepicker\moment.min.js" />
     <Content Include="UI\vendors\bootstrap-daterangepicker\README.html" />
-    <Content Include="UI\vendors\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.css" />
-    <Content Include="UI\vendors\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.min.css" />
-    <Content Include="UI\vendors\bootstrap-datetimepicker\build\js\bootstrap-datetimepicker.min.js" />
     <Content Include="UI\vendors\bootstrap-datetimepicker\src\js\bootstrap-datetimepicker.js" />
     <Content Include="UI\vendors\bootstrap-datetimepicker\src\js\locales\bootstrap-datetimepicker.ar-ma.js" />
     <Content Include="UI\vendors\bootstrap-datetimepicker\src\js\locales\bootstrap-datetimepicker.ar.js" />
@@ -4189,8 +4186,6 @@
     <Content Include="UI\vendors\flot-chart\examples\series-pie\index.html" />
     <Content Include="UI\vendors\flot-chart\examples\series-toggle\index.html" />
     <Content Include="UI\vendors\flot-chart\examples\series-types\index.html" />
-    <Content Include="UI\vendors\flot-chart\examples\shared\jquery-ui\jquery-ui.min.css" />
-    <Content Include="UI\vendors\flot-chart\examples\shared\jquery-ui\jquery-ui.min.js" />
     <Content Include="UI\vendors\flot-chart\examples\stacking\index.html" />
     <Content Include="UI\vendors\flot-chart\examples\symbols\index.html" />
     <Content Include="UI\vendors\flot-chart\examples\threshold\index.html" />
@@ -4217,7 +4212,6 @@
     <Content Include="UI\vendors\flot-chart\jquery.flot.threshold.js" />
     <Content Include="UI\vendors\flot-chart\jquery.flot.time.js" />
     <Content Include="UI\vendors\flot-chart\jquery.flot.tooltip.js" />
-    <Content Include="UI\vendors\flot-chart\jquery.flot.tooltip.min.js" />
     <Content Include="UI\vendors\flot-chart\jquery.js" />
     <Content Include="UI\vendors\flot-chart\LICENSE.txt" />
     <Content Include="UI\vendors\font-awesome\css\font-awesome.css" />
@@ -4392,12 +4386,6 @@
     <Content Include="UI\vendors\jplist\html\css\vendor\images\ui-icons_454545_256x240.png" />
     <Content Include="UI\vendors\jplist\html\css\vendor\jquery-ui.css" />
     <Content Include="UI\vendors\jplist\html\css\vendor\normalize.css" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList.sln" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\JPList.csproj" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\JPList.csproj.user" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\create.sql" />
-    <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\create.sql" />
-    <Content Include="UI\vendors\jplist\html\data-sources\php-sqlite-demo\sqlite3.exe" />
     <Content Include="UI\vendors\jplist\html\demo.html" />
     <Content Include="UI\vendors\jplist\html\examples\1-layout\div-layout.html" />
     <Content Include="UI\vendors\jplist\html\examples\1-layout\list-grid.html" />
@@ -4790,7 +4778,6 @@
     <Content Include="UI\vendors\lightbox\js\lightbox.js" />
     <Content Include="UI\vendors\lightbox\js\lightbox.min.js" />
     <Content Include="UI\vendors\metisMenu\jquery.metisMenu.js" />
-    <Content Include="UI\vendors\mixitup\build\jquery.mixitup.min.js" />
     <Content Include="UI\vendors\mixitup\docs\api-methods.html" />
     <Content Include="UI\vendors\mixitup\Gruntfile.js" />
     <Content Include="UI\vendors\mixitup\src\jquery.mixitup.js" />
@@ -5019,13 +5006,6 @@
     </Compile>
     <Compile Include="Models\model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\DAL\DataBase.cs" />
-    <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\DAL\StatusQueries.cs" />
-    <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\Domain\Models\Item.cs" />
-    <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\Domain\Models\StatusDataDTO.cs" />
-    <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\Domain\Models\StatusDTO.cs" />
-    <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\Log\Logger.cs" />
-    <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\WEB\JPListHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -5253,14 +5233,6 @@
     <Content Include="UI\vendors\iCheck\demo\css\montserrat-regular.eot" />
     <Content Include="UI\vendors\iCheck\demo\css\montserrat-regular.ttf" />
     <Content Include="UI\vendors\iCheck\demo\css\montserrat-regular.woff" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList.suo" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\server.ashx" />
-    <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\config.php" />
-    <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\server-html.php" />
-    <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\server-json.php" />
-    <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\server-xml.php" />
-    <Content Include="UI\vendors\jplist\html\data-sources\php-sqlite-demo\jplist.db" />
-    <Content Include="UI\vendors\jplist\html\data-sources\php-sqlite-demo\server.php" />
     <Content Include="UI\vendors\jquery-file-upload\.gitignore" />
     <Content Include="UI\vendors\jquery-file-upload\.jshintrc" />
     <Content Include="UI\vendors\jquery-file-upload\blueimp-file-upload.jquery.json" />
@@ -5274,7 +5246,6 @@
     <Content Include="UI\vendors\jquery-file-upload\server\node\.gitignore" />
     <Content Include="UI\vendors\jquery-file-upload\server\node\package.json" />
     <Content Include="UI\vendors\jquery-file-upload\server\node\public\files\.gitignore" />
-    <Content Include="UI\vendors\jquery-file-upload\server\node\public\files\thumbnail\.gitignore" />
     <Content Include="UI\vendors\jquery-file-upload\server\node\tmp\.gitignore" />
     <Content Include="UI\vendors\jquery-file-upload\server\php\files\.gitignore" />
     <Content Include="UI\vendors\jquery-file-upload\server\php\files\.htaccess" />
@@ -5360,11 +5331,14 @@
     <Folder Include="App_Data\" />
     <Folder Include="UI\vendors\bootstrap-datetimepicker\bootstrap\" />
     <Folder Include="UI\vendors\css3-treeview\" />
-    <Folder Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\Properties\" />
+    <Folder Include="UI\vendors\jquery-file-upload\server\node\public\files\thumbnail\" />
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="UI\Flags\ReadMe.rtf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\PaysmartDashboard.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
