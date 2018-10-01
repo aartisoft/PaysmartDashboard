@@ -3569,6 +3569,7 @@
     <Content Include="UI\images\11.jpg" />
     <Content Include="UI\images\dashboard.png" />
     <Content Include="UI\images\img5.jpg" />
+    <Content Include="UI\images\logo-big.png" />
     <Content Include="UI\index.html" />
     <Content Include="UI\js\angular-animate.js" />
     <Content Include="UI\js\angular.js" />
@@ -5350,6 +5351,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\PaysmartDashboard.pubxml" />
+    <Content Include="UI\DataUploadTemplates\BTPOSDetails.csv" />
+    <Content Include="UI\DataUploadTemplates\CardsList.csv" />
+    <Content Include="UI\DataUploadTemplates\CompanyList.csv" />
+    <Content Include="UI\DataUploadTemplates\DriversList.csv" />
+    <Content Include="UI\DataUploadTemplates\DriverVehicleAssignList.csv" />
+    <Content Include="UI\DataUploadTemplates\FleetDetails.csv" />
+    <Content Include="UI\DataUploadTemplates\Inventory.csv" />
+    <Content Include="UI\DataUploadTemplates\Routes.csv" />
+    <Content Include="UI\DataUploadTemplates\Stops.csv" />
+    <Content Include="UI\DataUploadTemplates\UserRoles.csv" />
+    <Content Include="UI\DataUploadTemplates\Users.csv" />
+    <Content Include="UI\DataUploadTemplates\VehiclesList.csv" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

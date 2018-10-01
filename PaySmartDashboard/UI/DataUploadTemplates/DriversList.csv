@@ -1,0 +1,10 @@
+FirstName,LastName,MobileNumber,FleetOwner,Address,PermanentAddress,Pin,PermanentPin,EmailId,DriverCode,CurrentStateId,Country
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+"						",,,,,,,,,,,
+"						",,,,,,,,,,,
+"						",,,,,,,,,,,
+"example:						",,,,,,,,,,,
+Smith,"	rathod","	9900103245","	FT0256","	Hyderabad","	Hyderabad	","500018	","500018	",webingateteam@gmail.com,"	4568","	1","	India"
+Kiran,"	kumar","	9990000789","	FY1256","	Hyderabad","	kodad","	500045","	508206","	webingate@gmail.com","	1248","	0","	Zambia"

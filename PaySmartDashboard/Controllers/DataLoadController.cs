@@ -736,7 +736,7 @@ namespace PaySmartDashboard.Controllers
                 cmd.Parameters.Add(vgid);
 
                 SqlParameter vgCompanyId = new SqlParameter("@CompanyId", SqlDbType.Int);
-                vgCompanyId.Value = o.CompanyId;
+                vgCompanyId.Value = o.Company;
                 cmd.Parameters.Add(vgCompanyId);
 
                 SqlParameter vgVId = new SqlParameter();
@@ -1164,7 +1164,7 @@ namespace PaySmartDashboard.Controllers
                 //cmd.Parameters.Add(vgid);
 
                 SqlParameter vgCompanyId = new SqlParameter("@CompanyId", SqlDbType.VarChar, 50);
-                vgCompanyId.Value = o.CompanyId;
+                vgCompanyId.Value = o.Company;
                 cmd.Parameters.Add(vgCompanyId);
 
                 SqlParameter vgVId = new SqlParameter();
@@ -1251,7 +1251,7 @@ namespace PaySmartDashboard.Controllers
 
                 SqlParameter vgCompanyVeh = new SqlParameter();
                 vgCompanyVeh.ParameterName = "@StatusId";
-                vgCompanyVeh.SqlDbType = SqlDbType.Int;
+                vgCompanyVeh.SqlDbType = SqlDbType.VarChar;
                 vgCompanyVeh.Value = o.StatusId;
                 cmd.Parameters.Add(vgCompanyVeh);
 
@@ -1316,7 +1316,14 @@ namespace PaySmartDashboard.Controllers
                 vgVehicleGroupId.Value = o.VehicleGroup;
                 cmd.Parameters.Add(vgVehicleGroupId);
 
-                SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
+                SqlParameter lyt = new SqlParameter();
+                lyt.ParameterName = "@LayoutTypeId";
+                lyt.SqlDbType = SqlDbType.VarChar;
+                lyt.Value = o.LayoutType;
+                cmd.Parameters.Add(lyt);
+
+
+                    SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
                 insupdflag.Value = o.flag;
                 cmd.Parameters.Add(insupdflag);
 
@@ -1555,7 +1562,7 @@ namespace PaySmartDashboard.Controllers
 
                     SqlParameter vgCompanyVeh = new SqlParameter();
                     vgCompanyVeh.ParameterName = "@StatusId";
-                    vgCompanyVeh.SqlDbType = SqlDbType.Int;
+                    vgCompanyVeh.SqlDbType = SqlDbType.VarChar;
                     vgCompanyVeh.Value = dva.StatusId;
                     cmd.Parameters.Add(vgCompanyVeh);
 
@@ -1631,7 +1638,19 @@ namespace PaySmartDashboard.Controllers
                     cs.SqlDbType = SqlDbType.VarChar;
                     cs.Value = dva.CurrentStateId;
                     cmd.Parameters.Add(cs);
-                    
+
+                    SqlParameter lyt = new SqlParameter();
+                    lyt.ParameterName = "@LayoutTypeId";
+                    lyt.SqlDbType = SqlDbType.VarChar;
+                    lyt.Value = dva.LayoutType;
+                    cmd.Parameters.Add(lyt);
+
+                    SqlParameter cmp = new SqlParameter();
+                    cmp.ParameterName = "@CompanyId";
+                    cmp.SqlDbType = SqlDbType.VarChar;
+                    cmp.Value = dva.Company;
+                    cmd.Parameters.Add(cmp);
+
 
                     SqlParameter dvaflag = new SqlParameter("@flag", SqlDbType.VarChar);
                     dvaflag.Value = dva.inspudflag;

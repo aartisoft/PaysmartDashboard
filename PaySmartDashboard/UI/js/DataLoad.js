@@ -816,10 +816,10 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         Driver: data[10],
                         ModelYear: data[11],
                         HasAC: data[12],
-                        IsDriverowned: data[13],  
+                        IsDriverowned: data[13],
                         FirstName: data[14],
                         LastName: data[15],
-                        MobileNumber: data[16],                        
+                        MobileNumber: data[16],
                         Address: data[17],
                         PermanentAddress: data[18],
                         Pin: data[19],
@@ -827,6 +827,9 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         EmailId: data[21],
                         DriverCode: data[22],
                         CurrentStateId: data[23],
+                        StatusId: data[24],
+                        LayputType: data[25],
+                        Company: data[26],
                         
                         inspudflag: 'I'
                     }
@@ -899,20 +902,9 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
             ModelYear: data[11],
             HasAC: data[12],
             IsDriverowned: data[13],
-            RoadTaxDate: data[14],
-            InsDate: data[15],
-            PolutionNo: data[16],
-            PolExpDate: data[17],
-            RCBookNo: data[18],
-            RCExpDate: data[19],
-            StatusId: data[20],
-            IsVerified: data[21],
-            EntryDate: data[22],
-
-
-
-
-
+            StatusId: data[14],
+            LayoutType: data[15],
+            Company: data[16],
             flag: 'I'
 
         }

@@ -329,6 +329,7 @@ namespace PaySmartDashboard.Models
         public int Id { get; set; }
         public string CompanyId { get; set; }
         public int VID { get; set; }
+        public int Company { get; set; }
         public string RegistrationNo { get; set; }
         public string vehicleType { get; set; }
         public int FleetOwner { get; set; }
@@ -341,7 +342,7 @@ namespace PaySmartDashboard.Models
         public DateTime? PolExpDate { get; set; }
         public string RCBookNo { get; set; }
         public DateTime? RCExpDate { get; set; }
-        public int StatusId { get; set; }
+        public string StatusId { get; set; }
         public int IsVerified { get; set; }
         public string VehicleCode { get; set; }
         public string ModelYear { get; set; }
@@ -352,6 +353,7 @@ namespace PaySmartDashboard.Models
         public string VehicleModel { get; set; }
         public string VehicleMake { get; set; }
         public string VehicleGroup { get; set; }
+        public string LayoutType { get; set; }
     }
     public class faqs
     {
@@ -502,7 +504,7 @@ namespace PaySmartDashboard.Models
         public string ChasisNo { get; set; }
         public string Engineno { get; set; }
         public int HasAC { get; set; }
-        public int StatusId { get; set; }
+        public string StatusId { get; set; }
         public int IsVerified { get; set; }
         public string VehicleCode { get; set; }
         public string ModelYear { get; set; }
@@ -525,6 +527,8 @@ namespace PaySmartDashboard.Models
         public string Address { get; set; }
         public string Pin { get; set; }
         public int CurrentStateId { get; set; }
+        public string LayoutType { get; set; }
+        public string Company { get;set;}
 
     }
     public class driverdetails

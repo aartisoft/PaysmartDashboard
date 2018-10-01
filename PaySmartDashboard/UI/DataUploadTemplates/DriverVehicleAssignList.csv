@@ -1,0 +1,5 @@
+RegistrationNo,ChasisNo,VehicleGroup,VehicleModel,Country,VehicleCode,FleetOwner,EngineNo,VehicleType,VehicleMake,Driver,ModelYear,Has AC,IsDriverOwned,First Name,Last Name,Mobile Number,Address,Permanent Address,Pin,Permanent Pin,	EmailId,Driver Code,CurrentStateId,StatusId,LayoutType,Company
+
+example:						
+TS001,Td5689,Hailing Car,,India,TY0001,99,Yu4526,sedan,,Smith,2015,0,0,Smith,rathod,9900103245,Hyderabad,Hyderabad,500018,500018,webingateteam@gmail.com,4568,1,Active,0,0
+TS002,Td5689,Hailing Car,,Zambia,TY0002,98,Yu4526,sedan,,Kiran,2015,0,0,Kiran,kumar,9990000789,Hyderabad,kodad,500045,508206,webingate@gmail.com,1248,0,Active,0,0
