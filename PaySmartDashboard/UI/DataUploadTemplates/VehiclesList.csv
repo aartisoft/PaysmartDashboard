@@ -1,0 +1,7 @@
+RegistrationNo,	ChasisNo,	VehicleGroup,	VehicleModel,	Country,	VehicleCode,	FleetOwner,	EngineNo,	VehicleType,	VehicleMake,	Driver,	ModelYear,	Has AC,	IsDriverOwned, StatusId, LayoutType, Company
+
+
+
+example:	
+TS001,Td5689,Hailing Car,,India,TY0001,,Yu4526,sedan,,Smith,2015,0,0,Active,0,0
+TS002,Td5689,Hailing Car,,Zambia,TY0002,,Yu4526,sedan,,Kiran,2015,0,0,Active,0,0
