@@ -104,7 +104,7 @@ namespace PaySmartDashboard.Controllers
 
                                               <p>Your PaySmart Demo credentials and links are here.</p>
                                               <p><a href='http://196.27.119.220:1476/Login.html'>Dashboard Link</a><br/>
-                                              Username:  " + email + @"<br/> 
+                                              Username:  " + bname + @"<br/> 
                                               Password:" + dpwd + @"</p>
 
                                                <p>Customer App Link:<a href='http://196.27.119.221:53800/UI/Apks/CustomerApp.html'>Android , </a><a href='http://196.27.119.221:53800/UI/Apks/CustomerApp.html'>IOS</a><br/>
