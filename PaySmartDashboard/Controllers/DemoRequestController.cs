@@ -107,12 +107,12 @@ namespace PaySmartDashboard.Controllers
                                               Username:  " + bname + @"<br/> 
                                               Password:" + dpwd + @"</p>
 
-                                               <p>Customer App Link:<a href='http://196.27.119.221:53800/UI/Apks/CustomerApp.html'>Android , </a><a href='http://196.27.119.221:53800/UI/Apks/CustomerApp.html'>IOS</a><br/>
+                                               <p>Customer App Link:<a href='http://196.27.119.221:53800/UI/CustomerApp.html'>Android , </a><a href='http://196.27.119.221:53800/UI/CustomerApp.html'>IOS</a><br/>
                                                You can login with any phone number in the customer app.<br/> 
                                                A 4 digit OTP will come as an SMS, please enter it.<br/>  
                                                Again, on the next screen you need to enter this six digit demo passcode : " + cotp + @"</p>
 
-                                              <p>Driver App: <a href='http://196.27.119.221:53800/UI/Apks/DriverApp.html'>Android</a><a href='http://196.27.119.221:53800/UI/Apks/DriverApp.html'>IOS</a><br/> 
+                                              <p>Driver App: <a href='http://196.27.119.221:53800/UI/DriverApp.html'>Android</a><a href='http://196.27.119.221:53800/UI/DriverApp.html'>IOS</a><br/> 
                                                Driver Mobile Number: " + bname + @"<br/> 
                                                OTP: " + botp + @"</p>  
                                                <p>PaySmart</p>
