@@ -1,7 +1,18 @@
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap']);
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $interval) {
+var app = angular.module('myApp', ['google-maps','ngStorage', 'ui.bootstrap']);
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $interval, $rootScope) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
+    }
+
+    $rootScope.spinner = {
+        active: false,
+        on: function () {
+            this.active = true;
+        },
+        off: function () {
+            this.active = false;
+        }
+
     }
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
@@ -9,10 +20,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
     //$scope.canShow = ($scope.Roleid == 1 || $scope.roleid == 6 || $scope.roleid == 13);
 
     $scope.GetCountry = function () {
-             
+
         $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
             $scope.Countries = response.data;
-       
+
         });
     }
 
@@ -22,9 +33,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
 
         });
     }
-    
-
-
+        
     $scope.GetFleetDetails = function () {
 
         if ($scope.cmp == null) {
@@ -88,14 +97,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
         });
     }
 
-    
-
     $scope.displocations = function () {
         var maplocations = $scope.locations;
 
         var map = new google.maps.Map(document.getElementById('gmap_canvas'), {
             zoom: 15,
-            center: new google.maps.LatLng(lat,long), //17.8252° S, 31.0335° E
+            center: new google.maps.LatLng(lat, long), //17.8252° S, 31.0335° E
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
@@ -122,8 +129,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
         }
 
     }
-
-
+    
     $scope.getBTPOSMonitoring = function () {
         $http.get('/api/BTPOSMonitoringPage/GetBTPOSMonitoring').then(function (response, data) {
             $scope.BTPOSMonitoring = response.data;
@@ -132,29 +138,31 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
             $scope.displocations();
         });
     }
-
-
+    
     $scope.GetDashboardDS = function () {
         //retive the userid and roleid
         var roleid = $localStorage.userdetails[0].roleid;
-
+        $rootScope.spinner.on();
         $http.get('/api/dashboard/getdashboard?userid=-1&roleid=' + roleid + '&ctryId=' + $scope.nn.Id).then(function (res, data) {
-            
+
             $scope.dashboardDS = res.data;
-            $localStorage.dashboardDS = res.data;            
+            $localStorage.dashboardDS = res.data;
+
+            $scope.GetDemoRequest();
+            $rootScope.spinner.off();
+        }, function (errres) {
+            // alert(errres);
+            $rootScope.spinner.off();
         });
-        
-    //   $scope.GetConfigData();
-     
     }
 
     $scope.GetConfigData = function () {
 
-        var vc = {            
+        var vc = {
             includeActiveCountry: '1',
             includeVehicleGroup: '1',
             includeFleetOwner: '1'
-            
+
         };
 
         var req = {
@@ -164,11 +172,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
         }
 
         $http(req).then(function (res) {
-            $scope.initdata = res.data;            
+            $scope.initdata = res.data;
             $scope.nn = $scope.initdata.Table1[0];
+            $scope.ctry = $scope.initdata.Table1[0];
+
             $scope.GetDashboardDS();
+            $scope.CenterMap($scope.ctry);
         });
-        
+
     }
 
     $scope.myVar = false;
@@ -293,17 +304,163 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
     }
 
     $scope.activeRefresh = true;
-    $scope.c = 0; 
-    $interval(function(){
-        if($scope.activeRefresh){
+    $scope.c = 0;
+    $interval(function () {
+        if ($scope.activeRefresh) {
             $scope.GetDashboardDS();
-          //$scope.mssg = 'this is call no:'+ $scope.c++;
+            //$scope.mssg = 'this is call no:'+ $scope.c++;
         }
-    },10000);
-    $scope.$on('$destroy', function() {
+    }, 10000);
+    $scope.$on('$destroy', function () {
         $scope.activeRefresh = false; // STOP THE REFRESH
     });
 
+
+    $scope.CenterMap = function (ctry) {
+
+    //get the source latitude and longitude
+    //get the target latitude and longitude
+    $scope.srcLat = (ctry.Latitude == null) ? 17.499800 : ctry.Latitude;
+    $scope.srcLon = (ctry.Longitude == null) ? 78.399597 : ctry.Longitude;
+        
+   
+    var LatLng = new google.maps.LatLng($scope.srcLat, $scope.srcLon);
+    var mapOptions = {
+        center: LatLng,
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("dvMap1"), mapOptions);
+    var infowindow = new google.maps.InfoWindow;
+    var geocoder = new google.maps.Geocoder;
+    var marker = new google.maps.Marker({
+        position: LatLng,
+        map: map,
+        title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + $scope.srcLat + "<br />Longitude: " + $scope.srcLon
+    });
+    geocodeLatLng($scope.srcLat + ',' + $scope.srcLon, geocoder, map, infowindow);
+    function geocodeLatLng(dd, geocoder, map, infowindow) {
+        //var input = document.getElementById('latlng').value;
+        var latlngStr = dd.split(',', 2);
+        var latlng = { lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1]) };
+        geocoder.geocode({ 'location': latlng }, function (results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    //map.setZoom(11);
+                    var marker = new google.maps.Marker({
+                        position: latlng,
+                        map: map
+                    });
+                    infowindow.setContent(results[0].formatted_address);
+                    infowindow.open(map, marker);
+                  //  d = results[0].formatted_address;
+                  //  document.getElementById("editdrop").value = d;
+                  //  document.getElementById("dropPoint").value = d;
+                   // $scope.droppoint_name = d;
+                    //$scope.pickupPoint_name = d;
+                    //$scope.pickupPoint_name1 = d;
+                } else {
+                    window.alert('No results found');
+                }
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
+            }
+        });
+    }
+
+    google.maps.event.addListener(marker, "click", function (e) {
+        var infoWindow = new google.maps.InfoWindow();
+        infoWindow.setContent(marker.title);
+        infoWindow.open(map, marker);
+
+    });   
+}
+  
+        function mapOld() {
+
+            //$scope.currentlocation = function () {
+            //    $http.get('/api/DriverStatus/GetDriverlocation').then(function (res, data) {
+            //       $scope.currentloc = res.data;          
+            //       $scope.CenterMap();
+            //    });
+
+            //}
+
+
+            //$scope.CenterMap = function (ctry) {
+            //    var lat = (ctry.Latitude == null) ? 17.499800 : ctry.latitude;
+            //    var long = (ctry.Longitude == null) ? 78.399597 : ctry.longitude;
+            //    var mapOptions = {
+            //        zoom: 15,
+            //        center: new google.maps.LatLng(lat, long),
+            //        mapTypeId: google.maps.MapTypeId.ROADMAP
+            //    }
+
+            //    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            //    var infoWindow = new google.maps.InfoWindow();
+            //    infoWindow.open($scope.map, null);
+            //    //google.maps.event.addListener($scope.map, 'click', function (e) {
+            //    //    createMarkerWithLatLon(e.latLng.lat(), e.latLng.lng());
+            //    //    //$scope.lat = e.latLng.lat();
+            //    //    //$scope.lag = e.latLng.lng();
+
+            //    //    //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+            //    //});
+            //    //$http.get('/api/DriverStatus/GetDriverlocation?ctnyId=' + $scope.ctry.Id).then(function (res, data) {
+            //    //    $scope.currentloc = res.data;
+
+            //    //    $scope.currentloc.forEach(function (loc) {
+            //    //        createMarker(loc);
+            //    //    });
+
+            //    //});
+
+
+            //}
+
+            //var createMarkerWithLatLon = function (lat, long) {
+            //    var marker = new google.maps.Marker({
+            //        map: $scope.map,
+            //        position: new google.maps.LatLng(lat, long),
+            //        //title: loc.loc
+
+            //        icon: marker
+            //    });
+
+            //    google.maps.event.addListener(marker, 'click', function () {
+            //        alert();
+            //        infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            //        infoWindow.setContent(marker.content);
+            //        infoWindow.open($scope.map, marker);
+            //    });
+
+            //    $scope.markers.push(marker);
+            //};
+
+            //var createMarker = function (loc) {
+            //    var marker = new google.maps.Marker({
+            //        map: $scope.map,
+            //        position: new google.maps.LatLng(loc.Latitude, loc.Longitude),
+            //        //title: loc.loc
+
+            //        icon: marker
+            //    });
+            //    marker.content = '<div class="infoWindow"</div>' + 'Driver Name: ' + loc.NAme + '<br> Driver Number: ' + loc.DriverNo + '<br> Vehicle Group: ' + loc.VehicleGroupId + '</div>';;
+
+            //    var infoWindow = new google.maps.InfoWindow();
+
+            //    google.maps.event.addListener(marker, 'click', function () {
+
+            //        infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            //        infoWindow.setContent(marker.content);
+            //        infoWindow.open($scope.map, marker);
+            //    });
+
+            //    $scope.markers.push(marker);
+            //};
+        }
+    
 });
 
 
@@ -317,393 +474,6 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
-});
-
-
-app.controller('mapCtrl', function ($scope, $http) {
-
-    $scope.markers = [];
-    $scope.location = [];
-
-
-
-    //$scope.currentlocation = function () {
-    //    $http.get('/api/DriverStatus/GetDriverlocation').then(function (res, data) {
-    //       $scope.currentloc = res.data;          
-    //       $scope.CenterMap();
-    //    });
-        
-    //}
-
-
-    $scope.CenterMap = function (ctry) {
-        var lat = (ctry.latitude == null) ? 17.499800 : ctry.latitude;
-        var long = (ctry.longitude == null) ? 78.399597 : ctry.longitude;
-        var mapOptions = {
-            zoom: 15,
-            center: new google.maps.LatLng(lat, long),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-
-        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-        var infoWindow = new google.maps.InfoWindow();
-
-        google.maps.event.addListener($scope.map, 'click', function (e) {
-            createMarkerWithLatLon(e.latLng.lat(), e.latLng.lng());
-            //$scope.lat = e.latLng.lat();
-            //$scope.lag = e.latLng.lng();
-
-            //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
-        });
-        $http.get('/api/DriverStatus/GetDriverlocation?ctnyId='+$scope.ctry.Id).then(function (res, data) {
-            $scope.currentloc = res.data;
-            
-            $scope.currentloc.forEach(function (loc) {
-                createMarker(loc);
-            });
-            
-        });
-
-        
-    }   
-    
-    var createMarkerWithLatLon = function (lat,long) {
-        var marker = new google.maps.Marker({
-            map: $scope.map,
-            position: new google.maps.LatLng(lat, long),
-            //title: loc.loc
-
-            icon: marker
-        });
-       
-        google.maps.event.addListener(marker, 'click', function () {
-            alert();
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-            infoWindow.setContent(marker.content);
-            infoWindow.open($scope.map, marker);
-        });
-
-        $scope.markers.push(marker);
-    };
-
-    var createMarker = function (loc) {
-        var marker = new google.maps.Marker({
-            map: $scope.map,
-            position: new google.maps.LatLng(loc.Latitude, loc.Longitude),
-            //title: loc.loc
-           
-            icon: marker            
-        });
-        marker.content = '<div class="infoWindow"</div>' + 'Driver Name: ' + loc.NAme + '<br> Driver Number: ' + loc.DriverNo + '<br> Vehicle Group: ' + loc.VehicleGroupId + '</div>';;
-
-        var infoWindow = new google.maps.InfoWindow();
-
-        google.maps.event.addListener(marker, 'click', function () {
-            
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-            infoWindow.setContent(marker.content);
-            infoWindow.open($scope.map, marker);
-        });
-
-        $scope.markers.push(marker);
-    };
-
-   
-
-});
-
-
-
-//JAGAN UPDATED START
-var mycrtl1 = app.controller('myCtrl1', function ($scope, $http, $localStorage, $uibModal) {
-    if ($localStorage.uname == null) {
-        window.location.href = "login.html";
-    }
-    $scope.uname = $localStorage.uname;
-    $scope.userdetails = $localStorage.userdetails;
-    $scope.userCmpId = $scope.userdetails[0].CompanyId;
-    $scope.userSId = $scope.userdetails[0].UserId;
-    $scope.Roleid = $scope.userdetails[0].roleid;
-
-    $scope.dashboardDS = $localStorage.dashboardDS;
-
-
-
-    $scope.GetCompanies = function () {
-
-        $http.get('/api/GetCompanyGroups?userid=-1').then(function (res, data) {
-            $scope.Companies = res.data;
-            $scope.Companies1 = res.data;
-
-
-            if ($scope.userCmpId != 1) {
-                //loop throug the companies and identify the correct one
-                for (i = 0; i < res.data.length; i++) {
-                    if (res.data[i].Id == $scope.userCmpId) {
-                        $scope.cmp = res.data[i];
-                        document.getElementById('test').disabled = true;
-                        break
-                    }
-                }
-                // $scope.GetFleetOwners();
-            }
-            else {
-                document.getElementById('test').disabled = false;
-            }
-            $scope.GetFleetOwners($scope.cmp);
-        });
-
-    }
-
-
-
-    $scope.GetFleetOwners = function () {
-
-
-
-        var vc = {
-            needfleetowners: '1',
-            cmpId: $scope.cmp.Id
-        };
-
-        var req = {
-            method: 'POST',
-            url: '/api/VehicleConfig/VConfig',
-            //headers: {
-            //    'Content-Type': undefined
-
-            data: vc
-
-
-        }
-        $http(req).then(function (res) {
-            $scope.cmpdata = res.data;
-            $scope.showdialogue("Saved successfully")
-
-
-            if ($scope.userSId != 1) {
-                //loop throug the fleetowners and identify the correct one
-                for (i = 0; i < res.data.Table.length; i++) {
-                    if (res.data.Table[i].UserId == $scope.userSId) {
-                        $scope.s = res.data.Table[i];
-                        document.getElementById('test1').disabled = true;
-                        break
-                    }
-                }
-            }
-            else {
-                document.getElementById('test1').disabled = false;
-            }
-            $scope.GetFleetStaff($scope.s);
-
-        });
-    }
-
-    $scope.getUsersnRoles = function () {
-        var s = $scope.cmp;
-
-        if (s == null) {
-            $scope.userRoles = null;
-            return;
-        }
-        var cmpId = (s == null) ? -1 : s.Id;
-
-       
-        $http.get('/api/Users/GetUserRoles?cmpId=' + $scope.cmp.Id).then(function (res, data) {
-            $scope.userRoles = res.data;
-        });
-    }
-
-    $scope.savenewfleetStaffdetails = function () {
-        var newVD = $scope.f;
-        if (newVD == null) {
-            alert('Please select VehicleRegNo.');
-            return;
-        }
-
-        if (newVD.Id == null) {
-            alert('Please select VehicleRegNo.');
-            return;
-        }
-        //validate user, company and role also      
-
-
-        var Fleet = {
-            Id: -1,
-            vehicleId: newVD.Id,
-            roleId: newVD.uu.RoleId,
-            UserId: newVD.uu.Id,
-            cmpId: $scope.cmp.Id,
-            FromDate: newVD.fd,
-            ToDate: newVD.td,
-            // Active:1,
-            insupddelflag: 'I'
-        };
-
-
-        var req = {
-            method: 'POST',
-            url: '/api/FleetStaff/NewFleetStaff',
-            //headers: {
-            //    'Content-Type': undefined
-
-            data: Fleet
-        }
-
-        $http(req).then(function (response) {
-
-            $scope.showDialog("Saved successfully!");
-
-            $scope.Group = null;
-
-        }, function (errres) {
-            var errdata = errres.data;
-            var errmssg = "Your details are incorrect";
-            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
-        });
-        $scope.currGroup = null;
-    };
-    $scope.savefleetStaff = function () {
-        var FleetStaff = $scope.f1;
-        if (FleetStaff == null) {
-            alert('Please select VehicleRegNo.');
-            return;
-        }
-
-        if (FleetStaff.Id == null) {
-            alert('Please select VehicleRegNo.');
-            return;
-        }
-
-
-        var FleetS = {
-
-            Id: -1,
-            vehicleId: FleetStaff.Id,
-            roleId: FleetStaff.uu.RoleId,
-            UserId: FleetStaff.uu.Id,
-            cmpId: $scope.cmp.Id,
-            FromDate: FleetStaff.fd,
-            ToDate: FleetStaff.td,
-            // Active:1,
-            insupddelflag: 'U'
-        };
-
-        var req = {
-            method: 'POST',
-            url: '/api/FleetStaff/NewFleetStaff',
-            //headers: {
-            //    'Content-Type': undefined
-
-            data: FleetS
-
-
-        }
-        $http(req).then(function (res) {
-            $scope.showDialog("Updated successfully!");
-            GetFleetDetails();
-        });
-
-
-    }
-    //jagan updated on 10-08-2017 start
-    $scope.GetVehicleConfig = function () {
-
-        var vc = {
-            // needfleetowners:'1',
-            //needvehicleType: '1',
-            //needServiceType: '1',
-            //needCompanyName: '1',
-            //needVehicleMake: '1',
-            needVehicleGroup: '1',
-        };
-
-        var req = {
-            method: 'POST',
-            url: '/api/VehicleConfig/VConfig',
-            //headers: {
-            //    'Content-Type': undefined
-
-            data: vc
-
-
-        }
-        $http(req).then(function (res) {
-            $scope.initdata = res.data;
-        });
-
-    }
-
-    
-
-    $scope.GetFleetStaff = function () {
-        if ($scope.cmp == null || $scope.cmp.Id == null) {
-            $scope.FleetStaff = null;
-            return;
-        }
-
-        if ($scope.s == null || $scope.s.Id == null) {
-            $scope.FleetStaff = null;
-            return;
-        }
-
-        $http.get('/api/FleetStaff/GetFleetStaff?foId=' + $scope.s.Id + '&cmpId=' + $scope.cmp.Id).then(function (res, data) {
-            $scope.FleetStaff = res.data;
-        });
-    }
-
-
-    $scope.setFleet = function (Fleet) {
-        $scope.currFleet = Fleet;
-    };
-    $scope.testdel = function (Fleet) {
-        var FRoutes = {
-
-            Id: -1,
-            vehicleId: Fleet.Id,
-            roleId: Fleet.RoleId,
-            UserId: Fleet.UserId,
-            cmpId: $scope.cmp.Id,
-            FromDate: Fleet.fd,
-            ToDate: Fleet.td,
-            // Active:1,
-            insupddelflag: 'D'
-        };
-
-        var req = {
-            method: 'POST',
-            url: '/api/FleetStaff/NewFleetStaff',
-            data: FRoutes
-        }
-        $http(req).then(function (response) {
-            $scope.showdialogue("Saved successfully")
-
-            $http.get('/api/FleetStaff/GetFleetStaff?roleid=' + Fleet.RoleId).then(function (res, data) {
-                $scope.FleetStaff = res.data;
-            });
-
-        });
-
-    }
-    $scope.showDialog = function (message) {
-
-        var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
-            templateUrl: 'myModalContent.html',
-            controller: 'ModalInstanceCtrl',
-            resolve: {
-
-                mssg: function () {
-                    return message;
-                }
-            }
-        });
-    }
-
-
-
 });
 
 
