@@ -606,9 +606,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Status: Dl.StatusId.Id,
             FirstName: Dl.Firstname,
             LastName: Dl.lastname,
-            VehicleGroup: Dl.vg.Id,
-            PaymentTypeId:Dl.pt.Id,
-            IsVerified: Dl.Isverified,
+            VehicleGroup:null ,//Dl.vg.Id,
+            PaymentTypeId:null,//Dl.pt.Id,
+            IsVerified:null , //Dl.Isverified,
             IsApproved:Dl.IsApproved
 
 

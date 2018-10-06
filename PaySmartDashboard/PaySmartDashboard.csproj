@@ -3602,6 +3602,7 @@
     <Content Include="UI\js\ngStorage.js" />
     <Content Include="UI\js\PSPricing.js" />
     <Content Include="UI\js\source.js" />
+    <Content Include="UI\js\Stops.js" />
     <Content Include="UI\js\treasure-overlay-spinner.js" />
     <Content Include="UI\js\TypeGroups.js" />
     <Content Include="UI\js\Types.js" />
@@ -3611,6 +3612,7 @@
     <Content Include="UI\MandatoryUserDocs.html" />
     <Content Include="UI\MandatoryVehicleDocs.html" />
     <Content Include="UI\pricingcredentials.html" />
+    <Content Include="UI\Stops.html" />
     <Content Include="UI\TypeGroups.html" />
     <Content Include="UI\Types.html" />
     <Content Include="UI\VehicleDetails.html" />
@@ -5009,6 +5011,7 @@
     <Compile Include="Controllers\faqsController.cs" />
     <Compile Include="Controllers\LOGINController.cs" />
     <Compile Include="Controllers\MandatoryDocsController.cs" />
+    <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\TypeGroupsController.cs" />
     <Compile Include="Controllers\TypesController.cs" />
     <Compile Include="Controllers\VehicleConfigController.cs" />
