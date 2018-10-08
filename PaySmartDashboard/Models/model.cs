@@ -747,4 +747,17 @@ namespace PaySmartDashboard.Models
 
         public object Mobileotp { get; set; }
     }
+    public class stops
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Code { get; set; }
+        public int Active { get; set; }
+        public float latitude { get; set; }
+        public float longitude { get; set; }
+        public string insupdflag { get; set; }
+        public string srcLat { get; set; }
+        public string srcLon { get; set; }
+    }
 }

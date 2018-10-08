@@ -227,7 +227,7 @@
                                 <li><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-list-alt"></i><span class="submenu-title">Types</span></a></li>  
                                 <li><a href="TypeGroups.html" data-toggle="tooltip" data-placement="right" title="Details of TypeGroups"><i class="fa fa-list-alt"></i><span class="submenu-title">Type Groups</span></a></li>
                                 <li><a href="Countries.html" data-toggle="tooltip" data-placement="right" title="Details of Countries"><i class="fa fa-list-alt"></i><span class="submenu-title">Countries</span></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Stops"><i class="fa fa-list-alt"></i><span class="submenu-title">Stops</span></a></li>
+                                <li><a href="Stops.html" data-toggle="tooltip" data-placement="right" title="Details of Stops"><i class="fa fa-list-alt"></i><span class="submenu-title">Stops</span></a></li>
                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Routes"><i class="fa fa-list-alt"></i><span class="submenu-title">Routes</span></a></li> 
                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Countries"><i class="fa fa-list-alt"></i><span class="submenu-title">Objects</span></a></li>   
                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Roles"><i class="fa fa-list-alt"></i><span class="submenu-title">Roles</span></a></li> 
@@ -474,20 +474,20 @@
                                 <div>
                                     <h3><b>Alerts</b></h3>
                                     <div id="home" class="tab-pane fade in active">
-                                        <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
+                                        <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
                                             <a href="#" class="list-group-item">
                                                 <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Alerts to show</div>
+                                    <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
                                     </br>
-                                    <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Alerts.html">More...</a></span>
+                                    <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style="color:white" href="Alerts.html">More...</a></span>
                                 </div>
                                 <div>
                                     <h3><b>Notifications</b></h3>
                                     <div id="home" class="tab-pane fade in active">
-                                        <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table3.length == 0">
+                                        <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
                                             <a href="#" class="list-group-item">
                                                 <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N1.Name}}<span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
                                             </a>
@@ -753,8 +753,6 @@
     <!--loading bootstrap js-->
     <script src="vendors/bootstrap/js/bootstrap.js"></script>
     <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
-
-
     <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
     <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
     <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
