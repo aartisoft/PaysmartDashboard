@@ -103,7 +103,7 @@ namespace PaySmartDashboard.Controllers
                                         <p>We have set up a basic demo for your evaluation. The demo is setup for the city Hyderabad with currency INR, English as the language. One driver is automatically registered by us whose credentials we have mentioned below. You can go through the complete ride flow in the demo. If there are any issues, please refer to this <a href='http://196.27.119.221:53800/UI/DemoRequest.html'>Demo setup video</a> or feel free to connect with us by replying back to this email.</p>
 
                                               <p>Your PaySmart Demo credentials and links are here.</p>
-                                              <p><a href='http://196.27.119.220:1476/Login.html'>Dashboard Link</a><br/>
+                                              <p><a href='http://196.27.119.220:6688/Login.html'>Dashboard Link</a><br/>
                                               Username:  " + bname + @"<br/> 
                                               Password:" + dpwd + @"</p>
 
@@ -112,7 +112,7 @@ namespace PaySmartDashboard.Controllers
                                                A 4 digit OTP will come as an SMS, please enter it.<br/>  
                                                Again, on the next screen you need to enter this six digit demo passcode : " + cotp + @"</p>
 
-                                              <p>Driver App: <a href='http://196.27.119.221:53800/UI/DriverApp.html'>Android</a><a href='http://196.27.119.221:53800/UI/DriverApp.html'>IOS</a><br/> 
+                                              <p>Driver App: <a href='http://196.27.119.221:53800/UI/DriverApp.html'>Android , </a><a href='http://196.27.119.221:53800/UI/DriverApp.html'>IOS</a><br/> 
                                                Driver Mobile Number: " + bname + @"<br/> 
                                                OTP: " + botp + @"</p>  
                                                <p>PaySmart</p>
