@@ -281,6 +281,13 @@ namespace PaySmartDashboard.Controllers
                 foid.SqlDbType = SqlDbType.Int;
                 foid.Value = vc.includeVehicleType;
                 cmd.Parameters.Add(foid);
+                
+                
+                SqlParameter fid = new SqlParameter();
+                fid.ParameterName = "@includeFleetOwner";
+                fid.SqlDbType = SqlDbType.Int;
+                fid.Value = vc.includeFleetOwner;
+                cmd.Parameters.Add(fid);
 
                 //needfleetownerroutes
                 SqlParameter forid = new SqlParameter();

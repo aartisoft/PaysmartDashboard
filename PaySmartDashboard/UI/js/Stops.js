@@ -25,8 +25,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetConfigData = function () {
 
         var vc = {
-            includeActiveCountry: '1',     
-            
+            includeActiveCountry: '1',
+
 
         };
 
@@ -38,14 +38,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            
+
             //$scope.ctry = $scope.initdata.Table1[0];
 
         });
     }
 
 
-    
+
     var parseLocation = function (location) {
         var pairs = location.substring(1).split("&");
         var obj = {};
@@ -62,7 +62,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         return obj;
     };
 
-    
+
 
     $scope.GetPricinglist = function () {
         $scope.DistPricelist = null;
@@ -136,7 +136,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //$scope.destLon = $scope.dropPoint.place.geometry.location.lng();
 
         $scope.srcName = $scope.pickupPoint.place.name;
-       // $scope.destName = $scope.dropPoint.place.name;
+        // $scope.destName = $scope.dropPoint.place.name;
         //alert($scope.dropPoint.place.geometry.location.lat);
         var request = {
             origin: new google.maps.LatLng($scope.srcLat, $scope.srcLon),//$scope.directions.origin,
@@ -148,22 +148,41 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 directionsDisplay.setDirections(response);
                 directionsDisplay.setMap($scope.map);
                 // directionsDisplay.setPanel(document.getElementById('distance').innerHTML += response.routes[0].legs[0].distance.value + " meters");
+
                 $scope.distval = response.routes[0].legs[0].distance.value / 1000;
                 $scope.distText = $scope.distval + " KM";
+
+                //response.routes[0].bounds["f"].b
+                //17.43665
+                //response.routes[0].bounds["b"].b
+                //78.41263000000001
+
+
+                //response.routes[0].bounds["f"].f
+                //17.45654
+                //response.routes[0].bounds["b"].f
+                //78.44829                
+
+                //$scope.srcLat = response.routes[0].bounds["f"].b;
+                //$scope.srcLon = response.routes[0].bounds["b"].b;
+                //$scope.destLat = response.routes[0].bounds["f"].f;
+                //$scope.destLon = response.routes[0].bounds["b"].f;              
+
+                //$scope.directions.showList = true;
             } else {
                 alert('Google route unsuccesfull!');
             }
-           
+
 
         });
         $scope.location();
-        
+
     }
 
     $scope.location = function () {
         srcLat: $scope.srcLat;
         srcLon: $scope.srcLon;
-        
+
     }
 
     $scope.CenterMap = function (ctry) {
@@ -199,7 +218,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
-   
+
     $scope.SaveNew = function (newStop) {
         //if (newStop == null)
         //{
@@ -211,8 +230,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //    alert('Please Enter source');
         //    return;
         //}       
-        if ($scope.srcName == null)
-        {
+        if ($scope.srcName == null) {
             alert('Please Enter stop');
             return;
         }
@@ -222,10 +240,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Name: $scope.srcName,
             Description: $scope.srcName,
             Code: $scope.srcName,
-            srcLat: $scope.srcLat ,
+            srcLat: $scope.srcLat,
             srcLon: $scope.srcLon,
             //Active: (newStop.Active == true) ? 1 : 0,
-          
+
             insupdflag: "I"
         }
 
@@ -260,9 +278,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
     //-----------------Hideend-------------------
 
-    
 
-    
+
+
 
     $scope.save = function (Stops, flag) {
         if (Stops == null) {
@@ -433,9 +451,9 @@ app.controller('mapCtrl', function ($scope, $http) {
 
 
 });
- 
 
-   
+
+
 
 
 

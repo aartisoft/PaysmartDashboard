@@ -867,4 +867,114 @@ namespace PaySmartDashboard.Models
         public int IsRenewal { set; get; }
         public string insupddelflag { set; get; }
     }
+    public class Routes
+    {
+        public int Id { set; get; }
+        public string RouteName { set; get; }
+        public string Code { set; get; }
+        public string Description { set; get; }
+        public int Active { set; get; }
+        public decimal Distance { set; get; }
+        public string Source { set; get; }
+        public string Destination { set; get; }
+        public int SourceId { set; get; }
+        public int DestinationId { set; get; }
+    }
+    public class RouteDetails
+    {
+        public int Id { get; set; }
+        public int RouteId { get; set; }
+        public decimal DistanceFromSource { get; set; }
+        public decimal DistanceFromDestination { get; set; }
+        public decimal DistanceFromPreviousStop { get; set; }
+        public decimal DistanceFromNextStop { get; set; }
+        public int PreviousStopId { get; set; }
+        public int NextStopId { get; set; }
+        public String StopName { get; set; }
+        public String StopCode { get; set; }
+        public int stopId { get; set; }
+        public String prevstop { get; set; }
+        public String nextstop { get; set; }
+        public int StopNo { get; set; }
+        public String insupddelflag { get; set; }
+        public int FleetOwnerId { get; set; }
+
+    }
+    public class FleetownerRoute
+    {
+        public int Id { get; set; }
+        public int FleetOwnerId { get; set; }
+
+        public int CompanyId { get; set; }
+
+        public int RouteId { get; set; }
+
+        public DateTime? From { get; set; }
+
+        public DateTime? To { get; set; }
+        public int Active { get; set; }
+        public string insupddelflag { get; set; }
+    }
+    public class FleetRoutes
+    {
+        public int Id { get; set; }
+        public string VehicleRegNo { get; set; }
+        public string RouteName { get; set; }
+        public string RouteCode { get; set; }
+        public int VehicleId { get; set; }
+        public int RouteId { get; set; }
+        public DateTime? EffectiveFrom { get; set; }
+        public DateTime? EffectiveTill { get; set; }
+        public int Active { get; set; }
+        public int cmpId { get; set; }
+        public int fleetownerId { get; set; }
+        public string insupddelflag { get; set; }
+    }
+    public class FORouteFareConfig
+    {
+
+        public List<FORouteFare> routeFare { get; set; }
+        public int Id { get; set; }
+        public int RouteId { get; set; }
+        public string RouteName { get; set; }
+        public string RouteCode { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal Amount { get; set; }
+        public int VehicleId { get; set; }
+        public string VehicleRegNo { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+        public string insupddelflag { get; set; }
+        public string PriceType { get; set; }
+        public int PriceTypeId { get; set; }
+
+        public int SourceId { get; set; }
+        public string Source { get; set; }
+        public int DestinationId { get; set; }
+        public string Destination { get; set; }
+    }
+    public class FORouteFare
+    {
+        public int Id { get; set; }
+        public int RouteId { get; set; }
+        public string VehicleTypeId { get; set; }
+        public int FromStopId { get; set; }
+        public int ToStopId { get; set; }
+        public decimal Distance { get; set; }
+        public decimal PerUnitPrice { get; set; }
+        public decimal Amount { get; set; }
+        public String FareType { get; set; }
+        public int FareTypeId { get; set; }
+        public int VehicleId { get; set; }
+        public int Active { get; set; }
+        public int FleetOwnerId { get; set; }
+        public int CompanyId { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+        public string insupddelflag { get; set; }
+
+        public string PricingType { get; set; }
+
+        public Decimal PerkmPrice { get; set; }
+    }
 }

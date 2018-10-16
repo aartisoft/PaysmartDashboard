@@ -3568,6 +3568,9 @@
     <Content Include="UI\Flags\flags_iso\64\_WHO.png" />
     <Content Include="UI\Flags\flags_iso\64\_WTO.png" />
     <Content Include="UI\Flags\flags_iso\list.txt" />
+    <Content Include="UI\FleetOwnerRouteFare.html" />
+    <Content Include="UI\FleetOwnerRoutes.html" />
+    <Content Include="UI\FleetRoutes.html" />
     <Content Include="UI\images\11.jpg" />
     <Content Include="UI\images\dashboard.png" />
     <Content Include="UI\images\img5.jpg" />
@@ -3593,6 +3596,9 @@
     <Content Include="UI\js\fileupload\ng-file-upload-shim.js" />
     <Content Include="UI\js\fileupload\ng-file-upload.js" />
     <Content Include="UI\js\fileupload\Upload.js" />
+    <Content Include="UI\js\FleetOwnerRouteFare.js" />
+    <Content Include="UI\js\FleetOwnerRoutes.js" />
+    <Content Include="UI\js\FleetRoutes.js" />
     <Content Include="UI\js\index.js" />
     <Content Include="UI\js\jquery-1.10.2.min.js" />
     <Content Include="UI\js\jquery-migrate-1.2.1.min.js" />
@@ -3605,6 +3611,8 @@
     <Content Include="UI\js\MandatoryVehicleDocs.js" />
     <Content Include="UI\js\ngStorage.js" />
     <Content Include="UI\js\PSPricing.js" />
+    <Content Include="UI\js\Routedetails.js" />
+    <Content Include="UI\js\Routes.js" />
     <Content Include="UI\js\source.js" />
     <Content Include="UI\js\Stops.js" />
     <Content Include="UI\js\treasure-overlay-spinner.js" />
@@ -3618,6 +3626,8 @@
     <Content Include="UI\MandatoryUserDocs.html" />
     <Content Include="UI\MandatoryVehicleDocs.html" />
     <Content Include="UI\pricingcredentials.html" />
+    <Content Include="UI\Route.html" />
+    <Content Include="UI\Routedetails.html" />
     <Content Include="UI\Stops.html" />
     <Content Include="UI\TypeGroups.html" />
     <Content Include="UI\Types.html" />
@@ -5011,6 +5021,7 @@
     <Compile Include="Controllers\allocatedriverController.cs" />
     <Compile Include="Controllers\BookAVehicleController.cs" />
     <Compile Include="Controllers\ChargesDiscountsController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DataLoadController.cs" />
@@ -5018,13 +5029,19 @@
     <Compile Include="Controllers\DriverMasterController.cs" />
     <Compile Include="Controllers\faqsController.cs" />
     <Compile Include="Controllers\FleetOwnerLicenseController.cs" />
+    <Compile Include="Controllers\FleetOwnerRouteController.cs" />
+    <Compile Include="Controllers\FleetOwnerRouteFareController.cs" />
+    <Compile Include="Controllers\FleetRoutesController.cs" />
     <Compile Include="Controllers\LicenseController.cs" />
     <Compile Include="Controllers\LicensePricingController.cs" />
     <Compile Include="Controllers\LOGINController.cs" />
     <Compile Include="Controllers\MandatoryDocsController.cs" />
+    <Compile Include="Controllers\RoutedetailsController.cs" />
+    <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\TypeGroupsController.cs" />
     <Compile Include="Controllers\TypesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VehicleConfigController.cs" />
     <Compile Include="Controllers\VehicleMasterController.cs" />
     <Compile Include="Global.asax.cs">
