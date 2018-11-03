@@ -747,4 +747,234 @@ namespace PaySmartDashboard.Models
 
         public object Mobileotp { get; set; }
     }
+    public class stops
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Code { get; set; }
+        public int Active { get; set; }
+        public float latitude { get; set; }
+        public float longitude { get; set; }
+        public string insupdflag { get; set; }
+        public string srcLat { get; set; }
+        public string srcLon { get; set; }
+    }
+    public class LicenseTypes
+    {
+        public int Id { set; get; }
+        public string LicenseType { set; get; }
+        public string LicenseCode { set; get; }
+        public int LicenseCategoryId { set; get; }
+        public int Active { set; get; }
+        public string Desc { set; get; }
+        public string LicenseCategory { set; get; }
+        public DateTime? fromDate { get; set; }
+        public DateTime? toDate { get; set; }
+        public int LicenseId { get; set; }
+        public int LicensePricingId { get; set; }
+        public String RenewalFreqType { get; set; }
+        public int RenewalFreqTypeId { get; set; }
+        public int RenewalFreqUnit { get; set; }
+        public string RenewalFreq { get; set; }
+        public decimal UnitPrice { get; set; }
+        public DateTime? Pfromdate { get; set; }
+        public DateTime? Ptodate { get; set; }
+
+        public int PActive { get; set; }
+        public string insupddelflag { get; set; }
+
+        //license pos      
+        public int LPOSId { get; set; }
+        public int BTPOSTypeId { get; set; }
+        public int NoOfUnits { get; set; }
+        public string POSType { get; set; }
+        public String POSLabel { get; set; }
+        public String POSLabelClass { get; set; }
+        public DateTime? POSfromdate { get; set; }
+        public DateTime? POStodate { get; set; }
+        public int POSActive { get; set; }
+      
+    }
+    public class LicensePricing
+    {
+        public int LicenseId { get; set; }
+        public String RenewalFreqType { get; set; }
+        public int RenewalFreqTypeId { get; set; }
+        public int RenewalFreqUnit { get; set; }
+        public string RenewalFreq { get; set; }
+        public decimal UnitPrice { get; set; }
+        public DateTime? fromdate { get; set; }
+        public DateTime? todate { get; set; }
+        public int Id { get; set; }
+
+        public int categoryid { get; set; }
+        public int Active { get; set; }
+        public string insupddelflag { get; set; }
+    }
+    public class FleetOwnerRequest
+    {
+        //user details
+
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNo { get; set; }
+        public string AltPhoneNo { get; set; }
+        public string EmailAddress { get; set; }
+        public string Address { get; set; }
+        public int Gender { set; get; }
+
+        public string userPhoto { get; set; }
+
+        //Company details
+        public string CompanyName { get; set; }
+        public string CmpEmailAddress { get; set; }
+        public string CmpTitle { get; set; }
+        public string CmpCaption { get; set; }
+        public string FleetSize { set; get; }
+        public int StaffSize { get; set; }
+        public string Country { get; set; }
+        public string Code { get; set; }
+        public string CmpFax { get; set; }
+        public string CmpAddress { get; set; }
+        public string CmpAltAddress { get; set; }
+        public string state { get; set; }
+        public string ZipCode { get; set; }
+        public string CmpPhoneNo { set; get; }
+        public string CmpAltPhoneNo { set; get; }
+        public string CurrentSystemInUse { set; get; }
+        public string howdidyouhearaboutus { get; set; }
+        public string SendNewProductsEmails { set; get; }
+        public int Agreetotermsandconditions { get; set; }
+
+
+        public string CmpLogo { get; set; }
+
+        public string insupdflag { get; set; }
+    }
+    public class ULLicense
+    {
+        public int Id { set; get; }
+        public int ULId { set; get; }
+        public string TransId { set; get; }
+        public DateTime? CreatedOn { set; get; }
+        public decimal Amount { set; get; }
+        public decimal UnitPrice { set; get; }
+        public decimal Units { set; get; }
+        public int StatusId { set; get; }
+        public int LicensePymtTransId { set; get; }
+        public int IsRenewal { set; get; }
+        public string insupddelflag { set; get; }
+    }
+    public class Routes
+    {
+        public int Id { set; get; }
+        public string RouteName { set; get; }
+        public string Code { set; get; }
+        public string Description { set; get; }
+        public int Active { set; get; }
+        public decimal Distance { set; get; }
+        public string Source { set; get; }
+        public string Destination { set; get; }
+        public int SourceId { set; get; }
+        public int DestinationId { set; get; }
+    }
+    public class RouteDetails
+    {
+        public int Id { get; set; }
+        public int RouteId { get; set; }
+        public decimal DistanceFromSource { get; set; }
+        public decimal DistanceFromDestination { get; set; }
+        public decimal DistanceFromPreviousStop { get; set; }
+        public decimal DistanceFromNextStop { get; set; }
+        public int PreviousStopId { get; set; }
+        public int NextStopId { get; set; }
+        public String StopName { get; set; }
+        public String StopCode { get; set; }
+        public int stopId { get; set; }
+        public String prevstop { get; set; }
+        public String nextstop { get; set; }
+        public int StopNo { get; set; }
+        public String insupddelflag { get; set; }
+        public int FleetOwnerId { get; set; }
+
+    }
+    public class FleetownerRoute
+    {
+        public int Id { get; set; }
+        public int FleetOwnerId { get; set; }
+
+        public int CompanyId { get; set; }
+
+        public int RouteId { get; set; }
+
+        public DateTime? From { get; set; }
+
+        public DateTime? To { get; set; }
+        public int Active { get; set; }
+        public string insupddelflag { get; set; }
+    }
+    public class FleetRoutes
+    {
+        public int Id { get; set; }
+        public string VehicleRegNo { get; set; }
+        public string RouteName { get; set; }
+        public string RouteCode { get; set; }
+        public int VehicleId { get; set; }
+        public int RouteId { get; set; }
+        public DateTime? EffectiveFrom { get; set; }
+        public DateTime? EffectiveTill { get; set; }
+        public int Active { get; set; }
+        public int cmpId { get; set; }
+        public int fleetownerId { get; set; }
+        public string insupddelflag { get; set; }
+    }
+    public class FORouteFareConfig
+    {
+
+        public List<FORouteFare> routeFare { get; set; }
+        public int Id { get; set; }
+        public int RouteId { get; set; }
+        public string RouteName { get; set; }
+        public string RouteCode { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal Amount { get; set; }
+        public int VehicleId { get; set; }
+        public string VehicleRegNo { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+        public string insupddelflag { get; set; }
+        public string PriceType { get; set; }
+        public int PriceTypeId { get; set; }
+
+        public int SourceId { get; set; }
+        public string Source { get; set; }
+        public int DestinationId { get; set; }
+        public string Destination { get; set; }
+    }
+    public class FORouteFare
+    {
+        public int Id { get; set; }
+        public int RouteId { get; set; }
+        public string VehicleTypeId { get; set; }
+        public int FromStopId { get; set; }
+        public int ToStopId { get; set; }
+        public decimal Distance { get; set; }
+        public decimal PerUnitPrice { get; set; }
+        public decimal Amount { get; set; }
+        public String FareType { get; set; }
+        public int FareTypeId { get; set; }
+        public int VehicleId { get; set; }
+        public int Active { get; set; }
+        public int FleetOwnerId { get; set; }
+        public int CompanyId { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+        public string insupddelflag { get; set; }
+
+        public string PricingType { get; set; }
+
+        public Decimal PerkmPrice { get; set; }
+    }
 }

@@ -101,7 +101,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             includeVehicleGroup: '1',
             includeVehicleModel: '1',
             includeVehicleMake: '1',
-            includeActiveCountry: '1'
+            includeActiveCountry: '1',
+            includeLicenseCategories:'1'
         };
 
         var req = {
