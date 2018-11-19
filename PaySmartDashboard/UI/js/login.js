@@ -81,7 +81,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
                 $localStorage.userdetails = res.data;
                 $localStorage.pagesize = 10;
                 var roleid = $localStorage.userdetails[0].roleid;
-                window.location.href = "UI/index.html";
+                window.location.href = "UI/indexnew.html";
 
                 //switch (roleid) {
 
