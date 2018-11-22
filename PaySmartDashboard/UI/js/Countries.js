@@ -16,8 +16,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
 
         $scope.checkedArr = [];
         $scope.uncheckedArr = [];
-
-        $http.get('/api/Countries/GetCountries').then(function (response, req) {
+        var act = ($scope.acfilter == null) ? 1 : (($scope.acfilter == 1) ? 0 : 1);
+        $http.get('/api/Users/GetCountry?active=' + act).then(function (response, req) {
             $scope.Countries = response.data;
             $scope.checkedArr = $filter('filter')($scope.Countries, { HasOperations: "1" });
             $scope.uncheckedArr = $filter('filter')($scope.Countries, { HasOperations: "0" });

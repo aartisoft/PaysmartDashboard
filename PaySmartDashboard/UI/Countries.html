@@ -252,7 +252,15 @@
                 <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
                 <div class="page-content">
                     <div id="tableadvancedTabContent" class="tab-content">
-                        Country Name   <input type="text" ng-model="query" />
+                        <div class="row">
+                            <div class="col-md-4">
+                                Country Name   <input type="text" ng-model="query" />
+                            </div>
+                            <div class="col-md-6" style="margin-top:20px;">
+                                <input type="checkbox" ng-model="acfilter" class="icheckbox_minimal-grey activeCheckbox" ng-change="GetCountries()" ng-true-value="1" ng-false-value="0" ng-checked="0" />
+                                 <label>Show In-Active Equipments</label>
+                            </div>                          
+                        </div>
                         <div style="float:right;margin:-10px;margin-right:10px;">
                             <button class="btn btn-primary" type="button" ng-click="saveCountries();">Save</button>
 
