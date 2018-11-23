@@ -977,4 +977,88 @@ namespace PaySmartDashboard.Models
 
         public Decimal PerkmPrice { get; set; }
     }
+    public class userroles
+    {
+        public int Id { set; get; }
+        public int UserId { set; get; }
+        public int CompanyId { set; get; }
+        public int RoleId { set; get; }
+        public int flag { set; get; }
+        public string Passkey { set; get; }
+
+        public string insupdflag { set; get; }
+
+    }
+    public class Users
+    {
+        public List<Users> list1 { get; set; }
+        public int Id { set; get; }
+        public string FirstName { set; get; }
+        public string LastName { set; get; }
+        public string MiddleName { set; get; }
+        public string EmpNo { set; get; }
+        public string Email { set; get; }
+        public string ContactNo1 { set; get; }
+        public string ContactNo2 { set; get; }
+        public int? mgrId { set; get; }
+        public int ManagerName { set; get; }
+        public string Country { get; set; }
+        public string ZipCode { get; set; }
+        public string State { get; set; }
+        public int StateId { set; get; }
+        public int CountryId { set; get; }
+        public int Active { get; set; }
+        public int GenderId { get; set; }
+        public string UserType { set; get; }
+        public int UserTypeId { set; get; }
+        public string Address { set; get; }
+        public string AltAdress { set; get; }
+        public string Photo { get; set; }
+        public string Role { set; get; }
+        public int RoleId { set; get; }
+        public DateTime? RFromDate { get; set; }
+        public DateTime? RToDate { get; set; }
+        public string DUserName { get; set; }
+        public string DPassword { get; set; }
+        public string WUserName { get; set; }
+        public string WPassword { get; set; }
+        public string insupdflag { get; set; }
+        public int companyId { set; get; }
+        public string Company { set; get; }
+
+    }
+    public class CompanyRoles
+    {
+        public int Id { get; set; }
+        public string Role { get; set; }
+        public string RoleId { get; set; }
+        public string Active { get; set; }
+        public string IsPublic { get; set; }
+        public string Company { get; set; }
+        public int CompanyId { get; set; }
+        public int insdelflag { get; set; }
+
+    }
+    public class roledetails
+    {
+        public int Id { get; set; }
+
+
+        public string ObjectName { get; set; }
+
+        public string Path { get; set; }
+
+    }
+    public class roles
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Active { get; set; }
+        public string IsPublic { get; set; }
+        public string Company { get; set; }
+        public int CompanyId { get; set; }
+
+
+    }
 }
