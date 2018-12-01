@@ -3622,6 +3622,7 @@
     <Content Include="UI\js\TypeGroups.js" />
     <Content Include="UI\js\Types.js" />
     <Content Include="UI\js\ui-bootstrap-tpls-1.3.3.js" />
+    <Content Include="UI\js\Users.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\VehicleList.js" />
     <Content Include="UI\LicensePricing.html" />
@@ -3639,6 +3640,7 @@
     <Content Include="UI\transactionsettings.html" />
     <Content Include="UI\TypeGroups.html" />
     <Content Include="UI\Types.html" />
+    <Content Include="UI\Users.html" />
     <Content Include="UI\usersettings.html" />
     <Content Include="UI\VehicleDetails.html" />
     <Content Include="UI\VehicleList.html" />
@@ -5032,6 +5034,7 @@
     <Compile Include="Controllers\BookAVehicleController.cs" />
     <Compile Include="Controllers\ChargesDiscountsController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CompanyGroupsController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DataLoadController.cs" />
@@ -5046,6 +5049,8 @@
     <Compile Include="Controllers\LicensePricingController.cs" />
     <Compile Include="Controllers\LOGINController.cs" />
     <Compile Include="Controllers\MandatoryDocsController.cs" />
+    <Compile Include="Controllers\RoleDetailsController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\RoutedetailsController.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
@@ -5061,7 +5066,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -5392,17 +5399,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\PaysmartDashboard.pubxml" />
-    <Content Include="UI\DataUploadTemplates\BTPOSDetails.csv" />
-    <Content Include="UI\DataUploadTemplates\CardsList.csv" />
-    <Content Include="UI\DataUploadTemplates\CompanyList.csv" />
     <Content Include="UI\DataUploadTemplates\DriversList.csv" />
     <Content Include="UI\DataUploadTemplates\DriverVehicleAssignList.csv" />
-    <Content Include="UI\DataUploadTemplates\FleetDetails.csv" />
-    <Content Include="UI\DataUploadTemplates\Inventory.csv" />
-    <Content Include="UI\DataUploadTemplates\Routes.csv" />
-    <Content Include="UI\DataUploadTemplates\Stops.csv" />
-    <Content Include="UI\DataUploadTemplates\UserRoles.csv" />
-    <Content Include="UI\DataUploadTemplates\Users.csv" />
     <Content Include="UI\DataUploadTemplates\VehiclesList.csv" />
   </ItemGroup>
   <ItemGroup>
