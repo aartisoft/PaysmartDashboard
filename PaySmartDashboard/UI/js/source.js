@@ -148,7 +148,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
             $scope.dashboardDS = res.data;
             $localStorage.dashboardDS = res.data;
 
-            $scope.GetDemoRequest();
+           // $scope.GetDemoRequest();
             $rootScope.spinner.off();
         }, function (errres) {
             // alert(errres);
