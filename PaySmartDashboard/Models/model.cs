@@ -1061,4 +1061,58 @@ namespace PaySmartDashboard.Models
 
 
     }
+
+
+    public class VehicleLayout
+    {
+        //public int Id { get; set; }
+        public int VehicleLayoutTypeId { get; set; }
+        public int RowNo { get; set; }
+        public int ColNo { get; set; }
+        public int VehicleTypeId { get; set; }
+        public String label { get; set; }
+        public string insupdflag { get; set; }
+        //public int FleetOwnerId { get; set; }
+    }
+    public class FleetOwnerVehicleLayout
+    {
+        public int VehicleLayoutTypeId { get; set; }
+        public int RowNo { get; set; }
+        public int ColNo { get; set; }
+        public int VehicleTypeId { get; set; }
+        public String label { get; set; }
+        public string insupdflag { get; set; }
+        public int FleetOwnerId { get; set; }
+    }
+    public class Pricing
+    {
+        public int SrNo { get; set; }
+        public int Duration { get; set; }
+        public int KiloMtr { get; set; }
+
+        public int IndicaRate { get; set; }
+        public int IndigoRate { get; set; }
+        public int InnovaRate { get; set; }
+        public int Tag { get; set; }
+    }
+
+    public class VehicleDistancePriceConfiguration
+    {
+        public int Id { get; set; }
+        public string SourceLoc { get; set; }
+        public string DestinationLoc { get; set; }
+        public string SourceLat { get; set; }
+        public string SourceLng { get; set; }
+        public string DestinationLat { get; set; }
+        public string DestinationLng { get; set; }
+        public int VehicleGroupId { get; set; }
+        public int VehicleTypeId { get; set; }
+        public int PricingTypeId { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal Distance { get; set; }
+        public decimal Amount { get; set; }
+        public string flag { get; set; }
+        public int CountryId { get; set; }
+
+    }
 }
