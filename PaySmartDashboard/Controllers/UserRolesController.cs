@@ -1,5 +1,5 @@
-﻿using SmartTicketDashboard;
-using SmartTicketDashboard.Models;
+﻿using PaySmartDashboard;
+using PaySmartDashboard.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
