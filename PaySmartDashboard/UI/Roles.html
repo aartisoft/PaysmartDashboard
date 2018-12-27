@@ -2,25 +2,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | Users | Company details</title>
+    <title>Home | Configuration | Roles</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <!--Loading bootstrap css-->
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+    <!--Loading bootstrap css-->    
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
     <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
-
+    
     <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
     <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
-
+    
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
-    <link type="text/css" rel="stylesheet" href="css/angular.treeview.css">
 </head>
-
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetCompanys();" ng-model="Companies">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetRoles();" ng-model="roles">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -165,15 +162,7 @@
                                     </i><span class="menu-title">System Management</span><span class="fa arrow"></span>
                                 </a>
                                 <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Company Management</span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li><a href="company.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Company </span></a></li>
-                                            <li><a href="CompanyRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Company Roles</span></a></li>
-                                            <li><a href="CompanyHierarchy.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-user"></i><span class="submenu-title">Company Hierarchy</span></a></li>
-                                        </ul>
-
-                                    </li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Company Management</span></a></li>
                                     <li>
                                         <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Notifications"><i class="fa fa-taxi"></i><span class="submenu-title">Vehicle Management</span></a>
                                         <ul class="nav nav-third-level">
@@ -189,7 +178,7 @@
                                             <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">User Roles</span></a></li>
                                             <li><a href="AppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">App Users</span></a></li>
                                             <li><a href="BusinessAppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Business App Users</span></a></li>
-
+                                            <!--<li><a href="BusinessAppUsersdetails.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Business App Users details</span></a></li-->>
 
 
                                         </ul>
@@ -198,8 +187,16 @@
                                     <li>
                                         <a href="#" data-toggle="tooltip" data-placement="right" title="Roles  of Users'"><i class="fa fa-user"></i><span class="submenu-title"> Role Management</span></a>
                                         <ul class="nav nav-third-level">
+                                            <!--<li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Fleet Owners</span></a></li>
+                                <li><a href="Users.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-user"></i><span class="submenu-title">User Details</span></a></li>
+                                <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">User Roles</span></a></li>
+                                <li><a href="AppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">App Users</span></a></li>
+                                <li><a href="BusinessAppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Business App Users</span></a></li>-->
+                                            <!--<li><a href="BusinessAppUsersdetails.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Business App Users details</span></a></li-->>
                                             <li><a href="Roles.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Roles </span></a></li>
                                             <li><a href="Roledetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Role Details</span></a></li>
+
+
                                         </ul>
                                     </li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket"><i class="fa fa-th-large"></i><span class="submenu-title">package Management</span></a></li>
@@ -250,12 +247,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Company Hierarchy </div>
+                            <div class="page-title">Roles</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="#">Company and Users</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="Company.html">Company Details</a>
+                            <li><a href="#">Configuration</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="Roles.html">Roles</a></li>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -268,69 +265,207 @@
                                 <div id="tableactionTabContent" class="tab-content">
                                     <div id="table-table-tab" class="tab-pane fade in active">
                                         <div class="row">
-                                           
-                                            <div>
-                                                <div class="col-lg-6">
-                                                                                                      
+                                            <div class="col-lg-12">
 
-                                                    <div style="margin:10px 0 30px 0; padding:10px; background-color:#EEEEEE; border-radius:5px; font:12px Tahoma;">
-                                                        <span><b>Selected Node</b> : {{currentNode.roleName}}</span>
+
+                                               
+
+
+                                                    <div class="actions">
+                                                        <!-----<a href="CreateRole.html"><button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Create Role</button></a>---->
+                                                        <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Create Role</button>
                                                     </div>
+                                                    <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-header-primary">
+                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title">Edit Roles</h4>
+                                                                </div>
+                                                                <div class="modal-body" ng-model="currRole">
+                                                                    <div class="row">
 
-                                                    <!--
-          [TREE attribute]
-          angular-treeview: the treeview directive
-          tree-model : the tree model on $scope.
-          node-id : each node's id
-          node-label : each node's label
-          node-children: each node's children
-        -->
-                                                    <!--<div data-angular-treeview="true"
-             data-tree-model="roleList"
-             data-node-id="roleId"
-             data-node-label="roleName"
-             data-node-children="children">
-        </div>-->
-                                                    <div ng-repeat="l in list">
-                                                        <div data-angular-treeview="true"
-                                                             data-tree-id="abc{{$index}}"
-                                                             data-tree-model="l"
-                                                             data-node-id="id"
-                                                             data-node-label="roleName"
-                                                             data-node-children="children">
+                                                                        <div class="col-md-3">
+                                                                            <div class="form-group has-success" style="text-align:right">
+                                                                                <label for="inputFirstName" class="control-label">Name:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <div class="form-group">
+                                                                                <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="currRole.Name" /></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-3">
+                                                                            <div class="form-group has-success" style="text-align:right">
+                                                                                <label for="inputFirstName" class="control-label">Description:</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <div class="form-group">
+                                                                                <div class="input-icon right"><input type="text" class="form-control" id="ip" ng-model="currRole.Description" /></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-3">
+                                                                            <div class="form-group has-success" style="text-align:right">
+                                                                                <label for="inputFirstName" class="control-label">Active:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <div class="input-icon right"><input type="checkbox" class="form-control" id="cactive" ng-model="currRole.Active" checked /></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-3">
+                                                                            <div class="form-group has-success" style="text-align:right">
+                                                                                <label for="inputFirstName" class="control-label">IsPublic:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <div class="input-icon right"><input type="checkbox" class="form-control" id="cactive" ng-model="currRole.IsPublic" checked /></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveRole(currRole);">Save</button>
+                                                                    <button type="reset" data-dismiss="modal" class="btn btn-default">Close</button>
+
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                  
-                                                </div>
 
-                                                <div class="col-lg-6">
-                                                    <input type="text" name="t" id="t" ng-model="r1" />{{r1}}
+                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                        <thead>
+                                                            <tr>
 
+
+                                                                <th>Role Name</th>
+                                                                <th>Description</th>
+                                                                <th>Active</th>
+                                                                <th>IsPublic</th>
+                                                                <th>Update</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr ng-repeat="role in roles" class="gradeA" >
+                                                                <td>{{role.Name}}</td>
+                                                                <td>{{role.Description}}</td>
+
+                                                                <td>
+                                                                    <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="role.Active ==1" >
+                                                                </td>
+                                                                <td>
+                                                                    <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="role.IsPublic==1">
+                                                                </td>
+                                                                <td>
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCurrRole(role);">
+                                                                        <i class="fa fa-edit"></i>&nbsp;
+                                                                        Edit
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+
+                                                    </table>
+                                                    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-header-primary">
+                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title">Create Role</h4>
+                                                                </div>
+                                                                <div class="modal-body" ng-model="newrole">
+
+
+
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;"> Name <span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input id="Name" type="text" class="form-control" ng-model="newrole.Name" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="Description" class="col-md-4 control-label">Description <span class='require'></span></label>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input id="Name" type="text" class="form-control" ng-model="newrole.Description" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="Active" class="col-md-4 control-label" style="color:red;">IsPublic:<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input type="checkbox" checked />
+
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="Active" class="col-md-4 control-label" style="color:red;">Active:<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div><input type="checkbox" ng-checked="Types.Active" /></div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-actions">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button class="btn btn-primary" type="button" ng-click="saveNewRole(newrole);">Save</button>
+
+
+                                                                            <a href="Roles.html" class="btn btn-green" ng-click="clearCurrRole()">Cancel</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </div>
+
+                                                    </div>
                                                 </div>
-                                            
                                             </div>
+                                        </div>
 
 
-                                        </div>                                       
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
+                        <!--END CONTENT--><!--BEGIN FOOTER-->
+                        <div id="footer">
+                            <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                        </div>
+                        <!--END FOOTER-->
                     </div>
-
                     <!--END PAGE WRAPPER-->
-                    <!--END CONTENT--><!--BEGIN FOOTER-->
-                    <div id="footer">
-                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                    </div>
-                    <!--END FOOTER-->
                 </div>
             </div>
         </div>
-
-
         <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
             <div class="modal-header">
@@ -358,6 +493,8 @@
     <!--loading bootstrap js-->
     <script src="vendors/bootstrap/js/bootstrap.js"></script>
     <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+
+
     <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
     <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
     <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
@@ -368,14 +505,13 @@
     <script src="vendors/jquery-pace/pace.min.js"></script>
     <script src="vendors/holder/holder.js"></script>
     <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <script src="js/table-action.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
-    <script src="js/angular.js"></script>    
+    <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
-    <script src="js/ngStorage.js"></script>   
-    <!--<script src="js/angular.treeview.js"></script>--> 
-    <script src="js/CompanyHierarchy.js"></script>
-
-
+    <script src="js/ngStorage.js"></script>
+    <script src="js/roles.js"></script>
 </body>
 </html>

@@ -669,6 +669,8 @@ namespace PaySmartDashboard.Models
         public string Passwordotp { get; set; }
         public DateTime MVerifiedOn { get; set; }
         public int IsMobileVerified { get; set; }
+        public string Photo { get; set; }
+        public int Status { get; set; }
 
         public DateTime CreatedOn { get; set; }
         public int ENoOfAttempts { get; set; }
