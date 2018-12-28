@@ -1,0 +1,747 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app="plunker">
+<head>
+    <title>Home | Vehicle Hour Pricing </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--Loading bootstrap css-->
+
+    <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
+    <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
+    <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+
+    <!--Loading style-->
+    <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+    <!--------------------Jagan---------------------->
+    <meta charset="utf-8" />
+    <link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+
+    <link href="css/VehicleDistBasePricingConfig.css" rel="stylesheet" />
+
+
+   
+  
+    
+   
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+            * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #description {
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        #infowindow-content .title {
+            font-weight: bold;
+        }
+
+        #infowindow-content {
+            display: none;
+        }
+
+        #map #infowindow-content {
+            display: inline;
+        }
+
+        .pac-card {
+            margin: 10px 10px 0 0;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            font-family: Roboto;
+        }
+
+        #pac-container {
+            padding-bottom: 12px;
+            margin-right: 12px;
+        }
+
+        .pac-controls {
+            display: inline-block;
+            padding: 5px 11px;
+        }
+
+            .pac-controls label {
+                font-family: Roboto;
+                font-size: 13px;
+                font-weight: 300;
+            }
+
+        #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 400px;
+        }
+
+            #pac-input:focus {
+                border-color: #4d90fe;
+            }
+
+        #title {
+            color: #fff;
+            background-color: #4d90fe;
+            font-size: 25px;
+            font-weight: 500;
+            padding: 6px 12px;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="MainCtrl" ng-init="GetConfigData()"  ng-model="Pricelist">
+
+    <div>
+        <!--BEGIN THEME SETTING-->
+        <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+        <div id="header-topbar-option-demo" class="page-header-topbar">
+            <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a id="logo" href="indexnew.html" class="navbar-brand"><img src="images/logo-big.png" height="50" width="80" align="left" alt="" class="img-responsive"><font size="3">PaySmart Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
+                </div>
+                <div class="topbar-main">
+                    <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+                    <ul class="nav navbar navbar-top-links navbar-right mbn">
+
+                        <li class="dropdown topbar-user">
+                            <a data-hover="dropdown" href="Logfile.html" class="dropdown-toggle">&nbsp;<span class="hidden-xs">Session Log</span>&nbsp;</a>
+                            <ul class="dropdown-menu dropdown-user pull-right"></ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">{{dashboardDS.Table2.length}}</span></a>
+                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table2.length==0">
+                                <li><p>You have 0 new alerts</p></li>
+                            </ul>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li ng-repeat="A in dashboardDS.Table2">
+                                    <p>
+                                        <a href="ShippingOrder.html"><i class="fa fa-user"></i>{{A.Message}}</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">{{dashboardDS.Table3.length}}</span></a>
+                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table3.length==0">
+                                <li><p>You have 0 new notifications</p></li>
+                            </ul>
+
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li><p>You have {{dashboardDS.Table3.length}} new messages</p></li>
+                                <li>
+                                    <div class="dropdown-slimscroll">
+                                        <ul>
+                                            <li ng-repeat="N1 in dashboardDS.Table3">
+                                                <a href="#"><span class="info"><span class="name">{{N1.Name}}</span><span class="desc">{{N1.Message}}</span></span></a>
+                                            </li>
+
+                                            <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Smith<span class="label label-blue pull-right">New</span></span><span class="desc">This is a test notification...</span></span></a></li>
+                                            <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Doe<span class="label label-orange pull-right">10 min</span></span><span class="desc">This is a test notification....</span></span></a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="last"><a href="#">Read all messages</a></li>
+                            </ul>
+
+                            <!--<ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table1">
+                        <li><p>{{A.Message}}</p></li>
+                    </ul>-->
+                        </li>
+                        <li class="dropdown topbar-user">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" height="20" width="20" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">{{uname}}</span>&nbsp;<span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-user pull-right">
+                                <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
+                                <li><a href="EmailInbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
+                                <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
+                                <li class="divider"></li>
+                                <li><a href="extra-lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
+                                <li><a href="../login.html"><i class="fa fa-key"></i>Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--END TOPBAR-->
+            <div id="wrapper">
+                <!--BEGIN SIDEBAR MENU-->
+                <nav id="sidebar" role="navigation" data-step="2" data-position="right" class="navbar-default navbar-static-side">
+                    <div class="sidebar-collapse menu-scroll">
+                        <ul id="side-menu" class="nav">
+                            <li class="user-panel">
+                                <div class="thumb"><img src="images/user.jpg" height="20" width="20" alt="" class="img-circle" /></div>
+                                <div class="info">
+                                    <p>{{uname}}</p>
+                                    <ul class="list-inline list-unstyled">
+                                        <li><a href="UserProfile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
+                                        <li><a href="email-inbox.html" data-hover="tooltip" title="Mail"><i class="fa fa-envelope"></i></a></li>
+                                        <li><a href="#" data-hover="tooltip" title="Setting" data-toggle="modal" data-target="#modal-config"><i class="fa fa-cog"></i></a></li>
+                                        <li><a href="login.html" data-hover="tooltip" title="Logout"><i class="fa fa-sign-out"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="active">
+                                <a href="indexnew.html" data-toggle="tooltip" data-placement="right" title="Application Dashboard for Equipment, Types, and Jobs">
+                                    <i class="fa fa-tachometer fa-fw active">
+                                        <div class="icon-bg bg-orange"></div>
+                                    </i><span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>
+
+
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-globe">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">System Configuaration </span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="general.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">General Settings</span></a></li>
+                                    <li><a href="company.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Company Settings</span></a></li>
+                                    <li><a href="vehiclesettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Vehicle Settings</span></a></li>
+                                    <li><a href="usersettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">User Settings</span></a></li>
+                                    <li><a href="packagesettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Package Settings</span></a></li>
+                                    <li><a href="paymentsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Payment Gateway Settings</span></a></li>
+                                    <li><a href="transactionsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Transaction Settings</span></a></li>
+                                    <li><a href="statisticssettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Statistics Settings</span></a></li>
+                                    <li><a href="reportsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Report Settings</span></a></li>
+                                    <!--<li><a href="AdvDeals.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Activity Log</span></a>
+                        </li>-->
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-credit-card">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">System Management</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="companymanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Company Management</span></a></li>
+
+
+                                    <li>
+                                        <a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Notifications"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Management</span></a>
+
+
+                                        <ul class="nav nav-third-level">
+                                            <li class="active"><a href="appusers.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-group"></i><span class="submenu-title">App Users</span></a></li>
+                                            <li class="active"><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle List</span></a></li>
+                                            <li class="active"><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-list-ol"></i><span class="submenu-title">Driver List</span></a></li>
+                                            <li class="active"><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-columns"></i><span class="submenu-title">Assign Driver</span></a></li>
+                                            <li class="active"><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-info"></i><span class="submenu-title">Booking Details</span></a></li>
+                                            <li class="active"><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Login Details of Vehicle"><i class="fa fa-user"></i><span class="submenu-title">Vehicle Login</span></a></li>
+                                            <li class="active"><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Logout Details of Vehicle"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Logout</span></a></li>
+                                            <li class="active"><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-times"></i><span class="submenu-title">Closing Report</span></a></li>
+                                            <li class="active"><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-list-alt"></i><span class="submenu-title">Start Report </span></a></li>
+                                            <li class="active"><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Dist Base Pricing</span></a></li>
+                                            <li class="active"><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-clock-o"></i><span class="submenu-title">Vehicle Hour Base Pricing</span></a></li>
+
+                                            <li><a href="MeteredTaxiDistBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi  Distance Prices</span></a></li>
+                                            <li><a href="MeteredTaxiPricinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi Distance Pricing</span></a></li>
+                                            <li><a href="TaxiSrcDest.html" data-toggle="tooltip" data-placement="right" title="List of all saved stops"><i class="fa fa-stop"></i><span class="submenu-title">Taxi Stops List</span></a></li>
+                                            <li>
+                                                <a href="ScheduleList.html" data-toggle="tooltip" data-placement="right" title="List of Schedules"><i class="fa fa-stop"></i><span class="submenu-title">Schedule List</span></a>
+                                            </li>
+                                        </ul>
+
+
+                                    </li>
+                                    <li>
+                                        <a href="usermanagement.html" data-toggle="tooltip" data-placement="right" title="Details of FAQ'S'"><i class="fa fa-th-large"></i><span class="submenu-title">User Management</span></a>
+
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Users</span></a></li>
+                                            <li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owners</span></a></li>
+                                            <li><a href="Users.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-angle-double-right"></i><span class="submenu-title">User Details</span></a></li>
+                                            <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-angle-double-right"></i><span class="submenu-title">User Roles</span></a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="packagemanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket"><i class="fa fa-th-large"></i><span class="submenu-title">package Management</span></a></li>
+                                    <li><a href="paymentmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket Details"><i class="fa fa-th-large"></i><span class="submenu-title">Payment Management</span></a></li>
+                                    <li><a href="transactionmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Contact"><i class="fa fa-th-large"></i><span class="submenu-title">Transaction Management</span></a></li>
+                                    <li><a href="statisticsmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Statistics Management</span></a></li>
+                                    <li><a href="reportmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Report Management</span></a></li>
+
+                                    <!--<li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
+                        <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
+                        <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
+                        <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>-->
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-edit fa-fw">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Log Management</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="securitylog.html" data-toggle="tooltip" data-placement="right" title="Details of Tranasactions Master"><i class="fa fa-list-alt"></i><span class="submenu-title">Security Events Monitoring</span></a></li>
+                                    <li><a href="companylog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Company Log MGNT</span></a></li>
+                                    <li><a href="userlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">User Log MGNT</span></a></li>
+                                    <li><a href="packagelog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Package Log MGNT</span></a></li>
+                                    <li><a href="paymentlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Payment Gateway Log MGNT</span></a></li>
+                                    <li><a href="transactionlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Transaction Log MGNT</span></a></li>
+                                    <li><a href="statisticlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Statistics Log MGNT</span></a></li>
+                                    <li><a href="reportlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Report Log MGNT</span></a></li>
+                                    <li><a href="vehiclelog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle Log MGNT</span></a></li>
+                                </ul>
+                            </li>
+
+                            <!--<li>
+                    <a href="#">
+                        <i class="fa fa-edit fa-fw">
+                            <div class="icon-bg bg-green"></div>
+                        </i><span class="menu-title">Administration</span><span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of FleetOwners"><i class="fa fa-list-alt"></i><span class="submenu-title">Demo</span></a></li>
+                    </ul>
+                </li>-->
+                        </ul>
+
+                    </div>
+                </nav>  
+                <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
+                <div id="page-wrapper">
+                    <!--BEGIN TITLE & BREADCRUMB PAGE-->
+                    <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                        <div class="page-header pull-left">
+                            <div class="page-title">Metered Taxi  Pricing Configuration</div>
+                        </div>
+                        <ol class="breadcrumb page-breadcrumb pull-right">
+                            <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="MeteredTaxiDistBasePricing.html">Metered Taxi  Hours Base Pricing</a>
+
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
+                    <div class="page-content">
+                        <div id="table-action" class="row">
+                            <div class="col-lg-12">
+
+                                <div id="tableactionTabContent" class="tab-content">
+                                    <div class="row mbm">
+                                        <div class="col-md-3">
+
+                                            Country:<select ng-options="cc.Name for cc in initdata.Table2 track by cc.Id" ng-model="ctry" style="width:80%">
+    <option value="">Select</option>
+
+</select>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div id="table-table-tab" class="tab-pane fade in active">
+
+                                        <!------------Jagan-------------------------->
+                                        <div class="container" style="padding-top:10px">
+                                            <div class="col-md-12 ">
+                                                <div class="col-md-6" style="padding-top:10px;margin-left:-20px">
+
+                                                    <form>
+                                                        <div class="form-group row">
+                                                            <div class="col-xs-6">
+                                                                <label for="pickupPoint">Source</label>
+                                                                <input vs-google-autocomplete
+                                                                       vs-autocomplete-validator
+                                                                       ng-model="pickupPoint.place.name"
+                                                                       vs-place="pickupPoint.place"
+                                                                       vs-place-id="pickupPoint.components.placeId"
+                                                                       vs-street-number="pickupPoint.components.streetNumber"
+                                                                       vs-street="pickupPoint.components.street"
+                                                                       vs-city="pickupPoint.components.city"
+                                                                       vs-state="pickupPoint.components.state"
+                                                                       vs-country-short="pickupPoint.components.countryCode"
+                                                                       vs-country="pickupPoint.components.country"
+                                                                       vs-district="pickupPoint.components.district"
+                                                                       vs-post-code="pickupPoint.components.postCode"
+                                                                       vs-latitude="pickupPoint.components.location.lat"
+                                                                       vs-longitude="pickupPoint.components.location.long"
+                                                                       type="text"
+                                                                       name="pickupPoint"
+                                                                       id="pickupPoint"
+                                                                       class="form-control"
+                                                                       placeholder="Enter any address" value="{{pickupPoint.name}}" />
+                                                            </div>
+                                                            <div class="col-xs-6">
+                                                                <label for="dropPoint">Destination</label>
+                                                                <input vs-google-autocomplete
+                                                                       vs-autocomplete-validator
+                                                                       ng-model="dropPoint.place.name"
+                                                                       vs-place="dropPoint.place"
+                                                                       vs-place-id="dropPoint.components.placeId"
+                                                                       vs-street-number="dropPoint.components.streetNumber"
+                                                                       vs-street="dropPoint.components.street"
+                                                                       vs-city="dropPoint.components.city"
+                                                                       vs-state="dropPoint.components.state"
+                                                                       vs-country-short="dropPoint.components.countryCode"
+                                                                       vs-country="dropPoint.components.country"
+                                                                       vs-district="dropPoint.components.district"
+                                                                       vs-post-code="dropPoint.components.postCode"
+                                                                       vs-latitude="dropPoint.components.location.lat"
+                                                                       vs-longitude="dropPoint.components.location.long"
+                                                                       type="text"
+                                                                       name="dropPoint"
+                                                                       id="dropPoint"
+                                                                       class="form-control"
+                                                                       placeholder="Enter any address" value="{{dropPoint.name}}" />
+                                                                <br />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
+                                                                    <button class="btn-medium green" ng-click="getDirections()">Get Directions</button>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12">
+                                                                <div class="col-xs-6">
+                                                                    <label>Vehicle Group</label>
+                                                                    <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
+                                                                        <option value="">Select</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-xs-6">
+                                                                    <label>Vehicle Type</label>
+                                                                    <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="vt" class="form-control" style="width:100%">
+                                                                        <option value="">Select Type</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12">
+                                                                <div class="col-xs-6">
+                                                                    <label>Pricing Type</label>
+                                                                    <select class="form-control" style="width:100%" ng-model="Pricelist.Pricing">
+                                                                        <option value="">Select Price</option>
+                                                                        <option value="53">Per unit pricing</option>
+                                                                        <option value="54">Stage to Stage</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-xs-6">
+                                                                    <label for="ex2">Distance</label>
+                                                                    <input class="form-control" id="distance" type="text" ng-model="distval" ng-change="SetTotal();">
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-xs-12">
+                                                                <div class="col-xs-6">
+                                                                    <label for="ex2">Unit Price/Amount</label>
+                                                                    <input class="form-control" id="unitprice" type="text" ng-model="Pricelist.UnitPrice">
+                                                                </div>
+                                                                <div class="col-xs-6">
+                                                                    <label for="ex2">Total Amount</label>
+                                                                    <input class="form-control" id="Total" type="text" ng-model="Pricelist.Amount" ng-disabled="pricing == 52 || pricing ==''" disabled>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
+                                                                        <button class="btn-medium green" ng-click="SavePricing('I')">Save</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+
+                                                <div id="full-width-content" class="col-md-5" style="margin-left:-10px">
+
+                                                    <div class="main">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                <div id="map1"></div>
+                                                                <div id="infowindow-content">
+                                                                    <img src="" width="16" height="16" id="place-icon">
+                                                                    <span id="place-name" class="title"></span><br>
+                                                                    <span id="place-address"></span>
+                                                                </div>
+                                                                <google-map control="map.control" center="map.center" zoom="map.zoom">
+                                                                    <marker coords="marker.center"></marker>
+                                                                </google-map>
+
+                                                                <div id="directionsList" ng-show="directions"></div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <hr>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--END PAGE WRAPPER-->
+            <!--END CONTENT--><!--BEGIN FOOTER-->
+            <div id="footer">
+                <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+            </div>
+            <!--END FOOTER-->
+        </div>
+
+
+        <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-primary">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                        <h4 id="modal-header-primary-label" class="modal-title">Edit Company Details</h4>
+                    </div>
+                    <div class="modal-body" ng-model="DistPricing">
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <label for="selCountry" class="col-md-5 control-label">Vehicle Model</label>
+                                <div class="col-md-7">
+                                    <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
+                                        <option value="">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label for="Fax" class="col-md-4 control-label" style="float:left">Hours:<span class='require'></span></label>
+                                <div class="col-md-8"><input id="Hours" type="text" ng-model="DistPricing.Hours" class="form-control" /><span class="help-block"></span></div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">FromTime:<span class='require'></span></label>
+                                <div class="col-md-8"><input id="FromTime" type="text" ng-model="DistPricing.FromTime" class="form-control" /><span class="help-block"></span></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">ToTime:<span class='require'></span></label>
+                                <div class="col-md-8"><input id="ToTime" type="text" ng-model="DistPricing.ToTime" class="form-control" /><span class="help-block"></span></div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-md-6">
+                                <label for="Fax" class="col-md-4 control-label" style="float:left">Price:<span class='require'></span></label>
+                                <div class="col-md-8"><input id="Price" type="text" ng-model="DistPricing.Price" class="form-control" /><span class="help-block"></span></div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+                        <div class="form-actions">
+                            <div style="text-align:center">
+                                <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="SavePricingChanges(DistPricing, 'U');">Save</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+        <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+            <div class=" modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-primary">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
+                        <h4 id="modal-header-primary-label" class="modal-title">Add Vehicle Pricing</h4>
+                    </div>
+
+                    <div class="modal-body" ng-model="Vprice">
+                        <div style="margin-left:250px">
+                            <div class="row">
+
+                                <div class="col-md-6">
+
+                                    <label for="selCountry" class="col-md-4 control-label">Vehicle Model:</label>
+                                    <div class="col-md-8">
+                                        <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row" style="margin-top:7px">
+
+
+                                <div class="col-md-6">
+                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Hours:<span class='require'></span></label>
+                                    <div class="col-md-8"><input id="Hours" type="text" ng-model="Vprice.Hours" class="form-control" /><span class="help-block"></span></div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="Fax" class="col-md-4 control-label">FromTime:<span class='require'></span></label>
+                                    <div class="col-md-8"><input id="FromTime" type="time" ng-model="Vprice.FromTime" class="form-control" /><span class="help-block"></span></div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="Fax" class="col-md-4 control-label">ToTime:<span class='require'></span></label>
+                                    <div class="col-md-8"><input id="ToTime" type="time" ng-model="Vprice.ToTime" class="form-control" /><span class="help-block"></span></div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+
+
+                                <div class="col-md-6">
+                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Price: <span class='require'></span></label>
+                                    <div class="col-md-8"><input id="Price" type="text" ng-model="Vprice.Price" class="form-control" /><span class="help-block"></span></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="col-md-offset-5 col-md-8">
+                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="SavePricing(Vprice, 'I');">Save</button>
+
+                                <a href="VehicleHoursBasePricing.html" class="btn btn-primary" ng-click="clearVprice()">Cancel</a>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+            <div class="modal-header">
+                <h3 class="modal-title">Save confirmation!</h3>
+            </div>
+            <div class="modal-body">
+                <!--<ul>
+                    <li ng-repeat="item in items">
+                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                    </li>
+                </ul>
+                Selected: <b>{{ selected.item }}</b>-->
+                {{mssg}}
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+
+        </script>
+    </div>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--loading bootstrap js-->
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="vendors/iCheck/custom.min.js"></script>
+    <script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
+    <script src="js/jquery.menu.js"></script>
+    <script src="vendors/jquery-pace/pace.min.js"></script>
+    <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <!--CORE JAVASCRIPT-->
+    <script src="js/main.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script src="js/ngStorage.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU&libraries=places&sensor=false"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>-->
+    <script data-require="lodash-underscore@*" data-semver="2.4.1" src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
+    <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
+    <script src="Maps/vs-google-autocomplete.js"></script>
+
+    <!-- validator for autocomplete -->
+    <script src="Maps/vs-autocomplete-validator.js"></script>
+
+    <!--<script src="js/VehicleHoursBasePricing.js"></script>-->
+    <script src="js/MeteredTaxiDistBasePricing.js"></script>
+
+
+</body>
+</html>
