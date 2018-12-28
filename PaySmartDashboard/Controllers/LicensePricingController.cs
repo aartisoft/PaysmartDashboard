@@ -1,4 +1,5 @@
-﻿using PaySmartDashboard;
+﻿
+using PaySmartDashboard;
 using PaySmartDashboard.Models;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,8 @@ namespace PaySmartDashboard.Controllers
         public DataTable LicensePricing(int categoryid)
         {
             DataTable Tbl = new DataTable();
-            //LogTraceWriter traceWriter = new LogTraceWriter();
-            //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetLicensePricing credentials....");
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetLicensePricing credentials....");
             //connect to database
             SqlConnection conn = new SqlConnection();
             //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
@@ -39,7 +40,7 @@ namespace PaySmartDashboard.Controllers
 
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(Tbl);
-            //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetLicensePricing Credentials completed.");
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetLicensePricing Credentials completed.");
             // int found = 0;
             return Tbl;
         }
@@ -50,7 +51,7 @@ namespace PaySmartDashboard.Controllers
        {
 
            LogTraceWriter traceWriter = new LogTraceWriter();
-           //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveLicensePricing credentials....");
+           traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveLicensePricing credentials....");
             SqlConnection conn = new SqlConnection();
             try
             {
@@ -115,7 +116,7 @@ namespace PaySmartDashboard.Controllers
             cmd.ExecuteScalar();
             conn.Close();
 
-           // traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveLicensePricing Credentials completed.");
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveLicensePricing Credentials completed.");
              //int found = 0;
             return new HttpResponseMessage(HttpStatusCode.OK);
             }
@@ -126,7 +127,7 @@ namespace PaySmartDashboard.Controllers
                     conn.Close();
                 }
                 string str = ex.Message;
-              //  traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveLicensePricing:" + ex.Message);
+                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveLicensePricing:" + ex.Message);
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
             }
        }

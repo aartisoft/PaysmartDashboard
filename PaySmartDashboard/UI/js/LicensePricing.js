@@ -11,7 +11,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     var range = [];
 
-    $scope.GetLicenseCategories = function () {
+    $scope.GetLicenseCategories = function ()
+    {
         $http.get('/api/Types/TypesByGroupId?groupid=3').then(function (res, data) {
             $scope.lcat = res.data;
             document.getElementById('btnAdd').disabled = true;
@@ -20,8 +21,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/Types/TypesByGroupId?groupid=7').then(function (res, data) {
             $scope.FreqTypes = res.data;
         });
-
-
+     
+        
         for (var i = 1; i <= 100; i++) {
             range.push(i);
         }
@@ -49,7 +50,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.lTypes = res.data;
         });
     }
-
+    
 
     $scope.currLicense = function (L) {
         $scope.currSelLicense = L;
@@ -59,7 +60,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (isNaN(String.fromCharCode($event.keyCode)) && $event.keyCode != 46) {
             $event.preventDefault();
         }
-        else {
+        else
+        {
             if ($event.keyCode == 46 && $scope.newUnitPrice.indexOf('.') > -1)
                 $event.preventDefault();
         }
@@ -87,16 +89,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
 
         var newLicensePricing = {
-            Id: -1,
+            Id:-1,
             LicenseId: $scope.l.Id,
             RenewalFreqTypeId: $scope.ftype.Id,
             RenewalFreq: $scope.freq,
             UnitPrice: $scope.newUnitPrice,
             fromdate: $scope.nfd,
             todate: $scope.ntd,
-            insupddelflag: 'I'
+            insupddelflag: 'I'           
         }
-
+    
         var req = {
             method: 'POST',
             url: ('/api/LicensePricing/SaveLicensePricing'),
@@ -196,6 +198,19 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 });
 
 
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
+
+    $scope.mssg = mssg;
+    $scope.ok = function () {
+        $uibModalInstance.close('test');
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+});
+
+   
 
 
 
@@ -206,8 +221,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
 
+   
 
 
-
-
-
+    
