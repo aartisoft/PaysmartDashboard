@@ -506,10 +506,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if ($scope.ur.RoleId == null) {
-            alert('Please select role.');
-            return;
-        }
+        //if ($scope.ur.RoleId == null) {
+        //    alert('Please select role.');
+        //    return;
+        //}
         if ($scope.uu.Id == null) {
             alert('Please select user.');
             return;
