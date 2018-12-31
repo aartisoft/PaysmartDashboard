@@ -154,7 +154,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.DocFiles = res.data.Table1;
             $scope.VehicleList = res.data.Table2;
             $scope.bankdetails = res.data.Table3;
-            //$scope.PendDocFiles = res.data.Table4;
+            $scope.PendDocFiles = res.data.Table4;
             //$scope.transactions = res.data.Table5;
             $scope.imageSrc = $scope.Dl.Photo;
 

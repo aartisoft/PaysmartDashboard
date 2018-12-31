@@ -1,28 +1,26 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | Configuration | License Types</title>
+    <title>License Details</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
-
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
     <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
-
+    
     <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
     <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
-
+    
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
-
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetLicenseCat();" ng-model="LicenseTypes">
+
+<body ng-app="myApp" ng-controller="myCtrl"  ng-init="GetLicenseCategories();">
     <div>
         <!--BEGIN THEME SETTING-->
-        <!--BEGIN BACK TO TOP-->
-        <a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+        <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
         <div id="header-topbar-option-demo" class="page-header-topbar">
             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
                 <div class="navbar-header">
@@ -243,10 +241,10 @@
                                     <li class="active">
                                         <a href="#"><i class="fa fa-angle-right"></i><span class="submenu-title"> Licenses</span><span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
-                                            <li class="active"><a href="LicenseTypes.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseTypes"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Types</span></a></li>
+                                            <li><a href="LicenseTypes.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseTypes"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Types</span></a></li>
                                             <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
                                             <li><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
-                                            <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
+                                            <li class="active"><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
                                             <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
 
                                         </ul>
@@ -307,21 +305,23 @@
                         </ul>
                     </div>
                 </nav>
-                <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
+                <!--END CHAT FORM--><!--BEGIN PAGE WRAPPER-->
                 <div id="page-wrapper">
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Licence Types</div>
+                            <div class="page-title">License Details</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="#">Configuration</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="LicenseTypes.html">License Types</a></li>
+                            <li><a href="#">Users</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="licensedetails.html">License Details</a></li>
+
 
                         </ol>
                         <div class="clearfix"></div>
                     </div>
+
                     <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
                     <div class="page-content">
                         <div id="table-action" class="row">
@@ -335,100 +335,136 @@
 
                                                 <div class="table-container">
                                                     <div class="row mbm">
-                                                        <div class="col-md-5">
-                                                            License Categrory: <select ng-options="s.Name for s in LicenseCat track by s.Id" ng-model="s" ng-change="getLicenseTypes(s)">
+                                                        <div class="col-lg-4">
+
+                                                            License Category:
+                                                            <select ng-options="s.Name for s in lcat track by s.Id" ng-model="s" ng-change="getLicenseTypes(s)" style="width:70%">
                                                                 <option value="">Select</option>
                                                             </select>
+
                                                         </div>
+                                                        <div class="col-lg-4">
 
-                                                        <div class="actions">
-                                                            <a href="#" ng-hide="s.Id == null"><button type="button" data-target="#Modal-header-primary-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add License Type</button></a>
+                                                            License Type: <select ng-options="l.LicenseType for l in lTypes track by l.Id" ng-model="l" ng-change="GetLicenseFeatures()" style="width:70%">
+                                                                <option value="">Select</option>
+                                                            </select>
 
+                                                        </div>
+                                                        <div style="height:15px">
+                                                            <button ng-hide="l.Id == null" type="button" data-target="#Modal-header-primary-New" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;" ng-init="GetConfigData()">Add Feature</button>
                                                         </div>
                                                     </div>
-                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+
+                                                    
+
+
+                                                    <table class="table table-striped table-bordered table-advanced tablesorter mbn">
                                                         <thead>
                                                             <tr>
-                                                                <th>License Type</th>
-                                                                <th>Description</th>
-                                                                <th>Active</th>
+                                                                <th>Feature Name</th>
+                                                                <th>Feature Value</th>
+                                                                <th>Feature Label</th>
                                                                 <th>Update</th>
+                                                                <th>Delete</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
 
-                                                            <tr ng-repeat="T in LicenseTypes">
-                                                                <td><a href="LicenseDetails.html"> <font color="blue"> <u> {{T.LicenseType}}</u></font></a></td>
-                                                                <td>{{T.Description}}</td>
-                                                                <td><input type="checkBox" ng-checked="T.Active" disabled /></td>
+                                                            <tr ng-repeat="L in ldetails" class="gradeA">
+
+
+
+                                                                <td>{{L.FeatureName}}</td>
+                                                                <td>{{L.FeatureValue}}</td>
+                                                                <td>{{L.FeatureLabel}}</td>
                                                                 <td>
-                                                                    <button type="button" data-target="#Modal-header-primary-edit" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCurrLicenseType(T);">
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="currLicense(L);">
                                                                         <i class="fa fa-edit"></i>&nbsp;
                                                                         Edit
                                                                     </button>
                                                                 </td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-default btn-xs">
+                                                                        <i class="fa fa-trash-o"></i>&nbsp;
+                                                                    </button>
+                                                                </td>
                                                             </tr>
                                                         </tbody>
-
                                                     </table>
-
                                                 </div>
 
-
-
                                             </div>
+
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                        </div>
 
-                        <!--END CONTENT--><!--BEGIN FOOTER-->
-                        <div id="footer">
-                            <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+
+                            <!--END CONTENT-->
+                            <!--BEGIN FOOTER-->
+                            <div id="footer">
+                                <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                            </div>
+                            <!--END FOOTER-->
                         </div>
-                        <!--END FOOTER-->
+                        <!--END PAGE WRAPPER-->
                     </div>
-
                 </div>
-                <!--END PAGE WRAPPER-->
+
             </div>
         </div>
     </div>
 
-    <div id="Modal-header-primary-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+    <div id="Modal-header-primary-New" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal" ng-model="newFeature">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header modal-header-primary">
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                    <h4 id="modal-header-primary-label" class="modal-title">New License Type</h4>
+                    <h4 id="modal-header-primary-label" class="modal-title">Add Feature</h4>
                 </div>
-                <div class="modal-body" ng-model="currGroup">
+                <div class="modal-body" ng-model="currSelLicense">
                     <div class="row">
 
                         <div class="col-md-3">
                             <div class="form-group has-success" style="text-align:right">
-                                <label for="Name" class="control-label" style="color:red;">License Type:<span class='require'>*</span></label>
+                                <label for="inputFirstName" class="control-label" style="color:red;">Feature Name:<span class='require'>*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <select ng-options="f.Name for f in initdata.Table track by f.Id" ng-model="f" style="width:100%">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                        <!--<div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="newFeature.FeatureName" /></div>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group has-success" style="text-align:right">
+                                <label for="inputFirstName" class="control-label" style="color:red;">Feature Value:</label>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="currGroup.LicenseType" /></div>
+                                <div class="input-icon right"><input type="text" class="form-control" id="ip" ng-model="newFeature.FeatureValue" /></div>
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
 
                         <div class="col-md-3">
                             <div class="form-group has-success" style="text-align:right">
-                                <label for="Description" class="control-label">Description:</label>
+                                <label for="inputFirstName" class="control-label" style="color:red;">Feature Label:</label>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="currGroup.Description" /></div>
+                                <div class="input-icon right"><input type="text" class="form-control" id="ip" ng-model="newFeature.FeatureLabel" /></div>
                             </div>
                         </div>
                     </div>
@@ -437,128 +473,125 @@
 
                         <div class="col-md-3">
                             <div class="form-group has-success" style="text-align:right">
-                                <label for="TypeGroup" class="control-label" style="color:red;">License Category:<span class='require'>*</span></label>
+                                <label for="inputFirstName" class="control-label">License Category:<span class='require'>*</span></label>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <div class="input-icon right">
-                                    <select ng-options="s.Name for s in LicenseCat track by s.Id" ng-model="s" disabled>
-                                        <option value="">Select</option>
-                                    </select>
-                                </div>
+                                <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="s.Name" disabled /></div>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
 
                         <div class="col-md-3">
                             <div class="form-group has-success" style="text-align:right">
-                                <label for="Active" class="control-label">Active:<span class='require'></span></label>
+                                <label for="inputFirstName" class="control-label">License Type:<span class='require'>*</span></label>
                             </div>
                         </div>
-
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="form-group">
-                                <div class="input-icon right">
-                                    <input type="checkbox" class="form-control" id="cactive" ng-checked="currGroup.Active" checked />
-                                </div>
+                                <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="l.LicenseType" disabled /></div>
                             </div>
                         </div>
-                    </div>
-
-
-                    <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="saveLicenseType(currGroup, 'I');">Save</button>
-                        <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
                     </div>
                 </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="SaveNewFeature(newFeature, 'I');">Save</button>
+                    <button type="reset" data-dismiss="modal" class="btn btn-default">Close</button>
+
+                </div>
+
             </div>
         </div>
     </div>
 
-
-    <div id="Modal-header-primary-edit" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+    <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header modal-header-primary">
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                    <h4 id="modal-header-primary-label" class="modal-title">Edit License Type</h4>
+                    <h4 id="modal-header-primary-label" class="modal-title">Edit License</h4>
                 </div>
-                <div class="modal-body" ng-model="currLicenseType">
+                <div class="modal-body" ng-model="currSelLicense">
                     <div class="row">
 
                         <div class="col-md-3">
                             <div class="form-group has-success" style="text-align:right">
-                                <label for="Name" class="control-label" style="color:red;">License Type:<span class='require'>*</span></label>
+                                <label for="inputFirstName" class="control-label" style="color:red;">Feature Name:<span class='require'>*</span></label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <select ng-options="f1.Name for f1 in Types track by f1.Id" ng-model="currSelLicense.FeatureTypeId" value="{{currSelLicense.FeatureTypeId}}" readonly disabled>
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+
+                        <!--<div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="currSelLicense.FeatureName" /></div>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group has-success" style="text-align:right">
+                                <label for="inputFirstName" class="control-label" style="color:red;">Feature Value:</label>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="currLicenseType.LicenseType" /></div>
+                                <div class="input-icon right"><input type="text" class="form-control" id="ip" ng-model="currSelLicense.FeatureValue" /></div>
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
 
                         <div class="col-md-3">
                             <div class="form-group has-success" style="text-align:right">
-                                <label for="Description" class="control-label">Description:</label>
+                                <label for="inputFirstName" class="control-label" style="color:red;">Feature Label:</label>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="currLicenseType.Description" /></div>
+                                <div class="input-icon right"><input type="text" class="form-control" id="ip" ng-model="currSelLicense.FeatureLabel" /></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
 
-                        <div class="col-md-3">
-                            <div class="form-group has-success" style="text-align:right">
-                                <label for="TypeGroup" class="control-label" style="color:red;">License Category:<span class='require'>*</span></label>
-                            </div>
-                        </div>
+                    <!----     <div class="form-group">
+
+                        <label for="selCountry" class="col-md-3 control-label">License Catagory</label>
                         <div class="col-md-5">
-                            <div class="form-group">
-                                <div class="input-icon right">
-                                    <select ng-options="s.Name for s in LicenseCat track by s.Id" ng-model="s" disabled>
-                                        <option value="currLicenseType.LicenseCatId">{{currLicenseType.licenseCategory}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-md-3">
-                            <div class="form-group has-success" style="text-align:right">
-                                <label for="Active" class="control-label">Active:<span class='require'></span></label>
-                            </div>
+                            <select ng-options="s.Name for s in TypeGroups track by s.Id" ng-model="s" class="form-control" ng-change="getselectval(s)">
+                                <option value="">All</option>
+                            </select>
                         </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <div class="input-icon right">
-                                    <input type="checkbox" class="form-control" id="cactive" ng-checked="currLicenseType.Active" checked />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div>---->
 
 
-                    <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="saveLicenseType(currLicenseType, 'U');">Save</button>
-                        <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
-                    </div>
+
                 </div>
+
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-green" data-dismiss="modal" ng-click="Save(currSelLicense, 'U');">Save</button>
+                    <button type="reset" data-dismiss="modal" class="btn btn-primary">Close</button>
+
+                </div>
+
             </div>
         </div>
     </div>
 
-        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static" style="z-index:1055">
+        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
             <div class="modal-header">
                 <h3 class="modal-title">Save confirmation!</h3>
@@ -578,34 +611,33 @@
             </div>
 
         </script>
-   
-    <script src="js/jquery-1.10.2.min.js"></script>
-    <script src="js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <!--loading bootstrap js-->
-    <script src="vendors/bootstrap/js/bootstrap.js"></script>
-    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
-
-
-    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
-    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
-    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
-    <script src="vendors/iCheck/icheck.min.js"></script>
-    <script src="vendors/iCheck/custom.min.js"></script>
-    <script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
-    <script src="js/jquery.menu.js"></script>
-    <script src="vendors/jquery-pace/pace.min.js"></script>
-    <script src="vendors/holder/holder.js"></script>
-    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
-    <!--LOADING SCRIPTS FOR PAGE-->
-    <script src="js/table-action.js"></script>
-    <!--CORE JAVASCRIPT-->
-    <script src="js/main.js"></script>
-    <script src="js/angular.js"></script>
+       
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<!--loading bootstrap js-->
+<script src="vendors/bootstrap/js/bootstrap.js"></script>
+<script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+        
+        
+<script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+<script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+<script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+<script src="vendors/iCheck/icheck.min.js"></script>
+<script src="vendors/iCheck/custom.min.js"></script>
+<script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
+<script src="js/jquery.menu.js"></script>
+<script src="vendors/jquery-pace/pace.min.js"></script>
+<script src="vendors/holder/holder.js"></script>
+<script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+<!--LOADING SCRIPTS FOR PAGE-->
+<script src="js/main.js"></script>
+<script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
-    <script src="js/ngStorage.js"></script>
-    <script src="js/LicenseTypes.js"></script>
-
+<script src="js/ngStorage.js"></script>
+<script src="js/LicenseDetails.js"></script>
+   
 
 </body>
+
 </html>

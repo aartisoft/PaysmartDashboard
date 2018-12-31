@@ -140,6 +140,9 @@
     <Content Include="Login.html" />
     <Content Include="scripts\ai.1.0.20-build00666.js" />
     <Content Include="scripts\ai.1.0.20-build00666.min.js" />
+    <Content Include="scripts\ai.1.0.20-build00666.js" />
+    <Content Include="scripts\ai.1.0.20-build00666.min.js" />
+    <Content Include="UI\AddFleetowner.html" />
     <Content Include="UI\AppUserDetails.html" />
     <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriver.html" />
@@ -3638,8 +3641,12 @@
     <Content Include="UI\js\jquery-1.10.2.min.js" />
     <Content Include="UI\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="UI\js\jquery-ui.js" />
+    <Content Include="UI\js\LicenseConfiguration.js" />
+    <Content Include="UI\js\LicenseDetails.js" />
+    <Content Include="UI\js\LicensePayments.js" />
     <Content Include="UI\js\LicensePricing.js" />
     <Content Include="UI\js\Licensetype.js" />
+    <Content Include="UI\js\LicenseTypes.js" />
     <Content Include="UI\js\login.js" />
     <Content Include="UI\js\main.js" />
     <Content Include="UI\js\MandatoryUserDoc.js" />
@@ -3669,6 +3676,9 @@
     <Content Include="UI\js\VehicleLayout.js" />
     <Content Include="UI\js\VehicleList.js" />
     <Content Include="UI\js\VehiclePricing.js" />
+    <Content Include="UI\LicenseConfguration.html" />
+    <Content Include="UI\LicenseDetails.html" />
+    <Content Include="UI\LicensePayments.html" />
     <Content Include="UI\LicensePricing.html" />
     <Content Include="UI\LicenseTypes.html" />
     <Content Include="UI\MandatoryUserDocs.html" />
@@ -5109,8 +5119,11 @@
     <Compile Include="Controllers\FleetOwnerVehicleScheduleController.cs" />
     <Compile Include="Controllers\FleetRoutesController.cs" />
     <Compile Include="Controllers\HourBasedPricingController.cs" />
-    <Compile Include="Controllers\LicenseController.cs" />
+    <Compile Include="Controllers\LicenseDetailsController.cs" />
+    <Compile Include="Controllers\LicensePayment.cs" />
+    <Compile Include="Controllers\LicensePaymentsController.cs" />
     <Compile Include="Controllers\LicensePricingController.cs" />
+    <Compile Include="Controllers\licenseTController.cs" />
     <Compile Include="Controllers\LOGINController.cs" />
     <Compile Include="Controllers\MandatoryDocsController.cs" />
     <Compile Include="Controllers\MeteredTaxiPackageController.cs" />
