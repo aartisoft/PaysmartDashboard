@@ -2,22 +2,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | Configuration | Roles</title>
+    <title>Home | BTPOS | VehiclePricing</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
-    <!--Loading bootstrap css-->    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--Loading bootstrap css-->
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
     <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
-    
     <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
     <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
-    
+
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetRoles();" ng-model="roles">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetVehiclePrices();" ng-model="pricedetails">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -90,6 +89,9 @@
                         </li>
                     </ul>
                 </div>
+
+
+
             </nav>
             <!--END TOPBAR-->
             <div id="wrapper">
@@ -155,7 +157,7 @@
                         </li>-->
                                 </ul>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="#">
                                     <i class="fa fa-credit-card">
                                         <div class="icon-bg bg-dark"></div>
@@ -163,11 +165,28 @@
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Company Management</span></a></li>
-                                    <li>
+                                    <li class="active">
                                         <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Notifications"><i class="fa fa-taxi"></i><span class="submenu-title">Vehicle Management</span></a>
                                         <ul class="nav nav-third-level">
-                                            <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-car"></i><span class="submenu-title">Vehicle List</span></a></li>
+                                            <li ><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-car"></i><span class="submenu-title">Vehicle List</span></a></li>
                                             <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assigning Drivers"><i class="fa fa-user"></i><span class="submenu-title">Assign Driver</span></a></li>
+                                            <!--<li><a href="Routedetails.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Layouts"><i class="fa fa-globe"></i><span class="submenu-title">Route Availability</span></a></li>-->
+                                            <li><a href="VehicleLayout.html" data-toggle="tooltip" data-placement="right" title="Details of Assigning Drivers"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Layout Schedule</span></a></li>
+                                            <li class="active"><a href="VehiclePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Assigning Drivers"><i class="fa fa-money"></i><span class="submenu-title">Vehicle Pricing</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <!--Driver Mangement-->
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Drivers'"><i class="fa fa-user"></i><span class="submenu-title">Driver Management</span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of Drivers"><i class="fa fa-user"></i><span class="submenu-title">Driver List</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <!--Booking History-->
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Bookings'"><i class="fa fa-th-list fa-fw"></i><span class="submenu-title">Booking History</span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="BookingList.html" data-toggle="tooltip" data-placement="right" title="Details of Bookings"><i class="fa fa-th-list fa-fw"></i><span class="submenu-title">Booking List</span></a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -176,27 +195,6 @@
                                             <li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Fleet Owners</span></a></li>
                                             <li><a href="Users.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-user"></i><span class="submenu-title">User Details</span></a></li>
                                             <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">User Roles</span></a></li>
-                                            <li><a href="AppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">App Users</span></a></li>
-                                            <li><a href="BusinessAppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Business App Users</span></a></li>
-                                            <!--<li><a href="BusinessAppUsersdetails.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Business App Users details</span></a></li-->>
-
-
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Roles  of Users'"><i class="fa fa-user"></i><span class="submenu-title"> Role Management</span></a>
-                                        <ul class="nav nav-third-level">
-                                            <!--<li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Fleet Owners</span></a></li>
-                                <li><a href="Users.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-user"></i><span class="submenu-title">User Details</span></a></li>
-                                <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">User Roles</span></a></li>
-                                <li><a href="AppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">App Users</span></a></li>
-                                <li><a href="BusinessAppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Business App Users</span></a></li>-->
-                                            <!--<li><a href="BusinessAppUsersdetails.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Business App Users details</span></a></li-->>
-                                            <li><a href="Roles.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Roles </span></a></li>
-                                            <li><a href="Roledetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Role Details</span></a></li>
-
-
                                         </ul>
                                     </li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket"><i class="fa fa-th-large"></i><span class="submenu-title">package Management</span></a></li>
@@ -247,12 +245,13 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Roles</div>
+                            <div class="page-title">VehiclePricing</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="#">Configuration</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="Roles.html">Roles</a></li>
+                            <li><a href="#">Flight Pricing</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+
+                            <li><a href="FlightPricing.html">FlightPricing</a></li>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -268,114 +267,163 @@
                                             <div class="col-lg-12">
 
 
-                                               
+                                                <div class="table-container">
+                                                    <div class="row mbm">
+
+                                                        <div class="actions">
+                                                            <!----<button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add New Stop</button></a>--->
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add FlightPricing</button>
+                                                        </div>
 
 
-                                                    <div class="actions">
-                                                        <!-----<a href="CreateRole.html"><button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Create Role</button></a>---->
-                                                        <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Create Role</button>
-                                                    </div>
-                                                    <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header modal-header-primary">
-                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                    <h4 id="modal-header-primary-label" class="modal-title">Edit Roles</h4>
-                                                                </div>
-                                                                <div class="modal-body" ng-model="currRole">
-                                                                    <div class="row">
+                                                        <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header modal-header-primary">
+                                                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                        <h4 id="modal-header-primary-label" class="modal-title">Edit FlightPricing</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" ng-model="pricing">
 
-                                                                        <div class="col-md-3">
-                                                                            <div class="form-group has-success" style="text-align:right">
-                                                                                <label for="inputFirstName" class="control-label">Name:<span class='require'>*</span></label>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="srno" class="control-label">FlightNo:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="pricing.SrNo" /></div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-md-5">
-                                                                            <div class="form-group">
-                                                                                <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="currRole.Name" /></div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="Duration" class="control-label">Source:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="pricing.Duration" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Destination:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.KiloMtr" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Base Amount:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.IndicaRate" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Tax:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.IndigoRate" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Distance:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.InnovaRate" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Total:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.Tag" /></div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-3">
-                                                                            <div class="form-group has-success" style="text-align:right">
-                                                                                <label for="inputFirstName" class="control-label">Description:</label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-5">
-                                                                            <div class="form-group">
-                                                                                <div class="input-icon right"><input type="text" class="form-control" id="ip" ng-model="currRole.Description" /></div>
-                                                                            </div>
+                                                                    <div class="form-actions">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(pricing, 'U');">Save</button>
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-3">
-                                                                            <div class="form-group has-success" style="text-align:right">
-                                                                                <label for="inputFirstName" class="control-label">Active:<span class='require'>*</span></label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <div class="input-icon right"><input type="checkbox" class="form-control" id="cactive" ng-model="currRole.Active" checked /></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-3">
-                                                                            <div class="form-group has-success" style="text-align:right">
-                                                                                <label for="inputFirstName" class="control-label">IsPublic:<span class='require'>*</span></label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <div class="input-icon right"><input type="checkbox" class="form-control" id="cactive" ng-model="currRole.IsPublic" checked /></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveRole(currRole);">Save</button>
-                                                                    <button type="reset" data-dismiss="modal" class="btn btn-default">Close</button>
-
                                                                 </div>
                                                             </div>
+
+
                                                         </div>
                                                     </div>
-
                                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                         <thead>
                                                             <tr>
 
 
-                                                                <th>Role Name</th>
-                                                                <th>Description</th>
-                                                                <th>Active</th>
-                                                                <th>IsPublic</th>
-                                                                <th>Update</th>
+                                                                <th width="10%">FlightNo</th>
+                                                                <th width="10%">Source</th>
+                                                                <th width="10%">Destination</th>
+                                                                <th>Base Amount</th>
+                                                                <th>Tax</th>
+                                                                <th>Distance</th>
+                                                                <th>Total</th>
+                                                                <th width="9%">Active</th>
+                                                                <th width="9%">Edit</th>
+
                                                             </tr>
-                                                        </thead>
                                                         <tbody>
+                                                            <tr ng-repeat="p in pricedetails">
 
-                                                            <tr ng-repeat="role in roles" class="gradeA" >
-                                                                <td>{{role.Name}}</td>
-                                                                <td>{{role.Description}}</td>
+                                                                <td>{{p.SrNo}}</td>
+                                                                <td>{{p.Duration}}</td>
+                                                                <td>{{p.KiloMtr}}</td>
+                                                                <td>{{p.IndicaRate}}</td>
+                                                                <td>{{p.IndigoRate}}</td>
+                                                                <td>{{p.InnovaRate}}</td>
 
+                                                                <td><input type="checkbox" checked /></td>
                                                                 <td>
-                                                                    <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="role.Active ==1" >
-                                                                </td>
-                                                                <td>
-                                                                    <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="role.IsPublic==1">
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCurrRole(role);">
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setpricedetails(p);">
                                                                         <i class="fa fa-edit"></i>&nbsp;
-                                                                        Edit
+
                                                                     </button>
                                                                 </td>
                                                             </tr>
+
 
                                                         </tbody>
 
@@ -385,58 +433,95 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header modal-header-primary">
                                                                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                    <h4 id="modal-header-primary-label" class="modal-title">Create Role</h4>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title">Add FlightPricing</h4>
                                                                 </div>
-                                                                <div class="modal-body" ng-model="newrole">
-
+                                                                <div class="modal-body" ng-model="price">
 
 
                                                                     <div class="row mbm">
                                                                         <div style="text-align:right">
-                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;"> Name <span class='require'>*</span></label>
+                                                                            <label for="srno" class="col-md-4 control-label">FlightNo <span class='require'>*</span></label>
+
                                                                         </div>
-                                                                        <div class="col-md-6">
-                                                                            <input id="Name" type="text" class="form-control" ng-model="newrole.Name" /><span class="help-block"></span>
+                                                                        <div class="col-md-4">
+                                                                            <input id="srno" type="text" placeholder="" class="form-control" ng-model="price.SrNo" /><span class="help-block"></span>
                                                                         </div>
                                                                     </div>
 
 
                                                                     <div class="row mbm">
                                                                         <div style="text-align:right">
-                                                                            <label for="Description" class="col-md-4 control-label">Description <span class='require'></span></label>
+                                                                            <label for="Duration" class="col-md-4 control-label">Source </label>
                                                                         </div>
-                                                                        <div class="col-md-6">
-                                                                            <input id="Name" type="text" class="form-control" ng-model="newrole.Description" /><span class="help-block"></span>
+                                                                        <div class="col-md-4">
+                                                                            <input id="Duration" type="text" placeholder="" class="form-control" ng-model="price.Duration" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">Destination<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.KiloMtr" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">Base Amount<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.IndicaRate" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">Tax<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.IndigoRate" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">Distance<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.InnovaRate" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">Total<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.Tag" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!--<div class="from-group">
+                                                                        <div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>
+                                                                        <div class="text-left">
+                                                                            <a href="#" class="btn btn-green">
+                                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                                Upload Logo
+                                                                            </a>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="row mbm">
                                                                         <div style="text-align:right">
-                                                                            <label for="Active" class="col-md-4 control-label" style="color:red;">IsPublic:<span class='require'>*</span></label>
+                                                                            <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
                                                                         </div>
-                                                                        <div class="col-md-6">
-                                                                            <input type="checkbox" checked />
-
-                                                                        </div>
-                                                                    </div>
-
-
-
-                                                                    <div class="row mbm">
-                                                                        <div style="text-align:right">
-                                                                            <label for="Active" class="col-md-4 control-label" style="color:red;">Active:<span class='require'>*</span></label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div><input type="checkbox" ng-checked="Types.Active" /></div>
+                                                                        <div class="col-md-4">
+                                                                            <input type="checkbox" checked ng-model="price.Active" />
 
                                                                         </div>
-                                                                    </div>
+                                                                    </div>-->
                                                                     <div class="form-actions">
                                                                         <div class="col-md-offset-3 col-md-9">
-                                                                            <button class="btn btn-primary" type="button" ng-click="saveNewRole(newrole);">Save</button>
+                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNewprice(price)">Save</button>
 
-
-                                                                            <a href="Roles.html" class="btn btn-green" ng-click="clearCurrRole()">Cancel</a>
+                                                                            <a href="Stops.html" class="btn btn-primary" ng-click="clearprice()">Cancel</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -447,22 +532,27 @@
                                                         </div>
 
                                                     </div>
+
+
                                                 </div>
                                             </div>
+
+
                                         </div>
-
-
                                     </div>
+
                                 </div>
+                                <!--END CONTENT-->
                             </div>
+                            <!--END PAGE WRAPPER-->
                         </div>
-                        <!--END CONTENT--><!--BEGIN FOOTER-->
-                        <div id="footer">
-                            <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                        </div>
-                        <!--END FOOTER-->
                     </div>
-                    <!--END PAGE WRAPPER-->
+
+                    <!--BEGIN FOOTER-->
+                    <div id="footer">
+                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                    </div>
+                    <!--END FOOTER-->
                 </div>
             </div>
         </div>
@@ -487,6 +577,7 @@
 
         </script>
     </div>
+
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
@@ -512,6 +603,6 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/roles.js"></script>
+    <script src="js/VehiclePricing.js"></script>
 </body>
 </html>

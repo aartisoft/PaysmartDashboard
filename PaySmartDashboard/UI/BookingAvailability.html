@@ -2,25 +2,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | Users | LicensePayments</title>
+    <title>Home | BTPOS | VehiclePricing</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-   
-    <!--Loading bootstrap css--> 
-    
+    <!--Loading bootstrap css-->
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
     <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
-    
     <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
     <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
-    
+
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-
-<body ng-app="myApp" ng-controller="myCtrl"  ng-init="GetCompanys();" ng-model="Groups">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetVehiclePrices();" ng-model="pricedetails">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -139,9 +135,6 @@
                                             <li><a href="Countries.html" data-toggle="tooltip" data-placement="right" title="Details of Contries"><i class="fa fa-angle-right"></i><span class="submenu-title">Countries</span></a></li>
                                             <li><a href="TypeGroups.html" data-toggle="tooltip" data-placement="right" title="Details of Type Groups"><i class="fa fa-angle-right"></i><span class="submenu-title">Type Groups</span></a></li>
                                             <li><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-angle-right"></i><span class="submenu-title">Types</span></a></li>
-                                            <li><a href="Stops.html" data-toggle="tooltip" data-placement="right" title="Details of stops"><i class="fa fa-angle-right"></i><span class="submenu-title">Stops</span></a></li>
-                                            <li><a href="MandatoryUserDocs.html" data-toggle="tooltip" data-placement="right" title="Details of Type User Docs"><i class="fa fa-angle-right"></i><span class="submenu-title">User Docs</span></a></li>
-                                            <li><a href="MandatoryVehicleDocs.html" data-toggle="tooltip" data-placement="right" title="Details of VehicleDocs"><i class="fa fa-angle-right"></i><span class="submenu-title">Vehicle Docs</span></a></li>
 
                                         </ul>
                                     </li>
@@ -160,22 +153,6 @@
                                     <li><a href="transactionsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Transaction Settings</span></a></li>
                                     <li><a href="statisticssettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Statistics Settings</span></a></li>
                                     <li><a href="reportsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Report Settings</span></a></li>
-                                    <li>
-                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Users'"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Route Settings</span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li><a href="Routes.html" data-toggle="tooltip" data-placement="right" title="Details of Routes"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Routes</span></a></li>
-                                            <li><a href="Routedetails.html" data-toggle="tooltip" data-placement="right" title="Details of Routes"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Route Details</span></a></li>
-                                            <li><a href="RouteFare.html" data-toggle="tooltip" data-placement="right" title="Details of RouteFare"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Route Fare</span></a></li>
-                                            <li><a href="FleetOwnerFare.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnerFare"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owner Fare</span></a></li>
-                                            <li><a href="FleetOwnerRoutesDetails.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnerRoute"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owner Route Details</span></a></li>
-                                            <li><a href="FleetOwnerVehicleSchedule.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnerVehicleSchedule"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owner Vehicle Schedule</span></a></li>
-                                            <li><a href="FleetOwnerRouteFare.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnerRouteFare"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owner Route Fare</span></a></li>
-
-                                        </ul>
-                                    </li>
-                                    <li><a href="DataLoad.html" data-toggle="tooltip" data-placement="right" title="Details of DataLoad"><i class="fa fa-angle-double-right"></i><span class="submenu-title">DataLoad</span></a></li>
-                                    <li><a href="EditHistory.html" data-toggle="tooltip" data-placement="right" title="Details of EditHistory"><i class="fa fa-angle-double-right"></i><span class="submenu-title">EditHistory</span></a></li>
-
                                     <!--<li><a href="AdvDeals.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Activity Log</span></a>
                         </li>-->
                                 </ul>
@@ -187,23 +164,15 @@
                                     </i><span class="menu-title">System Management</span><span class="fa arrow"></span>
                                 </a>
                                 <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Company Management</span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li><a href="Company.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Company Details </span></a></li>
-                                            <li><a href="CompanyRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Company Roles</span></a></li>
-                                            <li><a href="CompanyHierarchy.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-user"></i><span class="submenu-title">Company Hierarchy</span></a></li>
-                                        </ul>
-
-                                    </li>
-                                    <li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Company Management</span></a></li>
+                                    <li class="active">
                                         <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Notifications"><i class="fa fa-taxi"></i><span class="submenu-title">Vehicle Management</span></a>
                                         <ul class="nav nav-third-level">
-                                            <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-car"></i><span class="submenu-title">Vehicle List</span></a></li>
+                                            <li ><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-car"></i><span class="submenu-title">Vehicle List</span></a></li>
                                             <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assigning Drivers"><i class="fa fa-user"></i><span class="submenu-title">Assign Driver</span></a></li>
                                             <!--<li><a href="Routedetails.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Layouts"><i class="fa fa-globe"></i><span class="submenu-title">Route Availability</span></a></li>-->
                                             <li><a href="VehicleLayout.html" data-toggle="tooltip" data-placement="right" title="Details of Assigning Drivers"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Layout Schedule</span></a></li>
-                                            <!--<li><a href="VehiclePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Assigning Drivers"><i class="fa fa-money"></i><span class="submenu-title">Vehicle Pricing</span></a></li>-->
+                                            <li class="active"><a href="VehiclePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Assigning Drivers"><i class="fa fa-money"></i><span class="submenu-title">Vehicle Pricing</span></a></li>
                                         </ul>
                                     </li>
                                     <!--Driver Mangement-->
@@ -226,49 +195,13 @@
                                             <li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Fleet Owners</span></a></li>
                                             <li><a href="Users.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-user"></i><span class="submenu-title">User Details</span></a></li>
                                             <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">User Roles</span></a></li>
-                                            <li><a href="AppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">App Users</span></a></li>
-                                            <li><a href="BusinessAppUsers.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">Business App Users</span></a></li>
-
-
-
                                         </ul>
                                     </li>
-
-                                    <li>
-                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Roles  of Users'"><i class="fa fa-user"></i><span class="submenu-title"> Role Management</span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li><a href="Roles.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Roles </span></a></li>
-                                            <li><a href="Roledetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Role Details</span></a></li>
-                                        </ul>
-
-                                    <li class="active">
-                                        <a href="#"><i class="fa fa-angle-right"></i><span class="submenu-title"> Licenses</span><span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li><a href="LicenseTypes.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseTypes"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Types</span></a></li>
-                                            <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
-                                            <li class="active"><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
-                                            <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
-                                            <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
-
-                                        </ul>
-
-                                    <li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-th-large"></i><span class="submenu-title">Pricing Management</span><span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of  Vehicle dist Base Pricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Vehicle Dist Base Pricing</span></a></li>
-                                            <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of  Vehicle Hours Base Pricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Vehicle Hours Base Pricing</span></a></li>
-                                            <li><a href="MeteredTaxiDistBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of MeteredTaxiDistBasePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Metered Taxi DistBase Pricing</span></a></li>
-                                            <li><a href="MeteredTaxiPricinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Users MeteredTaxiPricinglist"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Metered Taxi Pricing list</span></a></li>
-
-                                        </ul>
-                                    </li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket"><i class="fa fa-th-large"></i><span class="submenu-title">package Management</span></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket Details"><i class="fa fa-th-large"></i><span class="submenu-title">Payment Management</span></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Contact"><i class="fa fa-th-large"></i><span class="submenu-title">Transaction Management</span></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Statistics Management</span></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Report Management</span></a></li>
-
-
 
                                     <!--<li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
                         <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
@@ -294,7 +227,6 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle Log MGNT</span></a></li>
                                 </ul>
                             </li>
-
                             <!--<li>
                     <a href="#">
                         <i class="fa fa-edit fa-fw">
@@ -308,19 +240,19 @@
                         </ul>
                     </div>
                 </nav>
-                <!--END SIDEBAR MENU--><!--BEGIN CHAT FORM-->
-                <!--END CHAT FORM--><!--BEGIN PAGE WRAPPER-->
+                <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
                 <div id="page-wrapper">
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">LicensePayments</div>
+                            <div class="page-title">Booking Availability</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="#">Users</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li>  <a href="LicensePayments.html">LicensePayments</a>
-                            <li>
+                            <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+
+                            <li><a href="BookingAvailability.html">BookingAvailability</a></li>
+
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -328,7 +260,7 @@
                     <div class="page-content">
                         <div id="table-action" class="row">
                             <div class="col-lg-12">
-                                <ul id="tableactiondTab" class="nav nav-tabs"></ul>
+
                                 <div id="tableactionTabContent" class="tab-content">
                                     <div id="table-table-tab" class="tab-pane fade in active">
                                         <div class="row">
@@ -338,31 +270,9 @@
                                                 <div class="table-container">
                                                     <div class="row mbm">
 
-
-                                                        <div class="btn-group mtm mbm pull-right" style="margin:10px">
-                                                            <a href="#" data-toggle="dropdown" class="btn btn-warning btn-sm dropdown-toggle">
-                                                                <i class="fa fa-wrench"></i>&nbsp;
-                                                                Export
-
-                                                            </a><ul class="dropdown-menu">
-
-                                                                <li>
-                                                                    <a href="#" onclick="$('#example-export').tableExport({type:'excel',escape:'false'});">
-                                                                        <img src="vendors/tableExport/icon/xls.png" width="24px" class="mrx" />Export to Excel
-                                                                    </a>
-                                                                    <a href="#" onclick="$('#example-export').tableExport({type:'pdf', pdfFontSize:'14', escape:'true'});">
-                                                                        <img src="vendors/tableExport/icon/pdf.png" width="24px" class="mrx" />Export to Pdf
-                                                                    </a>
-                                                                    <a href="#" onclick="$('#example-export').tableExport({type:'csv'});">
-                                                                        <img src="vendors/tableExport/icon/csv.png" width="24px" class="mrx" />Export to csv
-                                                                    </a>
-                                                                    <a href="#" onclick="$('#example-export').tableExport({type:'xml',escape:'false'});">
-                                                                        <img src="vendors/tableExport/icon/xml.png" width="24px" class="mrx" />Export to Xml
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-
-                                                            <!--</a><ul class="dropdown-menu"><li><a href="#" onclick="$('#example-export').tableExport({type:'json',escape:'false'});"><img src="vendors/tableExport/icon/json.png" width="24px" class="mrx" />Export to Json</a></li><li><a href="#" onclick="$('#example-export').tableExport({type:'xml',escape:'false'});"><img src="vendors/tableExport/icon/xml.png" width="24px" class="mrx" />Export to Xml</a></li><li><a href="#" onclick="$('#example-export').tableExport({type:'sql'});"><img src="vendors/tableExport/icon/sql.png" width="24px" class="mrx" />Export to Sql</a></li><li class="divider"></li><li><a href="#" onclick="$('#example-export').tableExport({type:'csv'});"><img src="vendors/tableExport/icon/csv.png" width="24px" class="mrx" />Export to csv</a></li><li><a href="#" onclick="$('#example-export').tableExport({type:'txt',escape:'false'});"><img src="vendors/tableExport/icon/txt.png" width="24px" class="mrx" />Export to TXT</a></li><li class="divider"></li><li><a href="#" onclick="$('#example-export').tableExport({type:'excel',escape:'false'});"><img src="vendors/tableExport/icon/xls.png" width="24px" class="mrx" />Export to Excel</a></li><li><a href="#" onclick="$('#example-export').tableExport({type:'doc',escape:'false'});"><img src="vendors/tableExport/icon/word.png" width="24px" class="mrx" />Export to word </a></li><li><a href="#" onclick="$('#example-export').tableExport({type:'powerpoint',escape:'false'});"><img src="vendors/tableExport/icon/ppt.png" width="24px" class="mrx" />Export to powerpoint</a></li><li class="divider"></li><li><a href="#" onclick="$('#example-export').tableExport({type:'pdf', pdfFontSize:'14', escape:'true'});"><img src="vendors/tableExport/icon/pdf.png" width="24px" class="mrx" />Export to Pdf</a></li></ul>-->
+                                                        <div class="actions">
+                                                            <!----<button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add New Stop</button></a>--->
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add BookingAvailability</button>
                                                         </div>
 
 
@@ -371,101 +281,278 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header modal-header-primary">
                                                                         <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                        <h4 id="modal-header-primary-label" class="modal-title">Edit Company Details</h4>
+                                                                        <h4 id="modal-header-primary-label" class="modal-title">Edit Booking Availability</h4>
                                                                     </div>
-                                                                    <div class="modal-body" ng-model="currGroup">
-                                                                        <table>
-                                                                            <tr>
-                                                                                <td> Name:</td>
-                                                                                <td><input type="text" id="Name" ng-model="currGroup.Name"></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td> admin:</td>
-                                                                                <td><input type="text" id="admin" ng-model="currGroup.admin"></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td> adminId:</td>
-                                                                                <td><input type="text" id="adminId" ng-model="currGroup.adminId"></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td> code:</td>
-                                                                                <td><input type="text" id="code" ng-model="currGroup.code"></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td> descr:</td>
-                                                                                <td><input type="text" id="descr" ng-model="currGroup.descr"></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>active:</td>
-                                                                                <td>
-                                                                                    <label class="checkbox">
-                                                                                        <input type="checkbox" ng-model="currGroup.active" />
-                                                                                    </label>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
+                                                                    <div class="modal-body" ng-model="pricing">
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="srno" class="control-label">FlightNo:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="pricing.SrNo" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="Duration" class="control-label">Date:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="pricing.Duration" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Avail Route:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.KiloMtr" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Book Seat:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.IndicaRate" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <!--<div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">IndigoRate:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.IndigoRate" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">InnovaRate:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.InnovaRate" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>-->
+                                                                        <!--<div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Tag:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="pricing.Tag" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>-->
                                                                     </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-                                                                        <button type="button" class="btn btn-primary" ng-click="save(currGroup);">Save</button>
+                                                                    <div class="form-actions">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(pricing, 'U');">Save</button>
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+
                                                         </div>
-
-
-
                                                     </div>
                                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                         <thead>
                                                             <tr>
-                                                                <th>transId</th>
-                                                                <th>expiryOn</th>
-                                                                <th>licenseFor</th>
-                                                                <th>licenseId</th>
-                                                                <th>licenseType</th>
-                                                                <th>paidon</th>
-                                                                <th>renewedon</th>
 
+
+                                                                <th width="10%">FlightNo</th>
+                                                                <th width="10%">Date</th>
+                                                                <th width="10%">Avail Route</th>
+                                                                <th>Book Seat</th>
+                                                                <!--<th>Indigorate</th>
+                                                                <th>Innovarate</th>-->
+                                                                <th width="9%">Active</th>
+                                                                <th width="9%">Edit</th>
 
                                                             </tr>
-                                                        </thead>
                                                         <tbody>
+                                                            <tr ng-repeat="p in pricedetails">
 
-                                                            <tr ng-repeat="group in Group" class="gradeA">
-                                                                <td>{{group.transId}}</td>
-                                                                <td>{{group.expiryOn}}</td>
-                                                                <td>{{group.licenseFor}}</td>
-                                                                <td>{{group.licenseId}}</td>
-                                                                <td>{{group.licenseType}}</td>
-                                                                <td>{{group.paidon}}</td>
-                                                                <td>{{group.renewedon}}</td>
+                                                                <td>{{p.SrNo}}</td>
+                                                                <td>{{p.Duration}}</td>
+                                                                <td>{{p.KiloMtr}}</td>
+                                                                <td>{{p.IndicaRate}}</td>
+                                                                <td>{{p.IndigoRate}}</td>
+                                                                <td>{{p.InnovaRate}}</td>
 
+                                                                <td><input type="checkbox" checked /></td>
+                                                                <td>
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setpricedetails(p);">
+                                                                        <i class="fa fa-edit"></i>&nbsp;
+
+                                                                    </button>
+                                                                </td>
                                                             </tr>
+
 
                                                         </tbody>
 
                                                     </table>
+                                                    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-header-primary">
+                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title">Add BookingAvailability</h4>
+                                                                </div>
+                                                                <div class="modal-body" ng-model="price">
+
+
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="srno" class="col-md-4 control-label">FlightNo <span class='require'>*</span></label>
+
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="srno" type="text" placeholder="" class="form-control" ng-model="price.SrNo" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="Duration" class="col-md-4 control-label">Date </label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="Duration" type="text" placeholder="" class="form-control" ng-model="price.Duration" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">Avail Route<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.KiloMtr" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">Book Seat<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.IndicaRate" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">IndigoRate<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.IndigoRate" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">InnovaRate<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.InnovaRate" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="inputMiddleName" class="col-md-4 control-label">Tag<span class='require'>*</span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input id="inputMiddleName" type="text" placeholder="" class="form-control" ng-model="price.Tag" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="from-group">
+                                                                        <div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>
+                                                                        <div class="text-left">
+                                                                            <a href="#" class="btn btn-green">
+                                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                                Upload Logo
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input type="checkbox" checked ng-model="price.Active" />
+
+                                                                        </div>-->
+                                                                    </div>
+                                                                    <div class="form-actions">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNewprice(price)">Save</button>
+
+                                                                            <a href="Stops.html" class="btn btn-primary" ng-click="clearprice()">Cancel</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </div>
+
+                                                    </div>
+
 
                                                 </div>
-
-
                                             </div>
+
+
                                         </div>
                                     </div>
 
-
                                 </div>
+                                <!--END CONTENT-->
                             </div>
+                            <!--END PAGE WRAPPER-->
                         </div>
                     </div>
-                    <!--END CONTENT--><!--BEGIN FOOTER-->
+
+                    <!--BEGIN FOOTER-->
                     <div id="footer">
                         <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
                     </div>
                     <!--END FOOTER-->
                 </div>
-                <!--END PAGE WRAPPER-->
             </div>
         </div>
         <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
@@ -475,11 +562,11 @@
             </div>
             <div class="modal-body">
                 <!--<ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>-->
+                    <li ng-repeat="item in items">
+                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                    </li>
+                </ul>
+                Selected: <b>{{ selected.item }}</b>-->
                 {{mssg}}
             </div>
             <div class="modal-footer">
@@ -488,32 +575,33 @@
             </div>
 
         </script>
-        </div>
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<!--loading bootstrap js-->
-<script src="vendors/bootstrap/js/bootstrap.js"></script>
-<script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
-       
-<script src="vendors/metisMenu/jquery.metisMenu.js"></script>
-<script src="vendors/slimScroll/jquery.slimscroll.js"></script>
-<script src="vendors/jquery-cookie/jquery.cookie.js"></script>
-<script src="vendors/iCheck/icheck.min.js"></script>
-<script src="vendors/iCheck/custom.min.js"></script>
-<script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
-<script src="js/jquery.menu.js"></script>
-<script src="vendors/jquery-pace/pace.min.js"></script>
-<script src="vendors/holder/holder.js"></script>
-<script src="vendors/responsive-tabs/responsive-tabs.js"></script>
-<!--LOADING SCRIPTS FOR PAGE-->
-<script src="js/table-action.js"></script>
-<!--CORE JAVASCRIPT-->
-<script src="js/main.js"></script>
-   <script src="js/angular.js"></script>
+    </div>
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--loading bootstrap js-->
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+
+
+    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="vendors/iCheck/custom.min.js"></script>
+    <script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
+    <script src="js/jquery.menu.js"></script>
+    <script src="vendors/jquery-pace/pace.min.js"></script>
+    <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <script src="js/table-action.js"></script>
+    <!--CORE JAVASCRIPT-->
+    <script src="js/main.js"></script>
+    <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
-<script src="js/ngStorage.js"></script>
-<script src="js/LicensePayments.js"></script>
-    
+    <script src="js/ngStorage.js"></script>
+    <script src="js/VehiclePricing.js"></script>
 </body>
 </html>
