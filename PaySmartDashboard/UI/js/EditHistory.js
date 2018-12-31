@@ -10,7 +10,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
     $scope.dashboardDS = $localStorage.dashboardDS;
 
     $scope.GetEditHistory = function () {
-        $http.get('/api/EditHistory/GetEditHistory?Task='+$scope.nn.Task).then(function (res, data) {
+        var dd=($scope.nn!=null)?$scope.nn.Task:null;
+        $http.get('/api/EditHistory/GetEditHistory?Task='+dd).then(function (res, data) {
             $scope.Edit = res.data;
         })
     }

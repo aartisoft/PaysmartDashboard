@@ -14,7 +14,7 @@ namespace PaySmartDashboard.Controllers
     public class CountriesController : ApiController
     {
         [HttpGet]
-
+        [Route("api/Countries/GetCountries")]
         public DataTable GetCountries()
         {
             DataTable Tbl = new DataTable();
