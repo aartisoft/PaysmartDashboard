@@ -190,7 +190,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Mobilenumber: app.Mobilenumber,
             Photo: $scope.imageSrc,
             Altemail: app.Altemail,
-            Gender:app.Gender,
+            Gender:app.Gender.Id,
             Status:app.Status.Id
 
         }

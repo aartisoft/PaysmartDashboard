@@ -25,9 +25,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $http.get('/api/RoleDetails/GetRoleDetails').then(function (res, data) {
-        $scope.Roledetails = res.data;
-    });
+    //$http.get('/api/Roledetails/getroledetails').then(function (res, data) {
+    //    $scope.Roledetails = res.data;
+    //});
 
     $scope.example1model = [];
     $scope.example1data = [{ id: 1, label: "View" }, { id: 2, label: "Edit" }, { id: 3, label: "Delete" }, , { id: 4, label: "Create" }];
