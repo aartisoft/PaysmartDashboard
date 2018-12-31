@@ -333,7 +333,7 @@ namespace PaySmartDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetCountry";
+            cmd.CommandText = "GetCountries";
             cmd.Connection = conn;
             SqlParameter a = new SqlParameter("@active", SqlDbType.Int);
             a.Value = active;

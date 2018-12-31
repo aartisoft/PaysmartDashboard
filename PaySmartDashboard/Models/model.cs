@@ -9,6 +9,7 @@ namespace PaySmartDashboard.Models
     {
         public int Id { set; get; }
         public int UserId { set; get; }
+       
         public string LoginInfo { set; get; }
         public string Passkey { set; get; }
         public string Salt { set; get; }
@@ -1274,4 +1275,42 @@ namespace PaySmartDashboard.Models
         public DateTime EntryTime { get; set; }
         public string CloseStatus { get; set; }
     }
+    public class LicensePayments
+    {
+        public DateTime expiryOn { get; set; }
+
+        public int Id { get; set; }
+
+        public string licenseFor { get; set; }
+
+        public int licenseId { get; set; }
+
+        public string licenseType { get; set; }
+
+        public DateTime paidon { get; set; }
+
+        public DateTime renewedon { get; set; }
+
+        public string transId { get; set; }
+
+    }
+    public class LicenseDetails
+    {
+        public int Id { get; set; }
+        public int LicenseTypeId { get; set; }
+        public int LicenseCatId { get; set; }
+        public int FeatureTypeId { get; set; }
+        public string FeatureName { get; set; }
+        public String FeatureLabel { get; set; }
+        public String LicenseCode { get; set; }
+        public String LicenseName { get; set; }
+        public String FeatureValue { get; set; }
+        public String LabelClass { get; set; }
+        public int Active { get; set; }
+        public DateTime? fromDate { get; set; }
+        public DateTime? toDate { get; set; }
+        public string insupddelflag { get; set; }
+        public int LicenseTypeGroupId { get; set; }
+    }
+
 }

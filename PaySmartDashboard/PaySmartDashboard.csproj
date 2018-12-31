@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -22,7 +21,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>0b7131fc</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -44,7 +44,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.AI.Agent.Intercept">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -72,12 +72,12 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.8.1\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.4\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    <Reference Include="Microsoft.Build.Framework">
+      <HintPath>..\packages\Microsoft.Build.Framework.14.3.0\lib\net45\Microsoft.Build.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -90,8 +90,8 @@
       <HintPath>bin\QRCoder.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http" />
@@ -136,11 +136,15 @@
     <Content Include="DBScripts\Typesdata.sql" />
     <Content Include="Global.asax" />
     <Content Include="Login.html" />
-    <Content Include="scripts\ai.0.22.9-build00167.js" />
-    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\ai.1.0.20-build00666.js" />
+    <Content Include="scripts\ai.1.0.20-build00666.min.js" />
+    <Content Include="scripts\ai.1.0.20-build00666.js" />
+    <Content Include="scripts\ai.1.0.20-build00666.min.js" />
+    <Content Include="UI\AddFleetowner.html" />
     <Content Include="UI\AppUserDetails.html" />
     <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriver.html" />
+    <Content Include="UI\AssginDriverDetails.html" />
     <Content Include="UI\BookingDetails.html" />
     <Content Include="UI\BookingList.html" />
     <Content Include="UI\BusinessAppUsers.html" />
@@ -3601,6 +3605,7 @@
     <Content Include="UI\js\angular.js" />
     <Content Include="UI\js\Appusers.js" />
     <Content Include="UI\js\AssginDriver.js" />
+    <Content Include="UI\js\Assigndriverdetails.js" />
     <Content Include="UI\js\BookingDetails.js" />
     <Content Include="UI\js\Bookinglist.js" />
     <Content Include="UI\js\bootstrap.min.js" />
@@ -3627,14 +3632,19 @@
     <Content Include="UI\js\FleetOwnerRouteDetails.js" />
     <Content Include="UI\js\FleetOwnerRouteFare.js" />
     <Content Include="UI\js\FleetOwnerRoutes.js" />
+    <Content Include="UI\js\FleetOwners.js" />
     <Content Include="UI\js\FleetOwnerVehicleSchedule.js" />
     <Content Include="UI\js\FleetRoutes.js" />
     <Content Include="UI\js\index.js" />
     <Content Include="UI\js\jquery-1.10.2.min.js" />
     <Content Include="UI\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="UI\js\jquery-ui.js" />
+    <Content Include="UI\js\LicenseConfiguration.js" />
+    <Content Include="UI\js\LicenseDetails.js" />
+    <Content Include="UI\js\LicensePayments.js" />
     <Content Include="UI\js\LicensePricing.js" />
     <Content Include="UI\js\Licensetype.js" />
+    <Content Include="UI\js\LicenseTypes.js" />
     <Content Include="UI\js\login.js" />
     <Content Include="UI\js\main.js" />
     <Content Include="UI\js\MandatoryUserDoc.js" />
@@ -3648,17 +3658,25 @@
     <Content Include="UI\js\Routedetails.js" />
     <Content Include="UI\js\RouteFare.js" />
     <Content Include="UI\js\Routes.js" />
+    <Content Include="UI\js\Schedulelist.js" />
     <Content Include="UI\js\source.js" />
     <Content Include="UI\js\Stops.js" />
+    <Content Include="UI\js\TaxiSrcDest.js" />
     <Content Include="UI\js\treasure-overlay-spinner.js" />
     <Content Include="UI\js\TypeGroups.js" />
     <Content Include="UI\js\Types.js" />
     <Content Include="UI\js\ui-bootstrap-tpls-1.3.3.js" />
     <Content Include="UI\js\Users.js" />
     <Content Include="UI\js\VehicleDetails.js" />
+    <Content Include="UI\js\VehicleDistancePricing.js" />
     <Content Include="UI\js\VehicleDistPricing.js" />
     <Content Include="UI\js\VehicleHoursBasePricing.js" />
+    <Content Include="UI\js\VehicleLayout.js" />
     <Content Include="UI\js\VehicleList.js" />
+    <Content Include="UI\js\VehiclePricing.js" />
+    <Content Include="UI\LicenseConfguration.html" />
+    <Content Include="UI\LicenseDetails.html" />
+    <Content Include="UI\LicensePayments.html" />
     <Content Include="UI\LicensePricing.html" />
     <Content Include="UI\LicenseTypes.html" />
     <Content Include="UI\MandatoryUserDocs.html" />
@@ -3675,17 +3693,22 @@
     <Content Include="UI\Routedetails.html" />
     <Content Include="UI\RouteFare.html" />
     <Content Include="UI\Routes.html" />
+    <Content Include="UI\ScheduleList.html" />
     <Content Include="UI\statisticssettings.html" />
     <Content Include="UI\Stops.html" />
     <Content Include="UI\transactionsettings.html" />
     <Content Include="UI\TypeGroups.html" />
     <Content Include="UI\Types.html" />
+    <Content Include="UI\UserDetails.html" />
+    <Content Include="UI\UserRoles.html" />
     <Content Include="UI\Users.html" />
     <Content Include="UI\usersettings.html" />
     <Content Include="UI\VehicleDestBasePricing.html" />
     <Content Include="UI\VehicleDetails.html" />
     <Content Include="UI\VehicleHoursBasePricing.html" />
+    <Content Include="UI\VehicleLayout.html" />
     <Content Include="UI\VehicleList.html" />
+    <Content Include="UI\VehiclePricing.html" />
     <Content Include="UI\vehiclesettings.html" />
     <Content Include="UI\vendors\animate.css\animate.css" />
     <Content Include="UI\vendors\bootstrap-clockface\CHANGELOG.txt" />
@@ -5078,6 +5101,7 @@
     <Compile Include="Controllers\ChargesDiscountsController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CompanyGroupsController.cs" />
+    <Compile Include="Controllers\CompanyRoles.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DataLoadController.cs" />
@@ -5093,8 +5117,11 @@
     <Compile Include="Controllers\FleetOwnerVehicleScheduleController.cs" />
     <Compile Include="Controllers\FleetRoutesController.cs" />
     <Compile Include="Controllers\HourBasedPricingController.cs" />
-    <Compile Include="Controllers\LicenseController.cs" />
+    <Compile Include="Controllers\LicenseDetailsController.cs" />
+    <Compile Include="Controllers\LicensePayment.cs" />
+    <Compile Include="Controllers\LicensePaymentsController.cs" />
     <Compile Include="Controllers\LicensePricingController.cs" />
+    <Compile Include="Controllers\licenseTController.cs" />
     <Compile Include="Controllers\LOGINController.cs" />
     <Compile Include="Controllers\MandatoryDocsController.cs" />
     <Compile Include="Controllers\MeteredTaxiPackageController.cs" />
@@ -5102,14 +5129,17 @@
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\RoutedetailsController.cs" />
     <Compile Include="Controllers\RouteFareController.cs" />
-    <Compile Include="Controllers\StartReportController.cs" />
+    <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\TypeGroupsController.cs" />
     <Compile Include="Controllers\TypesController.cs" />
+    <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VehicleConfigController.cs" />
     <Compile Include="Controllers\VehicleDistPricingController.cs" />
+    <Compile Include="Controllers\VehicleLayoutController.cs" />
     <Compile Include="Controllers\VehicleMasterController.cs" />
+    <Compile Include="Controllers\VehiclePricingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -5117,9 +5147,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -5449,6 +5476,9 @@
     <Content Include="UI\Flags\ReadMe.rtf" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\PaysmartDashboard.pubxml" />
     <Content Include="UI\DataUploadTemplates\DriversList.csv" />
     <Content Include="UI\DataUploadTemplates\DriverVehicleAssignList.csv" />
@@ -5483,12 +5513,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-  </Target>
+  
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
