@@ -9,6 +9,7 @@ namespace PaySmartDashboard.Models
     {
         public int Id { set; get; }
         public int UserId { set; get; }
+       
         public string LoginInfo { set; get; }
         public string Passkey { set; get; }
         public string Salt { set; get; }
@@ -1117,4 +1118,199 @@ namespace PaySmartDashboard.Models
         public int CountryId { get; set; }
 
     }
+    public class VehicleDist
+    {
+        public string insupddelflag { get; set; }
+        public int Id { get; set; }
+        public int VehicleTypeId { get; set; }
+        public int FromKm { get; set; }
+        public int ToKm { get; set; }
+        public int PricingType { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+        public decimal Amount { get; set; }
+        public decimal PerUnitPrice { get; set; }
+        public int CountryId { get; set; }
+        public int VehicleGroupId { get; set; }
+    }
+    public class HourBase
+    {
+        public string insupddelflag { get; set; }
+        public int Id { get; set; }
+        public int VehicleTypeId { get; set; }
+        public DateTime? FromTime { get; set; }
+        public DateTime? ToTime { get; set; }
+        public int PricingType { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+        public int CountryId { get; set; }
+        public int VehicleGroupId { get; set; }
+        public int Hours { get; set; }
+        public decimal price { get; set; }
+
+    }
+    public class MeteredTaxiPackages
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Code { get; set; }
+        public string PackageName { get; set; }
+        public string Description { get; set; }
+        public int OpId { get; set; }
+        public int VehicleGroupId { get; set; }
+        public string VehicleTypeId { get; set; }
+
+    }
+    public class MeteredTaxiPackagePricing
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int PackageId { get; set; }
+        public decimal Srclat { get; set; }
+        public decimal Srclong { get; set; }
+        public decimal Destlat { get; set; }
+        public decimal Destlong { get; set; }
+        public string Source { get; set; }
+        public string Destination { get; set; }
+        public decimal Distance { get; set; }
+        public int PricingTypeId { get; set; }
+        public int UnitTypeId { get; set; }
+        public int UnitPrice { get; set; }
+        public decimal Amount { get; set; }
+        public string Code { get; set; }
+        public string Description { get; set; }
+        public int VehicleGroupId { get; set; }
+        public int VehicleTypeId { get; set; }
+        public int UnitId { get; set; }
+        public int FromValue { get; set; }
+        public int ToValue { get; set; }
+        public DateTime? EffectiveDate { get; set; }
+        public DateTime? ExpiryDate { get; set; }
+
+    }
+    
+    public class RouteFare
+    {
+        public int Id { get; set; }
+
+        public int RouteId { get; set; }
+        public string VehicleType { get; set; }
+
+
+        public int SourceStopId { get; set; }
+        public int DestinationStopId { get; set; }
+        public string Distance { get; set; }
+        public int PerUnitPrice { get; set; }
+
+        public int Amount { get; set; }
+
+        public String FareType { get; set; }
+        public int Active { get; set; }
+    }
+
+    public class FleetOwnerRouteStop
+    {
+        public int Id { get; set; }
+        public int RouteId { get; set; }
+        public int FleetOwnerId { get; set; }
+
+        public int StopId { get; set; }
+
+        public int StopNo { get; set; }
+        public String PreviousStop { get; set; }
+        public String NextStop { get; set; }
+
+        public int Active { get; set; }
+    }
+
+   
+
+   
+    public class FORouteFleetSchedule
+    {
+        // public int Id { get; set; }
+        public List<VehicleSchedule> VSchedule { get; set; }
+        public int VehicleId { get; set; }
+        public int RouteId { get; set; }
+        public int FleetOwnerId { get; set; }
+        public string insupddelflag { get; set; }
+    }
+    public class VehicleSchedule
+    {
+        public string StopName { get; set; }
+        public string StopCode { get; set; }
+        public string StopNo { get; set; }
+        public int StopId { get; set; }
+        public int ArrivalHr { get; set; }
+        public int DepartureHr { get; set; }
+        public decimal? Duration { get; set; }
+        public int ArrivalMin { get; set; }
+        public int DepartureMin { get; set; }
+        public string ArrivalAMPM { get; set; }
+        public string DepartureAmPm { get; set; }
+        public DateTime arrivaltime { get; set; }
+        public DateTime departuretime { get; set; }
+        public string insupddelflag { get; set; }
+    }
+    public class start
+    {
+        public string flag { get; set; }
+        public int SlNo { get; set; }
+        public DateTime EntryDate { get; set; }
+        public int VechID { get; set; }
+        public string RegistrationNo { get; set; }
+        public string DriverName { get; set; }
+        public string PartyName { get; set; }
+        public string PickupPlace { get; set; }
+
+        public string DropPlace { get; set; }
+        public int StartMeter { get; set; }
+        public DateTime PickupTime { get; set; }
+        public string ExecutiveName { get; set; }
+        public decimal BookingNo { get; set; }
+        public DateTime EntryTime { get; set; }
+        public string CloseStatus { get; set; }
+    }
+    public class LicensePayments
+    {
+        public DateTime expiryOn { get; set; }
+
+        public int Id { get; set; }
+
+        public string licenseFor { get; set; }
+
+        public int licenseId { get; set; }
+
+        public string licenseType { get; set; }
+
+        public DateTime paidon { get; set; }
+
+        public DateTime renewedon { get; set; }
+
+        public string transId { get; set; }
+
+    }
+    public class LicenseDetails
+    {
+        public int Id { get; set; }
+        public int LicenseTypeId { get; set; }
+        public int LicenseCatId { get; set; }
+        public int FeatureTypeId { get; set; }
+        public string FeatureName { get; set; }
+        public String FeatureLabel { get; set; }
+        public String LicenseCode { get; set; }
+        public String LicenseName { get; set; }
+        public String FeatureValue { get; set; }
+        public String LabelClass { get; set; }
+        public int Active { get; set; }
+        public DateTime? fromDate { get; set; }
+        public DateTime? toDate { get; set; }
+        public string insupddelflag { get; set; }
+        public int LicenseTypeGroupId { get; set; }
+    }
+
 }
