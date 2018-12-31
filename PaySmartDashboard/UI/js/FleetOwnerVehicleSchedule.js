@@ -43,7 +43,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            //$scope.showdialogue("Saved successfully")
 
         });
 
@@ -71,7 +71,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            //$scope.showdialogue("Saved successfully")
         });
     }
 
@@ -100,7 +100,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.sdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            //$scope.showdialogue("Saved successfully")
             // GetRouteDetails1();
         });
     }
