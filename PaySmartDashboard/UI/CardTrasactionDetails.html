@@ -1,0 +1,618 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--Loading bootstrap css-->
+    <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
+    <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
+    <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+    <!--Loading style-->
+    <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
+    <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+    <link type="text/css" rel="stylesheet" href="vendors/animate.css/animate.css">
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
+    <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-news-ticker/jquery.news-ticker.css">
+    <!--Loading style-->
+    <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetDashboardDS();" ng-model="dashboardDS">
+
+    <!--BEGIN THEME SETTING-->
+    <!--BEGIN BACK TO TOP-->
+    <a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+    <div id="header-topbar-option-demo" class="page-header-topbar">
+        <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <a id="logo" href="indexnew.html" class="navbar-brand"><img src="images/logo-big.png" height="50" width="80" align="left" alt="" class="img-responsive"><font size="3">PaySmart Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
+            </div>
+            <div class="topbar-main">
+                <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+                <ul class="nav navbar navbar-top-links navbar-right mbn">
+
+                    <li class="dropdown topbar-user">
+                        <a data-hover="dropdown" href="Logfile.html" class="dropdown-toggle">&nbsp;<span class="hidden-xs">Session Log</span>&nbsp;</a>
+                        <ul class="dropdown-menu dropdown-user pull-right"></ul>
+                    </li>
+                    <li class="dropdown">
+                        <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">{{dashboardDS.Table2.length}}</span></a>
+                        <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table2.length==0">
+                            <li><p>You have 0 new alerts</p></li>
+                        </ul>
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li ng-repeat="A in dashboardDS.Table2">
+                                <p>
+                                    <a href="ShippingOrder.html"><i class="fa fa-user"></i>{{A.Message}}</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">{{dashboardDS.Table3.length}}</span></a>
+                        <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table3.length==0">
+                            <li><p>You have 0 new notifications</p></li>
+                        </ul>
+
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li><p>You have {{dashboardDS.Table3.length}} new messages</p></li>
+                            <li>
+                                <div class="dropdown-slimscroll">
+                                    <ul>
+                                        <li ng-repeat="N1 in dashboardDS.Table3">
+                                            <a href="#"><span class="info"><span class="name">{{N1.Name}}</span><span class="desc">{{N1.Message}}</span></span></a>
+                                        </li>
+
+                                        <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Smith<span class="label label-blue pull-right">New</span></span><span class="desc">This is a test notification...</span></span></a></li>
+                                        <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Doe<span class="label label-orange pull-right">10 min</span></span><span class="desc">This is a test notification....</span></span></a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="last"><a href="#">Read all messages</a></li>
+                        </ul>
+
+                        <!--<ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table1">
+                        <li><p>{{A.Message}}</p></li>
+                    </ul>-->
+                    </li>
+                    <li class="dropdown topbar-user">
+                        <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" height="20" width="20" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">{{uname}}</span>&nbsp;<span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-user pull-right">
+                            <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
+                            <li><a href="EmailInbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
+                            <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="extra-lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
+                            <li><a href="../login.html"><i class="fa fa-key"></i>Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--END TOPBAR-->
+        <div id="wrapper">
+            <!--BEGIN SIDEBAR MENU-->
+            <nav id="sidebar" role="navigation" data-step="2" data-position="right" class="navbar-default navbar-static-side">
+                <div class="sidebar-collapse menu-scroll">
+                    <ul id="side-menu" class="nav">
+                        <li class="user-panel">
+                            <div class="thumb"><img src="images/user.jpg" height="20" width="20" alt="" class="img-circle" /></div>
+                            <div class="info">
+                                <p>{{uname}}</p>
+                                <ul class="list-inline list-unstyled">
+                                    <li><a href="UserProfile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
+                                    <li><a href="email-inbox.html" data-hover="tooltip" title="Mail"><i class="fa fa-envelope"></i></a></li>
+                                    <li><a href="#" data-hover="tooltip" title="Setting" data-toggle="modal" data-target="#modal-config"><i class="fa fa-cog"></i></a></li>
+                                    <li><a href="login.html" data-hover="tooltip" title="Logout"><i class="fa fa-sign-out"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li class="active">
+                            <a href="indexnew.html" data-toggle="tooltip" data-placement="right" title="Application Dashboard for Equipment, Types, and Jobs">
+                                <i class="fa fa-tachometer fa-fw active">
+                                    <div class="icon-bg bg-orange"></div>
+                                </i><span class="menu-title">Dashboard</span>
+                            </a>
+                        </li>
+
+
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-globe">
+                                    <div class="icon-bg bg-dark"></div>
+                                </i><span class="menu-title">System Configuaration </span><span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="general.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">General Settings</span></a></li>
+                                <li><a href="company.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Company Settings</span></a></li>
+                                <li><a href="vehiclesettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Vehicle Settings</span></a></li>
+                                <li><a href="usersettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">User Settings</span></a></li>
+                                <li><a href="packagesettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Package Settings</span></a></li>
+                                <li><a href="paymentsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Payment Gateway Settings</span></a></li>
+                                <li><a href="transactionsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Transaction Settings</span></a></li>
+                                <li><a href="statisticssettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Statistics Settings</span></a></li>
+                                <li><a href="reportsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Report Settings</span></a></li>
+                                <!--<li><a href="AdvDeals.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Activity Log</span></a>
+                        </li>-->
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-credit-card">
+                                    <div class="icon-bg bg-dark"></div>
+                                </i><span class="menu-title">System Management</span><span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="companymanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Company Management</span></a></li>
+
+
+                                <li>
+                                    <a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Notifications"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Management</span></a>
+
+
+                                    <ul class="nav nav-third-level">
+                                        <li><a href="appusers.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-group"></i><span class="submenu-title">App Users</span></a></li>
+                                        <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle List</span></a></li>
+                                        <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-list-ol"></i><span class="submenu-title">Driver List</span></a></li>
+                                        <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-columns"></i><span class="submenu-title">Assign Driver</span></a></li>
+                                        <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-info"></i><span class="submenu-title">Booking Details</span></a></li>
+                                        <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Login Details of Vehicle"><i class="fa fa-user"></i><span class="submenu-title">Vehicle Login</span></a></li>
+                                        <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Logout Details of Vehicle"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Logout</span></a></li>
+                                        <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-times"></i><span class="submenu-title">Closing Report</span></a></li>
+                                        <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-list-alt"></i><span class="submenu-title">Start Report </span></a></li>
+                                        <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Dist Base Pricing</span></a></li>
+                                        <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-clock-o"></i><span class="submenu-title">Vehicle Hour Base Pricing</span></a></li>
+
+                                        <li><a href="MeteredTaxiDistBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi  Distance Prices</span></a></li>
+                                        <li><a href="MeteredTaxiPricinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi Distance Pricing</span></a></li>
+                                        <li><a href="TaxiSrcDest.html" data-toggle="tooltip" data-placement="right" title="List of all saved stops"><i class="fa fa-stop"></i><span class="submenu-title">Taxi Stops List</span></a></li>
+                                        <li>
+                                            <a href="ScheduleList.html" data-toggle="tooltip" data-placement="right" title="List of Schedules"><i class="fa fa-stop"></i><span class="submenu-title">Schedule List</span></a>
+                                        </li>
+                                    </ul>
+
+
+                                </li>
+                                <li>
+                                    <a href="usermanagement.html" data-toggle="tooltip" data-placement="right" title="Details of FAQ'S'"><i class="fa fa-th-large"></i><span class="submenu-title">User Management</span></a>
+
+                                    <ul class="nav nav-third-level">
+                                        <li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Users</span></a></li>
+                                        <li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owners</span></a></li>
+                                        <li><a href="Users.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-angle-double-right"></i><span class="submenu-title">User Details</span></a></li>
+                                        <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-angle-double-right"></i><span class="submenu-title">User Roles</span></a></li>
+
+                                    </ul>
+                                </li>
+                                <li><a href="packagemanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket"><i class="fa fa-th-large"></i><span class="submenu-title">package Management</span></a></li>
+                                <li><a href="paymentmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket Details"><i class="fa fa-th-large"></i><span class="submenu-title">Payment Management</span></a></li>
+
+
+                                <li>
+                                    <a href="transactionmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Contact"><i class="fa fa-th-large"></i><span class="submenu-title">Transaction Management</span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li><a href="CardList.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">CardList</span></a></li>
+                                        <li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
+                                        <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
+                                        <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
+                                        <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="statisticsmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Statistics Management</span></a></li>
+                                <li><a href="reportmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Report Management</span></a></li>
+
+                                <!--<li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
+                        <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
+                        <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
+                        <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>-->
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-edit fa-fw">
+                                    <div class="icon-bg bg-green"></div>
+                                </i><span class="menu-title">Log Management</span><span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="securitylog.html" data-toggle="tooltip" data-placement="right" title="Details of Tranasactions Master"><i class="fa fa-list-alt"></i><span class="submenu-title">Security Events Monitoring</span></a></li>
+                                <li><a href="companylog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Company Log MGNT</span></a></li>
+                                <li><a href="userlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">User Log MGNT</span></a></li>
+                                <li><a href="packagelog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Package Log MGNT</span></a></li>
+                                <li><a href="paymentlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Payment Gateway Log MGNT</span></a></li>
+                                <li><a href="transactionlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Transaction Log MGNT</span></a></li>
+                                <li><a href="statisticlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Statistics Log MGNT</span></a></li>
+                                <li><a href="reportlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Report Log MGNT</span></a></li>
+                                <li><a href="vehiclelog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle Log MGNT</span></a></li>
+                            </ul>
+                        </li>
+
+                        <!--<li>
+                    <a href="#">
+                        <i class="fa fa-edit fa-fw">
+                            <div class="icon-bg bg-green"></div>
+                        </i><span class="menu-title">Administration</span><span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of FleetOwners"><i class="fa fa-list-alt"></i><span class="submenu-title">Demo</span></a></li>
+                    </ul>
+                </li>-->
+                    </ul>
+
+                </div>
+            </nav>                  <!--END CHAT FORM--><!--BEGIN PAGE WRAPPER-->
+            <div id="page-wrapper">
+                <!--BEGIN TITLE & BREADCRUMB PAGE-->
+                <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                    <div class="page-header pull-left">
+                        <div class="page-title">TransactionDetails</div>
+                    </div>
+                    <!--<ol class="breadcrumb page-breadcrumb pull-right">
+                        <li><i class="fa fa-home"></i>&nbsp;<a href="#">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li><a href="#">Dashboard</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                    </ol>-->
+                    <div class="clearfix"></div>
+                </div>
+                <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
+                <div class="page-content">
+                    <div id="table-action" class="row">
+                        <div class="col-lg-12">
+                            <div id="tableactionTabContent" class="tab-content">
+                                <div id="table-table-tab" class="tab-pane fade in active">
+
+                                    <div class="col-lg-12">
+                                        <div class="table-container">
+                                            <div class="row mbm">
+                                                <div class="col-md-3" style="text-align:left">
+                                                    Transactionid:<select ng-options="s.name for s in Locations track by s.id" ng-model="s" style="width:100%">
+                                                        <option value="">All</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2" style="text-align:left">
+                                                    TransactionNo:<select ng-options="a.Name for a in jobStatus track by a.Id" ng-model="a" style="width:100%">
+                                                        <option value="">All</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2" style="text-align:left">
+                                                    TransactionLocation: <select ng-options="c.Client for c in Customers track by c.Id" ng-model="c" style="width:100%">
+                                                        <option value="">All</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3" style="text-align:left">
+                                                    TransactionType: <select ng-options="j.Name for j in jobsList1|filter:{LocationID:s.id, StatusId:a.Id,CustomerID:c.Id} track by j.ID" ng-model="j" ng-change="getJobDetails(j.ID)" style="width:100%">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-2" style="text-align:left">
+                                                    <!--<button class="btn btn-primary" type="button" ng-click="AddnewCard();">Create new job</button>-->
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row" ng-model="currJob">
+                                        <div class=" col-md-11" style="padding: 10px 20px 0px 20px; width: 100%">
+
+                                            <div class="portlet box portlet-grey" style="margin-bottom:10px">
+
+                                                <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                    <div class="caption"><a href="">Transaction Details</a></div>
+                                                    <div class="tools"><i class="fa fa-chevron-up"></i></div>
+                                                </div>
+
+                                                <div id="collapse0" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+
+                                                    <div class="panel-body">
+
+                                                        <div class="row mbm">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="Description" class="control-label" style="color:red;">Tranasaction Name:<span class='require'>*</span></label>
+                                                                        <div>
+                                                                            <input id="inputJobID" type="text" ng-model="currJob.Name" class="form-control" style="width:100%" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="Description" class="control-label" style="color:red;">Transaction#:<span class='require'>*</span></label>
+                                                                        <div>
+                                                                            <input id="inputJobID" type="text" ng-model="currJob.JobID" class="form-control" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="selCountry" class=" control-label" style="color:red;">Transactionid#:<span class='require'>*</span></label>
+                                                                    <div>
+                                                                        <input id="inputDateRate" type="text" ng-model="currJob.WellNo" class="form-control" /><span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-3">
+                                                                    <label for="selCountry" class=" control-label" style="color:red;">Transaction Status:<span class='require'>*</span></label>
+                                                                    <div>
+
+                                                                        <select ng-options="js.Name for js in jobStatus track by js.Id" ng-model="js" ng-value="js.Id" style="width:100%">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mbm">
+                                                            <div class="col-md-12">
+
+                                                                <div class="col-md-3">
+                                                                    <label for="Description" class=" control-label" style="color:red;">Customer: <span class='require'>*</span></label>
+                                                                    <div>
+
+                                                                        <select ng-options="jc.Client for jc in Customers track by jc.Id" ng-model="jc" ng-value="jc.Id" style="width:100%">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="Description" class=" control-label" style="color:red;">Location:<span class='require'>*</span></label>
+                                                                    <div>
+                                                                        <select ng-options="jl.name for jl in Locations track by jl.id" ng-model="jl" ng-value="jl.LocationID" style="width:100%">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="Description" class=" control-label" style="color:red;">CustomerPOC: <span class='require'>*</span></label>
+                                                                    <div>
+
+                                                                        <select ng-options="jc.Client for jc in Customers track by jc.Id" ng-model="jc" ng-value="jc.Id" style="width:100%">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="Description" class=" control-label" style="color:red;">TransactionType: <span class='require'>*</span></label>
+                                                                    <div>
+
+                                                                        <select ng-options="jc.Client for jc in Customers track by jc.Id" ng-model="jc" ng-value="jc.Id" style="width:100%">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mbm">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-3">
+                                                                    <label for="Description" class=" control-label" style="color:red;">From date:<span class='require'>*</span></label>
+                                                                    <div>
+                                                                        <input id="inputActEndDt" placeholder="mm-dd-yyyy" type="date" ng-model="currJob.EstEndDt" class="form-control" /><span class="help-block"></span>
+
+                                                                        <!--<div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.EstEndDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>-->
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="selCountry" class=" control-label">To date:</label>
+                                                                    <div>
+                                                                        <input id="inputActEndDt" type="date" ng-model="currJob.ActEndDt" class="form-control" /><span class="help-block"></span>
+
+                                                                        <!--<div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.ActualEndDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>-->
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="form-actions">
+                                                            <div style="text-align:center">
+                                                                <button ng-disabled="j==null || isSuperUser == 0" class="btn btn-green" ng-click="saveJobDetails(currJob, 'U')">Save</button>
+                                                                &nbsp;
+                                                                <button type="button" class="btn btn-danger" ng-click="getJobDetails(currJob.ID)">Cancel</button>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </iv>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--END CONTENT-->
+
+                </div>
+                <!--END PAGE WRAPPER-->
+                <!--BEGIN FOOTER-->
+                <div id="footer">
+                    <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                </div>
+                <!--END FOOTER-->
+            </div>
+        </div>
+
+    </div>
+
+    <div id="newPO" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">New Inventory Purchases</h4>
+                </div>
+                <div class="modal-body" ng-model="group">
+
+
+                    <div class="row mbm">
+
+                        <label for="Name" class="col-md-4 control-label" style="color:red;"> Item:<span class='require'>*</span></label>
+
+                        <div class="col-md-6">
+                            <select ng-options="I.ItemName for I in InventoryItem track by I.Id" class="form-control" ng-model="Group.Item">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row mbm">
+                        <label for="code" class="col-md-4 control-label" style="color:red;">SubCategory<span class='require'></span></label>
+
+                        <div class="col-md-6">
+
+                            <select ng-options="s.SubCategory for s in InventoryItem track by s.subcategoryid" class="form-control" ng-model="Item.SubCategory" disabled>
+                                <option value="">Select</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <label for="descr" class="col-md-4 control-label" style="color:red;">Quantity:  <span class='require'></span></label>
+
+                        <div class="col-md-6">
+                            <input id="Description" type="text" class="form-control" ng-model="Group.Quantity" /><span class="help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <label for="active" class="col-md-4 control-label" style="color:red;">Per Unit Price: <span class='require'></span></label>
+
+
+                        <div class="col-md-6">
+                            <input id="Description" type="text" class="form-control" ng-model="Group.PerUnitPrice" /><span class="help-block"></span>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <label for="selCompany" class="col-md-4 control-label" style="color:red;">Purchase Order Number:</label>
+
+                        <div class="col-md-6">
+                            <input id="Description" type="text" class="form-control" ng-model="Group.PurchaseOrderNumber" /><span class="help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <label for="selCompany" class="col-md-4 control-label" style="color:red;">Purchase Date:<span class='require'>*</span></label>
+                        <div class="col-md-6">
+                            <input type="date" ng-model="Group.PurchaseDate" ng-value="Date();"><div style="width:50%" data-date-format="dd/mm/yyyy" class="input-group date datepicker-filter mbs">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions" style="text-align:center">
+                        <div>
+                            <button class="btn btn-primary" type="button" ng-click="savepurchases(Group);">Save</button>
+
+                            <button data-dismiss="modal" class="btn btn-green" ng-click="clearGroup()">Cancel</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Save confirmation!</h3>
+        </div>
+        <div class="modal-body">
+            <!--<ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>-->
+            {{mssg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </script>
+
+
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--loading bootstrap js-->
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+
+
+    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="vendors/iCheck/custom.min.js"></script>
+    <!--<script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>-->
+    <script src="js/jquery.menu.js"></script>
+    <script src="vendors/jquery-pace/pace.min.js"></script>
+    <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <!--CORE JAVASCRIPT-->
+    <script src="js/main.js"></script>
+
+    <script src="js/angular.js"></script>
+
+
+    <script src="js/libs/angular-route.js"></script>
+    <script src="js/libs/angular-ui-router.js"></script>
+    <script src="js/libs/ocLazyLoad.js"></script>
+    <script src="js/libs/ui-bootstrap.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/charts-highchart-line.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script src="js/source.js"></script>
+
+
+    <script src="vendors/jquery-highcharts/highcharts.js"></script>
+    <script src="vendors/jquery-highcharts/exporting.js"></script>
+    <script src="js/charts-highchart-line.js"></script>
+    <!--CORE JAVASCRIPT-->
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>

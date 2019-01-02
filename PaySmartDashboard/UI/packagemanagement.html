@@ -1,0 +1,729 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--Loading bootstrap css-->
+    <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
+    <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
+    <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+    <!--Loading style-->
+    <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
+    <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+    <link type="text/css" rel="stylesheet" href="vendors/animate.css/animate.css">
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
+    <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-news-ticker/jquery.news-ticker.css">
+    <!--Loading style-->
+    <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData();" ng-model="dashboardDS">
+    <!--BEGIN THEME SETTING-->
+    <!--BEGIN BACK TO TOP-->
+    <a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+    <div id="header-topbar-option-demo" class="page-header-topbar">
+        <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <a id="logo" href="indexnew.html" class="navbar-brand"><img src="images/logo-big.png" height="50" width="80" align="left" alt="" class="img-responsive"><font size="3">PaySmart Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
+            </div>
+            <div class="topbar-main">
+                <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+                <ul class="nav navbar navbar-top-links navbar-right mbn">
+
+                    <li class="dropdown topbar-user">
+                        <a data-hover="dropdown" href="Logfile.html" class="dropdown-toggle">&nbsp;<span class="hidden-xs">Session Log</span>&nbsp;</a>
+                        <ul class="dropdown-menu dropdown-user pull-right"></ul>
+                    </li>
+                    <li class="dropdown">
+                        <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">{{dashboardDS.Table2.length}}</span></a>
+                        <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table2.length==0">
+                            <li><p>You have 0 new alerts</p></li>
+                        </ul>
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li ng-repeat="A in dashboardDS.Table2">
+                                <p>
+                                    <a href="ShippingOrder.html"><i class="fa fa-user"></i>{{A.Message}}</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">{{dashboardDS.Table3.length}}</span></a>
+                        <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table3.length==0">
+                            <li><p>You have 0 new notifications</p></li>
+                        </ul>
+
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li><p>You have {{dashboardDS.Table3.length}} new messages</p></li>
+                            <li>
+                                <div class="dropdown-slimscroll">
+                                    <ul>
+                                        <li ng-repeat="N1 in dashboardDS.Table3">
+                                            <a href="#"><span class="info"><span class="name">{{N1.Name}}</span><span class="desc">{{N1.Message}}</span></span></a>
+                                        </li>
+
+                                        <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Smith<span class="label label-blue pull-right">New</span></span><span class="desc">This is a test notification...</span></span></a></li>
+                                        <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Doe<span class="label label-orange pull-right">10 min</span></span><span class="desc">This is a test notification....</span></span></a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="last"><a href="#">Read all messages</a></li>
+                        </ul>
+
+                        <!--<ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table1">
+                            <li><p>{{A.Message}}</p></li>
+                        </ul>-->
+                    </li>
+                    <li class="dropdown topbar-user">
+                        <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" height="20" width="20" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">{{uname}}</span>&nbsp;<span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-user pull-right">
+                            <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
+                            <li><a href="EmailInbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
+                            <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="extra-lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
+                            <li><a href="../login.html"><i class="fa fa-key"></i>Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--END TOPBAR-->
+        <div id="wrapper">
+            <!--BEGIN SIDEBAR MENU-->
+            <nav id="sidebar" role="navigation" data-step="2" data-position="right" class="navbar-default navbar-static-side">
+                <div class="sidebar-collapse menu-scroll">
+                    <ul id="side-menu" class="nav">
+                        <li class="user-panel">
+                            <div class="thumb"><img src="images/user.jpg" height="20" width="20" alt="" class="img-circle" /></div>
+                            <div class="info">
+                                <p>{{uname}}</p>
+                                <ul class="list-inline list-unstyled">
+                                    <li><a href="UserProfile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
+                                    <li><a href="email-inbox.html" data-hover="tooltip" title="Mail"><i class="fa fa-envelope"></i></a></li>
+                                    <li><a href="#" data-hover="tooltip" title="Setting" data-toggle="modal" data-target="#modal-config"><i class="fa fa-cog"></i></a></li>
+                                    <li><a href="login.html" data-hover="tooltip" title="Logout"><i class="fa fa-sign-out"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li class="active">
+                            <a href="indexnew.html" data-toggle="tooltip" data-placement="right" title="Application Dashboard for Equipment, Types, and Jobs">
+                                <i class="fa fa-tachometer fa-fw active">
+                                    <div class="icon-bg bg-orange"></div>
+                                </i><span class="menu-title">Dashboard</span>
+                            </a>
+                        </li>
+
+
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-globe">
+                                    <div class="icon-bg bg-dark"></div>
+                                </i><span class="menu-title">System Configuaration </span><span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="general.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">General Settings</span></a></li>
+                                <li><a href="company.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Company Settings</span></a></li>
+                                <li><a href="vehiclesettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Vehicle Settings</span></a></li>
+                                <li><a href="usersettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">User Settings</span></a></li>
+                                <li><a href="packagesettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Package Settings</span></a></li>
+                                <li><a href="paymentsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Payment Gateway Settings</span></a></li>
+                                <li><a href="transactionsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Transaction Settings</span></a></li>
+                                <li><a href="statisticssettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Statistics Settings</span></a></li>
+                                <li><a href="reportsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Report Settings</span></a></li>
+                                <!--<li><a href="AdvDeals.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Activity Log</span></a>
+                                </li>-->
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <i class="fa fa-credit-card">
+                                    <div class="icon-bg bg-dark"></div>
+                                </i><span class="menu-title">System Management</span><span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="companymanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Company Management</span></a></li>
+                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Notifications"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Management</span></a></li>
+                                <li ><a href="usermanagement.html" data-toggle="tooltip" data-placement="right" title="Details of FAQ'S'"><i class="fa fa-th-large"></i><span class="submenu-title">User Management</span></a></li>
+                                <li class="active"><a href="packagemanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket"><i class="fa fa-th-large"></i><span class="submenu-title">package Management</span></a></li>
+                                <li><a href="paymentmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket Details"><i class="fa fa-th-large"></i><span class="submenu-title">Payment Management</span></a></li>
+                                <li><a href="transactionmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of Contact"><i class="fa fa-th-large"></i><span class="submenu-title">Transaction Management</span></a></li>
+                                <li><a href="statisticsmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Statistics Management</span></a></li>
+                                <li><a href="reportmanagement.html" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Report Management</span></a></li>
+
+                                <!--<li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
+                                <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
+                                <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
+                                <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>-->
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-edit fa-fw">
+                                    <div class="icon-bg bg-green"></div>
+                                </i><span class="menu-title">Log Management</span><span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="securitylog.html" data-toggle="tooltip" data-placement="right" title="Details of Tranasactions Master"><i class="fa fa-list-alt"></i><span class="submenu-title">Security Events Monitoring</span></a></li>
+                                <li><a href="companylog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Company Log MGNT</span></a></li>
+                                <li><a href="userlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">User Log MGNT</span></a></li>
+                                <li><a href="packagelog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Package Log MGNT</span></a></li>
+                                <li><a href="paymentlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Payment Gateway Log MGNT</span></a></li>
+                                <li><a href="transactionlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Transaction Log MGNT</span></a></li>
+                                <li><a href="statisticlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Statistics Log MGNT</span></a></li>
+                                <li><a href="reportlog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Report Log MGNT</span></a></li>
+                                <li><a href="vehiclelog.html" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle Log MGNT</span></a></li>
+                            </ul>
+                        </li>
+                        <!--<li>
+                            <a href="#">
+                                <i class="fa fa-edit fa-fw">
+                                    <div class="icon-bg bg-green"></div>
+                                </i><span class="menu-title">Administration</span><span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of FleetOwners"><i class="fa fa-list-alt"></i><span class="submenu-title">Demo</span></a></li>
+                            </ul>
+                        </li>-->
+                    </ul>
+                </div>
+            </nav>                <!--END CHAT FORM--><!--BEGIN PAGE WRAPPER-->
+            <div id="page-wrapper">
+                <!--BEGIN TITLE & BREADCRUMB PAGE-->
+                <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                    <div class="page-header pull-left">
+                        <div class="page-title">Dashboard</div>
+                    </div>
+                    <ol class="breadcrumb page-breadcrumb pull-right">
+                        <li><i class="fa fa-home"></i>&nbsp;<a href="#">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li><a href="#">Dashboard</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                    </ol>
+                    <div class="clearfix"></div>
+                </div>
+                <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
+                <div class="page-content">
+                    <div id="table-action" class="row">
+                        <div class="col-lg-12" ng-init="GetConfigData();">
+
+                            <div id="tableactionTabContent" class="tab-content">
+                                <div id="table-table-tab" class="tab-pane fade in active">
+                                    <div class="row">
+
+                                        <div class="col-lg-12">
+
+                                            <div class="table-container">
+                                                <div class="row mbm">
+                                                    <div class="col-md-3">
+                                                        Country:<select ng-options="c.Name for c in initdata.Table4 track by c.Id" ng-model="ct" ng-change="GetPackages()">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+                                                    <!--<div class="col-md-3">
+                                            Fleet Owner:<select ng-options="s.Name for s in initdata.Table5 track by s.Id" ng-model="s" ng-change="GetVehcileList()" id="test1">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>-->
+                                                    <div class="col-md-3" ng-init="init">
+                                                        Vehicle Group:<select ng-options="r.Name for r in initdata.Table track by r.Id" ng-model="r" ng-change="GetPackages()">
+
+                                                            <option value="">Select</option>
+                                                        </select>
+
+                                                    </div>
+                                                    <!--<div>
+                                            Registration Number <input type="text" ng-model="Registration" />
+                                        </div>-->
+
+                                                    <div class="actions">
+                                                        <!----   <button  type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add New Type</button>--->
+                                                        <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add New Package</button>
+
+                                                    </div>
+                                                    <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-header-primary">
+                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title"> Types</h4>
+                                                                </div>
+                                                                <div class="modal-body" ng-model="currGroup">
+
+
+                                                                    <div class="modal-body" ng-model="Types">
+
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">Operation:</label>
+                                                                            </div>
+
+                                                                            <div class="col-md-6">
+                                                                                <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                                                    <option value="">Select</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">Type:</label>
+                                                                            </div>
+
+                                                                            <div class="col-md-6">
+                                                                                <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                                                    <option value="">Select</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">Descount Charge:</label>
+                                                                            </div>
+
+                                                                            <div class="col-md-6">
+                                                                                <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                                                    <option value="">Select</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="Description" class="col-md-4 control-label"> From Date: <span class='require'></span></label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" ng-model="Editcharges.FromDate" class="form-control" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="Description" class="col-md-4 control-label"> To Date: <span class='require'></span></label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" ng-model="Editcharges.FromDate" class="form-control" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--<div class="row mbm">
+                                                                <div style="text-align:right">
+                                                                    <label for="selCountry" class="col-md-4 control-label" style="color:red;">Type Group:<span class='require'>*</span></label>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                                        <option value="">Select</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>-->
+
+                                                                        <div class="row mbm">
+
+                                                                            <div style="text-align:right">
+                                                                                <label for="Active" class="col-md-4 control-label">Active:<span class='require'></span></label>
+                                                                            </div>
+                                                                            <input type="checkbox" class="col-md-4 control-label" id="cactive" ng-checked="Types.Active" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(currGroup, 'U');">Save</button>
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header modal-header-primary">
+                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                            <h4 id="modal-header-primary-label" class="modal-title">Add New Package</h4>
+                                                        </div>
+
+
+
+                                                        <div class="modal-body" ng-model="packages">
+
+                                                            <div class="row mbm">
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-6">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label">Name:</label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <input id="inputFirstName" type="text" ng-model="packages.Name" class="form-control" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label">Code:</label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <input id="inputFirstName" type="text" ng-model="packages.Code" class="form-control" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mbm">
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-6">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label">From Date:</label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <input type="date" ng-model="packages.FromDate" class="form-control" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label">To Date:</label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <input type="date" ng-model="packages.ToDate" class="form-control" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mbm">
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-6">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label">Title:</label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <input id="inputFirstName" type="text" ng-model="packages.Title" class="form-control" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label">Description:</label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <input id="inputFirstName" type="text" ng-model="packages.Description" class="form-control" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mbm">
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-6">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label">Image One:</label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
+                                                                            <br />
+                                                                            <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
+                                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                                Upload Image
+                                                                            </a>
+                                                                            <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect1($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label">Image Two:</label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="120px" />
+                                                                            <br />
+                                                                            <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
+                                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                                Upload Image
+                                                                            </a>
+                                                                            <input type="file" name="fileInput" id="fileInput1" ng-file-select="onFileSelect2($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc1" ng-change="setimg();" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mbm">
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-6">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label">Vehicle Type :</label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="packages.vt" class="form-control">
+                                                                                <option value="">Select</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!--<div class="row mbm">
+                                                    <div style="text-align:right">
+                                                        <label for="selCountry" class="col-md-4 control-label" style="color:red;">Type Group:<span class='require'>*</span></label>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+                                                </div>-->
+
+                                                            <div class="row mbm">
+
+                                                                <div style="text-align:right">
+                                                                    <label for="Active" class="col-md-4 control-label">Active:<span class='require'></span></label>
+                                                                </div>
+                                                                <input type="checkbox" class="col-md-4 control-label" id="cactive" ng-checked="packages.Active" />
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveNew(packages, 'I');">Save</button>
+                                                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                            <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Name</th>
+                                                        <th>Description</th>
+                                                        <th>Code</th>
+                                                        <th>From Date</th>
+                                                        <th>To Date</th>
+                                                        <th>Title</th>
+                                                        <th>Vehicle Type</th>
+                                                        <th>Image One</th>
+                                                        <th>Image Two</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr ng-repeat="T in package">
+                                                        <td>{{T.Name}}</td>
+                                                        <td>{{T.Description}}</td>
+                                                        <td>{{T.Code}}</td>
+                                                        <td>{{T.FromDate}}</td>
+                                                        <td>{{T.ToDate}}</td>
+                                                        <td>{{T.Title}}</td>
+                                                        <td>{{T.VehicleType}}</td>
+                                                        <td class="img"><img src="{{T.ImageOne}}" alt="" title="" style="height:100px;width:130px" /></td>
+                                                        <td class="img"><img src="{{T.ImageTwo}}" alt="" title="" style="height:100px;width:130px" /></td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+                                            <div ng-repeat=" P in paging" ng-model="Types" class="form-actions">
+                                                <div style="margin-top: -10px; margin-left: 10px">
+                                                    {{page}} of {{P.totalpages}} pages
+                                                </div>
+                                                <div style="text-align: center; margin-top: -15px;">
+                                                    <button class="btn btn-primary btn-lg" ng-click="getselectval(s,'p')" ng-disabled="page == 1">Prev page </button>
+                                                    <button class="btn btn-green btn-lg" ng-click="getselectval(s, 'n')" ng-disabled="page == P.totalpages">Next page </button>
+                                                </div>
+                                                <div style="float:right;margin-top:-20px;margin-right:10px">
+                                                    {{Types.length}} of total {{P.recordcount }} results
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+    <div id="newPO" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">New Inventory Purchases</h4>
+                </div>
+                <div class="modal-body" ng-model="group">
+
+
+                    <div class="row mbm">
+
+                        <label for="Name" class="col-md-4 control-label" style="color:red;"> Item:<span class='require'>*</span></label>
+
+                        <div class="col-md-6">
+                            <select ng-options="I.ItemName for I in InventoryItem track by I.Id" class="form-control" ng-model="Group.Item">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row mbm">
+                        <label for="code" class="col-md-4 control-label" style="color:red;">SubCategory<span class='require'></span></label>
+
+                        <div class="col-md-6">
+
+                            <select ng-options="s.SubCategory for s in InventoryItem track by s.subcategoryid" class="form-control" ng-model="Item.SubCategory" disabled>
+                                <option value="">Select</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <label for="descr" class="col-md-4 control-label" style="color:red;">Quantity:  <span class='require'></span></label>
+
+                        <div class="col-md-6">
+                            <input id="Description" type="text" class="form-control" ng-model="Group.Quantity" /><span class="help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <label for="active" class="col-md-4 control-label" style="color:red;">Per Unit Price: <span class='require'></span></label>
+
+
+                        <div class="col-md-6">
+                            <input id="Description" type="text" class="form-control" ng-model="Group.PerUnitPrice" /><span class="help-block"></span>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <label for="selCompany" class="col-md-4 control-label" style="color:red;">Purchase Order Number:</label>
+
+                        <div class="col-md-6">
+                            <input id="Description" type="text" class="form-control" ng-model="Group.PurchaseOrderNumber" /><span class="help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <label for="selCompany" class="col-md-4 control-label" style="color:red;">Purchase Date:<span class='require'>*</span></label>
+                        <div class="col-md-6">
+                            <input type="date" ng-model="Group.PurchaseDate" ng-value="Date();"><div style="width:50%" data-date-format="dd/mm/yyyy" class="input-group date datepicker-filter mbs">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions" style="text-align:center">
+                        <div>
+                            <button class="btn btn-primary" type="button" ng-click="savepurchases(Group);">Save</button>
+
+                            <button data-dismiss="modal" class="btn btn-green" ng-click="clearGroup()">Cancel</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Save confirmation!</h3>
+        </div>
+        <div class="modal-body">
+            <!--<ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>-->
+            {{mssg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </script>
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--loading bootstrap js-->
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="vendors/iCheck/custom.min.js"></script>
+    <!--<script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>-->
+    <script src="js/jquery.menu.js"></script>
+    <script src="vendors/jquery-pace/pace.min.js"></script>
+    <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <!--CORE JAVASCRIPT-->
+    <script src="js/main.js"></script>
+
+    <script src="js/angular.js"></script>
+
+    <script src="js/libs/angular-route.js"></script>
+    <script src="js/libs/angular-ui-router.js"></script>
+    <script src="js/libs/ocLazyLoad.js"></script>
+    <script src="js/libs/ui-bootstrap.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/charts-highchart-line.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU&libraries=places&sensor=false"></script>
+    <!--<script src="https://code.angularjs.org/1.3.14/angular.js"></script>-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZwZ0AuNTA1DeZmspFcF6Sui1KhswdAts&v=3.0&sensor=true"></script>-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>-->
+    <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
+    <script src="js/treasure-overlay-spinner.js"></script>
+    <script src="js/source.js"></script>
+
+    <script src="vendors/jquery-highcharts/highcharts.js"></script>
+    <script src="vendors/jquery-highcharts/exporting.js"></script>
+    <script src="js/charts-highchart-line.js"></script>
+    <!--CORE JAVASCRIPT-->
+    <!--<script src="js/GetLocation.js"></script>-->
+</body>
+
+</html>

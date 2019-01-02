@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -5098,7 +5098,9 @@
     <Compile Include="Controllers\allocatedriverController.cs" />
     <Compile Include="Controllers\AppUsersController.cs" />
     <Compile Include="Controllers\BookAVehicleController.cs" />
+    <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\ChargesDiscountsController.cs" />
+    <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CompanyGroupsController.cs" />
     <Compile Include="Controllers\CompanyRoles.cs" />
@@ -5117,6 +5119,7 @@
     <Compile Include="Controllers\FleetOwnerVehicleScheduleController.cs" />
     <Compile Include="Controllers\FleetRoutesController.cs" />
     <Compile Include="Controllers\HourBasedPricingController.cs" />
+    <Compile Include="Controllers\LicenseController.cs" />
     <Compile Include="Controllers\LicenseDetailsController.cs" />
     <Compile Include="Controllers\LicensePayment.cs" />
     <Compile Include="Controllers\LicensePaymentsController.cs" />
@@ -5130,14 +5133,18 @@
     <Compile Include="Controllers\RoutedetailsController.cs" />
     <Compile Include="Controllers\RouteFareController.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
+    <Compile Include="Controllers\StartReportController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\TypeGroupsController.cs" />
     <Compile Include="Controllers\TypesController.cs" />
     <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\vechlogout.cs" />
     <Compile Include="Controllers\VehicleConfigController.cs" />
     <Compile Include="Controllers\VehicleDistPricingController.cs" />
     <Compile Include="Controllers\VehicleLayoutController.cs" />
+    <Compile Include="Controllers\VehicleloginController.cs" />
+    <Compile Include="Controllers\VehicleLogoutController.cs" />
     <Compile Include="Controllers\VehicleMasterController.cs" />
     <Compile Include="Controllers\VehiclePricingController.cs" />
     <Compile Include="Global.asax.cs">
@@ -5513,7 +5520,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
