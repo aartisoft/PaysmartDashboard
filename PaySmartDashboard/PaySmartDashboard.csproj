@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -145,6 +145,7 @@
     <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriver.html" />
     <Content Include="UI\AssginDriverDetails.html" />
+    <Content Include="UI\BookingAvailability.html" />
     <Content Include="UI\BookingDetails.html" />
     <Content Include="UI\BookingList.html" />
     <Content Include="UI\BusinessAppUsers.html" />
@@ -3595,6 +3596,9 @@
     <Content Include="UI\FleetOwners.html" />
     <Content Include="UI\FleetOwnerVehicleSchedule.html" />
     <Content Include="UI\FleetRoutes.html" />
+    <Content Include="UI\FlightBookingDetails.html" />
+    <Content Include="UI\FlightList.html" />
+    <Content Include="UI\FlightPricing.html" />
     <Content Include="UI\general.html" />
     <Content Include="UI\images\11.jpg" />
     <Content Include="UI\images\dashboard.png" />
@@ -5513,7 +5517,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
