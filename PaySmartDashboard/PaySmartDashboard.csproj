@@ -147,6 +147,7 @@
     <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriver.html" />
     <Content Include="UI\AssginDriverDetails.html" />
+    <Content Include="UI\BookingAvailability.html" />
     <Content Include="UI\BookingDetails.html" />
     <Content Include="UI\BookingList.html" />
     <Content Include="UI\BusinessAppUsers.html" />
@@ -3597,6 +3598,9 @@
     <Content Include="UI\FleetOwners.html" />
     <Content Include="UI\FleetOwnerVehicleSchedule.html" />
     <Content Include="UI\FleetRoutes.html" />
+    <Content Include="UI\FlightBookingDetails.html" />
+    <Content Include="UI\FlightList.html" />
+    <Content Include="UI\FlightPricing.html" />
     <Content Include="UI\general.html" />
     <Content Include="UI\images\11.jpg" />
     <Content Include="UI\images\dashboard.png" />
