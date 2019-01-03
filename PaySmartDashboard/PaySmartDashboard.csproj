@@ -82,8 +82,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="QRCoder, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -136,6 +136,8 @@
     <Content Include="DBScripts\Typesdata.sql" />
     <Content Include="Global.asax" />
     <Content Include="Login.html" />
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\ai.1.0.20-build00666.js" />
     <Content Include="scripts\ai.1.0.20-build00666.min.js" />
     <Content Include="scripts\ai.1.0.20-build00666.js" />
@@ -5120,11 +5122,7 @@
     <Compile Include="Controllers\FleetRoutesController.cs" />
     <Compile Include="Controllers\HourBasedPricingController.cs" />
     <Compile Include="Controllers\LicenseController.cs" />
-    <Compile Include="Controllers\LicenseDetailsController.cs" />
-    <Compile Include="Controllers\LicensePayment.cs" />
-    <Compile Include="Controllers\LicensePaymentsController.cs" />
     <Compile Include="Controllers\LicensePricingController.cs" />
-    <Compile Include="Controllers\licenseTController.cs" />
     <Compile Include="Controllers\LOGINController.cs" />
     <Compile Include="Controllers\MandatoryDocsController.cs" />
     <Compile Include="Controllers\MeteredTaxiPackageController.cs" />

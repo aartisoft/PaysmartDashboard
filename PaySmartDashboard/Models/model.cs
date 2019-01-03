@@ -1312,5 +1312,4 @@ namespace PaySmartDashboard.Models
         public string insupddelflag { get; set; }
         public int LicenseTypeGroupId { get; set; }
     }
-
-}
+ 
