@@ -9,7 +9,7 @@ namespace PaySmartDashboard.Models
     {
         public int Id { set; get; }
         public int UserId { set; get; }
-       
+
         public string LoginInfo { set; get; }
         public string Passkey { set; get; }
         public string Salt { set; get; }
@@ -529,7 +529,7 @@ namespace PaySmartDashboard.Models
         public string Pin { get; set; }
         public int CurrentStateId { get; set; }
         public string LayoutType { get; set; }
-        public string Company { get;set;}
+        public string Company { get; set; }
 
     }
     public class driverdetails
@@ -797,7 +797,7 @@ namespace PaySmartDashboard.Models
         public DateTime? POSfromdate { get; set; }
         public DateTime? POStodate { get; set; }
         public int POSActive { get; set; }
-      
+
     }
     public class LicensePricing
     {
@@ -1192,7 +1192,7 @@ namespace PaySmartDashboard.Models
         public DateTime? ExpiryDate { get; set; }
 
     }
-    
+
     public class RouteFare
     {
         public int Id { get; set; }
@@ -1227,9 +1227,9 @@ namespace PaySmartDashboard.Models
         public int Active { get; set; }
     }
 
-   
 
-   
+
+
     public class FORouteFleetSchedule
     {
         // public int Id { get; set; }
@@ -1312,4 +1312,4 @@ namespace PaySmartDashboard.Models
         public string insupddelflag { get; set; }
         public int LicenseTypeGroupId { get; set; }
     }
- 
+}

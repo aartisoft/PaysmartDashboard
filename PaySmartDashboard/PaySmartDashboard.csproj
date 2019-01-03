@@ -154,6 +154,7 @@
     <Content Include="UI\BusinessAppUsersdetails.html" />
     <Content Include="UI\BusinessOwnerDetails.html" />
     <Content Include="UI\BusinessOwnerList.html" />
+    <Content Include="UI\CartDetails.html" />
     <Content Include="UI\ChargesDiscounts.html" />
     <Content Include="UI\Company.html" />
     <Content Include="UI\CompanyHierarchy.html" />
@@ -5104,9 +5105,7 @@
     <Compile Include="Controllers\allocatedriverController.cs" />
     <Compile Include="Controllers\AppUsersController.cs" />
     <Compile Include="Controllers\BookAVehicleController.cs" />
-    <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\ChargesDiscountsController.cs" />
-    <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CompanyGroupsController.cs" />
     <Compile Include="Controllers\CompanyRoles.cs" />
@@ -5145,8 +5144,6 @@
     <Compile Include="Controllers\VehicleConfigController.cs" />
     <Compile Include="Controllers\VehicleDistPricingController.cs" />
     <Compile Include="Controllers\VehicleLayoutController.cs" />
-    <Compile Include="Controllers\VehicleloginController.cs" />
-    <Compile Include="Controllers\VehicleLogoutController.cs" />
     <Compile Include="Controllers\VehicleMasterController.cs" />
     <Compile Include="Controllers\VehiclePricingController.cs" />
     <Compile Include="Global.asax.cs">
