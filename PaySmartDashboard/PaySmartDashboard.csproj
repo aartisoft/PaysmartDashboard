@@ -82,8 +82,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="QRCoder, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -136,6 +136,8 @@
     <Content Include="DBScripts\Typesdata.sql" />
     <Content Include="Global.asax" />
     <Content Include="Login.html" />
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\ai.1.0.20-build00666.js" />
     <Content Include="scripts\ai.1.0.20-build00666.min.js" />
     <Content Include="scripts\ai.1.0.20-build00666.js" />
@@ -152,6 +154,7 @@
     <Content Include="UI\BusinessAppUsersdetails.html" />
     <Content Include="UI\BusinessOwnerDetails.html" />
     <Content Include="UI\BusinessOwnerList.html" />
+    <Content Include="UI\CartDetails.html" />
     <Content Include="UI\ChargesDiscounts.html" />
     <Content Include="UI\Company.html" />
     <Content Include="UI\CompanyHierarchy.html" />
@@ -5102,9 +5105,7 @@
     <Compile Include="Controllers\allocatedriverController.cs" />
     <Compile Include="Controllers\AppUsersController.cs" />
     <Compile Include="Controllers\BookAVehicleController.cs" />
-    <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\ChargesDiscountsController.cs" />
-    <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CompanyGroupsController.cs" />
     <Compile Include="Controllers\CompanyRoles.cs" />
@@ -5124,11 +5125,7 @@
     <Compile Include="Controllers\FleetRoutesController.cs" />
     <Compile Include="Controllers\HourBasedPricingController.cs" />
     <Compile Include="Controllers\LicenseController.cs" />
-    <Compile Include="Controllers\LicenseDetailsController.cs" />
-    <Compile Include="Controllers\LicensePayment.cs" />
-    <Compile Include="Controllers\LicensePaymentsController.cs" />
     <Compile Include="Controllers\LicensePricingController.cs" />
-    <Compile Include="Controllers\licenseTController.cs" />
     <Compile Include="Controllers\LOGINController.cs" />
     <Compile Include="Controllers\MandatoryDocsController.cs" />
     <Compile Include="Controllers\MeteredTaxiPackageController.cs" />
@@ -5147,8 +5144,6 @@
     <Compile Include="Controllers\VehicleConfigController.cs" />
     <Compile Include="Controllers\VehicleDistPricingController.cs" />
     <Compile Include="Controllers\VehicleLayoutController.cs" />
-    <Compile Include="Controllers\VehicleloginController.cs" />
-    <Compile Include="Controllers\VehicleLogoutController.cs" />
     <Compile Include="Controllers\VehicleMasterController.cs" />
     <Compile Include="Controllers\VehiclePricingController.cs" />
     <Compile Include="Global.asax.cs">
