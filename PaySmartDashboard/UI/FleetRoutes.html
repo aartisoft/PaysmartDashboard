@@ -1,0 +1,813 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+<head>
+    <title>Home | BTPOS | VehicleList</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--Loading bootstrap css-->
+
+    <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
+    <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
+    <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+
+    <!--Loading style-->
+    <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+    <link href="vendors/lightbox/css/lightbox.css" rel="stylesheet" />
+</head>
+<body ng-init="GetConfigData();">
+
+    <div>
+        <!--BEGIN THEME SETTING-->
+        <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+        <div id="header-topbar-option-demo" class="page-header-topbar">
+            <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a id="logo" href="index.html" class="navbar-brand"><img src="images/logo-big.png" height="50" width="80" align="left" alt="" class="img-responsive"><font size="3">PaySmart Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
+                </div>
+                <div class="topbar-main">
+                    <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+                    <ul class="nav navbar navbar-top-links navbar-right mbn">
+
+                        <li class="dropdown topbar-user">
+                            <a data-hover="dropdown" href="Logfile.html" class="dropdown-toggle">&nbsp;<span class="hidden-xs">Session Log</span>&nbsp;</a>
+                            <ul class="dropdown-menu dropdown-user pull-right"></ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">{{dashboardDS.Table2.length}}</span></a>
+                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table2.length==0">
+                                <li><p>You have 0 new alerts</p></li>
+                            </ul>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li ng-repeat="A in dashboardDS.Table2">
+                                    <p>
+                                        <a href="ShippingOrder.html"><i class="fa fa-user"></i>{{A.Message}}</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">{{dashboardDS.Table3.length}}</span></a>
+                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table3.length==0">
+                                <li><p>You have 0 new notifications</p></li>
+                            </ul>
+
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li><p>You have {{dashboardDS.Table3.length}} new messages</p></li>
+                                <li>
+                                    <div class="dropdown-slimscroll">
+                                        <ul>
+                                            <li ng-repeat="N1 in dashboardDS.Table3">
+                                                <a href="#"><span class="info"><span class="name">{{N1.Name}}</span><span class="desc">{{N1.Message}}</span></span></a>
+                                            </li>
+
+
+
+                                            <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Smith<span class="label label-blue pull-right">New</span></span><span class="desc">Lorem ipsum dolor sit amet...</span></span></a></li>
+                                            <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Doe<span class="label label-orange pull-right">10 min</span></span><span class="desc">Lorem ipsum dolor sit amet...</span></span></a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="last"><a href="#">Read all messages</a></li>
+                            </ul>
+
+                            <!--<ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table1">
+                                <li><p>{{A.Message}}</p></li>
+                            </ul>-->
+                        </li>
+                        <li class="dropdown topbar-user">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" height="20" width="20" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">{{uname}}</span>&nbsp;<span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-user pull-right">
+                                <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
+                                <li><a href="EmailInbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
+                                <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
+                                <li class="divider"></li>
+                                <li><a href="extra-lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
+                                <li><a href="../login.html"><i class="fa fa-key"></i>Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--END TOPBAR-->
+            <div id="wrapper">
+                <!--BEGIN SIDEBAR MENU-->
+                <nav id="sidebar" role="navigation" data-step="2" data-position="right" class="navbar-default navbar-static-side">
+                    <div class="sidebar-collapse menu-scroll">
+                        <ul id="side-menu" class="nav">
+                            <li class="user-panel">
+                                <div class="thumb"><img src="images/user.jpg" height="20" width="20" alt="" class="img-circle" /></div>
+                                <div class="info">
+                                    <p>{{uname}}</p>
+                                    <ul class="list-inline list-unstyled">
+                                        <li><a href="UserProfile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
+                                        <li><a href="email-inbox.html" data-hover="tooltip" title="Mail"><i class="fa fa-envelope"></i></a></li>
+                                        <li><a href="#" data-hover="tooltip" title="Setting" data-toggle="modal" data-target="#modal-config"><i class="fa fa-cog"></i></a></li>
+                                        <li><a href="login.html" data-hover="tooltip" title="Logout"><i class="fa fa-sign-out"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="active">
+                                <a href="index.html" data-toggle="tooltip" data-placement="right" title="Application Dashboard for Equipment, Types, and Jobs">
+                                    <i class="fa fa-tachometer fa-fw active">
+                                        <div class="icon-bg bg-orange"></div>
+                                    </i><span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-automobile">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">Vehicles</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles List"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle List</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Tracking"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle Tracking</span></a></li>
+                                    <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assign Driver"><i class="fa fa-columns"></i><span class="submenu-title">Assign Driver</span></a></li>
+                                    <li><a href="AssginStaff.html" data-toggle="tooltip" data-placement="right" title="Details of Assign  Staff"><i class="fa fa-columns"></i><span class="submenu-title">Assign Staff</span></a></li>
+                                    <li><a href="AssginStaff.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Layout"><i class="fa fa-columns"></i><span class="submenu-title">Vehicle Layout</span></a></li>
+                                    <li><a href="AssginStaff.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Routes"><i class="fa fa-columns"></i><span class="submenu-title">Vehicle Routes</span></a></li>
+                                    <li><a href="AssginStaff.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Route Pricing"><i class="fa fa-columns"></i><span class="submenu-title">Vehicle Route Pricing</span></a></li>
+                                    <li><a href="AssginStaff.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Scheduling"><i class="fa fa-columns"></i><span class="submenu-title">Vehicle Scheduling</span></a></li>
+                                    <li><a href="AssginStaff.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Bookings"><i class="fa fa-columns"></i><span class="submenu-title">Vehicle Bookings</span></a></li>
+                                    <li><a href="AssginStaff.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Earnings"><i class="fa fa-columns"></i><span class="submenu-title">Vehicle Earnings</span></a></li>
+
+                                </ul>
+                            </li>
+
+
+                            <li class="active">
+                                <a href="#">
+                                    <i class="fa fa-group">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Business Partners</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="BusinessOwnerList.html" data-toggle="tooltip" data-placement="right" title="Details of Business Owner"><i class="fa fa-angle-right"></i><span class="submenu-title">Business Partners</span></a></li>
+                                    <li><a href="FleetOwnerRoutes.html" data-toggle="tooltip" data-placement="right" title="Details of Business Owner"><i class="fa fa-angle-right"></i><span class="submenu-title">FleetOwnerRoute </span></a></li>
+                                    <li class="active"><a href="FleetRoutes.html" data-toggle="tooltip" data-placement="right" title="Details of Business Owner"><i class="fa fa-angle-right"></i><span class="submenu-title">Fleet Route </span></a></li>
+                                    <li><a href="FleetOwnerRouteFare.html" data-toggle="tooltip" data-placement="right" title="Details of Business Owner"><i class="fa fa-angle-right"></i><span class="submenu-title">Fleet Owner Route Fare </span></a></li>
+                                    <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-list-ol"></i><span class="submenu-title">Driver List</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Business Owner"><i class="fa fa-angle-right"></i><span class="submenu-title">License Detials</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Parter"><i class="fa fa-angle-right"></i><span class="submenu-title">Partner Staff</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of User Roles"><i class="fa fa-angle-right"></i><span class="submenu-title">User Roles</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Bookings"><i class="fa fa-angle-right"></i><span class="submenu-title">Bookings</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Earnings"><i class="fa fa-angle-right"></i><span class="submenu-title">Earnings</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Expenditure"><i class="fa fa-angle-right"></i><span class="submenu-title">Expenditure</span></a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-gears">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Pricing Configuration</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Charges Discounts"><i class="fa fa-angle-right"></i><span class="submenu-title">Charges Discounts</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Operation Charges Discounts"><i class="fa fa-list-ol"></i><span class="submenu-title">Operation Charges Discounts</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Packages"><i class="fa fa-angle-right"></i><span class="submenu-title">Packages</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Package Types"><i class="fa fa-angle-right"></i><span class="submenu-title">Package Types</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Package Pricing"><i class="fa fa-angle-right"></i><span class="submenu-title">Package Pricing</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-mobile">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">Bookings</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="BookingList.html" data-toggle="tooltip" data-placement="right" title="Details of Bookings List"><i class="fa fa-list-alt"></i><span class="submenu-title">Bookings List</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-th-list fa-fw">
+                                        <div class="icon-bg bg-blue"></div>
+                                    </i><span class="menu-title">Reports</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Bookings by Vehicle"><i class="fa fa-th-large"></i><span class="submenu-title">Bookings by Vehicle</span></a></li>
+
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Booking by Driver">
+                                            <i class="fa fa-th-large"></i><span class="submenu-title">
+                                                Bookings by Driver
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Booking by Type">
+                                            <i class="fa fa-tablet"></i><span class="submenu-title">
+                                                Bookings by Type
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of License Reports">
+                                            <i class="fa fa-tencent-weibo"></i><span class="submenu-title">
+                                                License Reports
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transaction Reports">
+                                            <i class="fa fa-filter"></i><span class="submenu-title">
+                                                Transaction Reports
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-gears">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">Configuration</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+
+                                    <!--<li>-->
+                                    <!--<a href="#"><i class="fa fa-angle-right"></i><span class="submenu-title">Master Data</span><span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">-->
+                                    <li><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-list-alt"></i><span class="submenu-title">Types</span></a></li>
+                                    <li><a href="TypeGroups.html" data-toggle="tooltip" data-placement="right" title="Details of TypeGroups"><i class="fa fa-list-alt"></i><span class="submenu-title">Type Groups</span></a></li>
+                                    <li><a href="Countries.html" data-toggle="tooltip" data-placement="right" title="Details of Countries"><i class="fa fa-list-alt"></i><span class="submenu-title">Countries</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Stops"><i class="fa fa-list-alt"></i><span class="submenu-title">Stops</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Routes"><i class="fa fa-list-alt"></i><span class="submenu-title">Routes</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Countries"><i class="fa fa-list-alt"></i><span class="submenu-title">Objects</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Roles"><i class="fa fa-list-alt"></i><span class="submenu-title">Roles</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Role Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Roles Details</span></a></li>
+                                    <!--</ul>-->
+                                    <!--</li>-->
+                                    <li><a href="BlockList.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">Block List</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Layouts"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle Layout</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Payment Gateway"><i class="fa fa-list-alt"></i><span class="submenu-title">Payment Gateway</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of SMS Gateway"><i class="fa fa-list-alt"></i><span class="submenu-title">SMS Gateway</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Email Gateway"><i class="fa fa-list-alt"></i><span class="submenu-title">Email Gateway</span></a></li>
+                                    <li><a href="MandatoryUserDocs.html" data-toggle="tooltip" data-placement="right" title="Details of User Documents"><i class="fa fa-briefcase"></i><span class="submenu-title">User Documents</span></a></li>
+                                    <li><a href="MandatoryVehicleDocs.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Docuements"><i class="fa fa-briefcase"></i><span class="submenu-title">Vehicle Documents</span></a></li>
+                                    <!--<li><a href="Operations.html" data-toggle="tooltip" data-placement="right" title="Details of Operations"><i class="fa fa-briefcase"></i><span class="submenu-title">Operations</span></a></li>-->
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-gears">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">Users and Organisation</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of User List"><i class="fa fa-briefcase"></i><span class="submenu-title">Users List</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of User Details"><i class="fa fa-briefcase"></i><span class="submenu-title">Users Details</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Companies"><i class="fa fa-briefcase"></i><span class="submenu-title">Companies</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Companies"><i class="fa fa-briefcase"></i><span class="submenu-title">Companies Details</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of User Roles"><i class="fa fa-briefcase"></i><span class="submenu-title">User Roles</span></a></li>
+                                    <!--<li><a href="EditHistory.html" data-toggle="tooltip" data-placement="right" title="Details of EditHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Edit History</span></a></li>
+                                    <li><a href="paymentHistory.html" data-toggle="tooltip" data-placement="right" title="Details of paymentHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Payment History</span></a></li>
+                                    <li><a href="FAQs.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">FAQs</span></a></li>
+                                    <li><a href="emailinbox.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">Emails</span></a></li>
+                                    <li><a href="smsinbox.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">SMS</span></a></li>-->
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-ticket">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Licenses</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of License Types"><i class="fa fa-briefcase"></i><span class="submenu-title">License Types</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of License Categories"><i class="fa fa-briefcase"></i><span class="submenu-title">License Categories</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of License Configuration"><i class="fa fa-briefcase"></i><span class="submenu-title">License Configuration</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of License Pricing"><i class="fa fa-briefcase"></i><span class="submenu-title">License Pricing</span></a></li>
+                                    <!--<li><a href="EditHistory.html" data-toggle="tooltip" data-placement="right" title="Details of EditHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Edit History</span></a></li>
+                                    <li><a href="paymentHistory.html" data-toggle="tooltip" data-placement="right" title="Details of paymentHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Payment History</span></a></li>
+                                    <li><a href="FAQs.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">FAQs</span></a></li>
+                                    <li><a href="emailinbox.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">Emails</span></a></li>
+                                    <li><a href="smsinbox.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">SMS</span></a></li>-->
+                                </ul>
+
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-ticket">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="DataLoad.html" data-toggle="tooltip" data-placement="right" title="Details of DataLoad"><i class="fa fa-briefcase"></i><span class="submenu-title">Data Load</span></a></li>
+                                    <li><a href="EditHistory.html" data-toggle="tooltip" data-placement="right" title="Details of EditHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Edit History</span></a></li>
+                                    <!--<li><a href="paymentHistory.html" data-toggle="tooltip" data-placement="right" title="Details of paymentHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Payment History</span></a></li>
+                                    <li><a href="FAQs.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">FAQs</span></a></li>
+                                    <li><a href="emailinbox.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">Emails</span></a></li>
+                                    <li><a href="smsinbox.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">SMS</span></a></li>-->
+                                </ul>
+
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-envelope-o">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">PaySmart App</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of App Users"><i class="fa fa-briefcase"></i><span class="submenu-title">App Users</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of User Profiles"><i class="fa fa-briefcase"></i><span class="submenu-title">User Profiles</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Demo Requests"><i class="fa fa-briefcase"></i><span class="submenu-title">Demo Requests</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Registrations"><i class="fa fa-briefcase"></i><span class="submenu-title">Registrations</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Business App users"><i class="fa fa-briefcase"></i><span class="submenu-title">Business App Users</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Businessd App User Profiles"><i class="fa fa-briefcase"></i><span class="submenu-title">Business App Users Profiles</span></a></li>
+                                    <!--<li>
+                                        <a href="#"><i class="fa fa-angle-right"></i><span class="submenu-title">Alerts</span><span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="Alerts.html" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-list-alt"></i><span class="submenu-title">Alerts</span></a></li>
+                                            <li><a href="AlertsConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Alerts Configuration"><i class="fa fa-list-alt"></i><span class="submenu-title">Alerts Configuration </span></a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-right"></i><span class="submenu-title">Notifications</span><span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+
+                                            <li><a href="Notifications.html" data-toggle="tooltip" data-placement="right" title="Details of Notifications"><i class="fa fa-list-alt"></i><span class="submenu-title">Notifications</span></a></li>
+                                            <li><a href="NotificationConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of NotificationConfiguration"><i class="fa fa-list-alt"></i><span class="submenu-title">NotificationConfiguration </span></a></li>
+
+                                        </ul>
+                                    </li>-->
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-globe">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">Web Portal</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel</span></a></li>
+                                    <li><a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Adv Configuration</span></a></li>
+                                    <!--<li><a href="AdvDeals.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Activity Log</span></a>
+                                    </li>-->
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-credit-card">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">Help/Support</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Alert</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Notifications"><i class="fa fa-th-large"></i><span class="submenu-title">Notifications</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of FAQ'S'"><i class="fa fa-th-large"></i><span class="submenu-title">FAQs</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket"><i class="fa fa-th-large"></i><span class="submenu-title">Trouble Tickets</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket Details"><i class="fa fa-th-large"></i><span class="submenu-title">Trouble Ticket Details</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Contact"><i class="fa fa-th-large"></i><span class="submenu-title">Contact Details</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">SOS Message</span></a></li>
+
+                                    <!--<li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
+                                    <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
+                                    <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
+                                    <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>-->
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-edit fa-fw">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Transactions</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Tranasactions Master"><i class="fa fa-list-alt"></i><span class="submenu-title">Transactions Master</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Transactions Details</span></a></li>
+                                </ul>
+                            </li>
+                            <!--<li>
+                                <a href="#">
+                                    <i class="fa fa-edit fa-fw">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Administration</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of FleetOwners"><i class="fa fa-list-alt"></i><span class="submenu-title">Demo</span></a></li>
+                                </ul>
+                            </li>-->
+                        </ul>
+                    </div>
+                </nav>
+                <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
+                <div id="page-wrapper">
+                    <!--BEGIN TITLE & BREADCRUMB PAGE-->
+                    <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                        <div class="page-header pull-left">
+                            <div class="page-title">Fleet Routes</div>
+                        </div>
+                        <ol class="breadcrumb page-breadcrumb pull-right">
+                            <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="#">Fleet</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="FleetRoutes.html">Fleet Routes</a>
+
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
+                    <div class="page-content">
+                        <div id="table-action" class="row">
+                            <div class="col-lg-12">
+
+                                <div id="tableactionTabContent" class="tab-content">
+                                    <div id="table-table-tab" class="tab-pane fade in active">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+
+
+                                                <div class="table-container">
+
+                                                    <div class="row mbm">
+                                                        <div class="col-md-2">
+                                                            Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:40%">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-2" ng-init="GetCompanies();">
+                                                            Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s" ng-change="GetFleetRoutes(s)" id="test1">
+
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus">Assign Route to fleet</button></a>
+
+                                                        </div>
+                                                    </div>
+                                                    <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-header-primary">
+                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title">Edit Fleet Routes</h4>
+                                                                </div>
+                                                                <div class="modal-body" ng-model="currFR">
+
+                                                                    <div class="row mbm">
+
+                                                                        <div style="text-align:right">
+
+
+                                                                            <label for=" descr" class="col-md-4 control-label" style="color:red;">
+                                                                                Company:<span class='require'>*</span>
+
+                                                                            </label>
+
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <select ng-options="cmp.Name for cmp in Companies1 track by cmp.Id" class="form-control" ng-model="cmp1" ng-change="GetFleetOwners();">
+
+                                                                                <option value="">Select</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mbm">
+
+
+                                                                    <div style="text-align:right">
+                                                                        <label for="descr" class="col-md-4 control-label" style="color:red;">Fleet Owner:<span class='require'>*</span></label>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+
+                                                                        <select ng-options="f.Name for f in cmpdata.Table track by f.Id" class="form-control" ng-model="s1" ng-change="GetRoutesForFO();">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                                <div class="row mbm">
+                                                                    <div style="text-align:right">
+                                                                        <label for="descr" class="col-md-4 control-label">Vehicle Reg No:<span class='require'></span></label>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+
+                                                                        <select ng-options="v.RegistrationNo for v in vehicles.Table track by v.Id" class="form-control" value="{{currFR.vehicles}}" ng-change="GetFleetRoutes();" ng-model="currFR.newfleet.v">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="row mbm">
+                                                                    <div style="text-align:right">
+
+                                                                        <label for="descr" class="col-md-4 control-label">Route: <span class='require'></span></label>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <select ng-options="r.routename for r in vehicles.Table1 track by r.RouteId" class="form-control" ng-model="currFR.newfleet.r">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="row mbm">
+                                                                    <div style="text-align:right">
+
+                                                                        <label for="descr" class="col-md-4 control-label">Effective From:<span class='require'></span></label>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <!--<div style="width:48%" data-date-format="dd/mm/yyyy" class="input-group date datepicker-filter mbs"><input type="text" class="form-control" ng-model="initdata.newfleet.fd" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>-->
+                                                                        <input type="date" class="form-control" ng-model="currFR.newfleet.fd" />
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="row mbm">
+                                                                    <div style="text-align:right">
+
+                                                                        <label for="active" class="col-md-4 control-label">Effective Till: <span class='require'></span></label>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <!----  <div style="width:48%" data-date-format="dd/mm/yyyy" class="input-group date datepicker-filter mbs"><input type="text" class="form-control" ng-model="initdata.newfleet.td" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>--->
+                                                                        <input type="date" class="form-control" ng-model="currFR.newfleet.td" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-actions">
+                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                        <button type="button" class="btn btn-green" ng-click="save(currFR);">Save</button>
+                                                                        <button type="button" class="btn btn-primary">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                        <thead>
+                                            <tr>
+
+                                                <th width="22%">Vehicle Reg No</th>
+                                                <th>Fleet Route</th>
+                                                <th>Effective From</th>
+                                                <th>Effective Till</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr ng-repeat="R in FleetRoute" class="gradeA">
+                                                <td>{{R.RegistrationNo}}</td>
+                                                <td>{{R.RouteName}}</td>
+                                                <td>{{R.EffectiveFrom}}</td>
+                                                <td>{{R.EffectiveTill}}</td>
+
+                                                <td>
+                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setRoute(R);">
+                                                        <i class="fa fa-edit"></i>&nbsp;
+                                                        Edit
+                                                    </button>
+
+
+                                                </td>
+                                                <td><div class="col-md-3 col-sm-4"><a ng-click="testdel(R);"><i class="fa fa-trash-o"></i></a></div></td>
+                                                <!--<td><div class="col-md-3 col-sm-4"><a href=""><i class="fa fa-trash-o"></i></a></div></td>-->
+
+
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+                                    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header modal-header-primary">
+                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                    <h4 id="modal-header-primary-label" class="modal-title">New FleetRoutes</h4>
+                                                </div>
+                                                <div class="modal-body" ng-init="GetCompanies();" ng-model="initdata">
+                                                    <div class="row mbm">
+                                                        <div style="text-align:right">
+
+                                                            <label for="descr" class="col-md-4 control-label" style="color:red;"> Company: <span class='require'>*</span></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <select ng-options="cmp.Name for cmp in Companies track by cmp.Id" class="form-control" ng-model="cmp" ng-change="GetFleetOwners();">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row mbm">
+                                                        <div style="text-align:right">
+                                                            <label for="descr" class="col-md-4" style="color:red;">Fleet Owner:<span class='require'>*</span></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <select ng-options="f.Name for f in cmpdata.Table track by f.Id" class="form-control" ng-model="s1" ng-change="GetRoutesForFO();">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row mbm">
+                                                        <div style="text-align:right">
+                                                            <div class="col-md-4">
+                                                                <label for="descr">Vehicle Reg No:<span class='require'></span></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <select ng-options="v.RegistrationNo for v in vehicles.Table track by v.Id" class="form-control" ng-change="GetFleetRoutes();" ng-model="initdata.newfleet.v">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row mbm">
+                                                        <div style="text-align:right">
+                                                            <div class="col-md-4">
+                                                                <label for="descr">Route: <span class='require'></span></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <select ng-options="r.routename for r in vehicles.Table1 track by r.RouteId" class="form-control" ng-model="initdata.newfleet.r">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row mbm">
+                                                        <div style="text-align:right">
+                                                            <div class="col-md-4">
+                                                                <label for="descr">Effective From:</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <!--<div style="width:48%" data-date-format="dd/mm/yyyy" class="input-group date datepicker-filter mbs"><input type="text" class="form-control" ng-model="initdata.newfleet.fd" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>-->
+                                                            <input type="date" class="form-control" ng-model="initdata.newfleet.fd" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mbm">
+                                                        <div style="text-align:right">
+                                                            <div class="col-md-4">
+                                                                <label for="active">Effective Till:<span class='require'></span></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <!----  <div style="width:48%" data-date-format="dd/mm/yyyy" class="input-group date datepicker-filter mbs"><input type="text" class="form-control" ng-model="initdata.newfleet.td" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>--->
+                                                            <input type="date" class="form-control" ng-model="initdata.newfleet.td" />
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-actions">
+                                                        <div class="col-md-offset-3 col-md-9">
+                                                            <button class="btn btn-green" type="button" ng-click="saveNewFleetRoutes(initdata);">Save</button>
+
+                                                            <a href="FleetRoutes.html" class="btn btn-primary">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--END CONTENT--><!--BEGIN FOOTER-->
+                    <div id="footer">
+                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                    </div>
+                    <!--END FOOTER-->
+                </div>
+
+                
+
+                
+
+                <!--BEGIN FOOTER-->
+                <div id="footer">
+                    <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                </div>
+                <!--END FOOTER-->
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Save confirmation!</h3>
+        </div>
+        <div class="modal-body">
+            <!--<ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>-->
+            {{mssg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </script>
+
+
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--loading bootstrap js-->
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+
+
+    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="vendors/iCheck/custom.min.js"></script>
+    <script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
+    <script src="js/jquery.menu.js"></script>
+    <script src="vendors/jquery-pace/pace.min.js"></script>
+    <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <script src="vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="js/table-action.js"></script>
+
+    <script>
+
+
+        $('.datepicker-filter').datepicker({
+            autoclose: true
+        });
+
+    </script>
+
+    <!--CORE JAVASCRIPT-->
+    <script src="js/main.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/fileupload/angular-file-upload.js"></script>
+    <script src="js/fileupload/angular-file-upload-shim.js"></script>
+    <script src="js/VehicleDetails.js"></script>
+
+    <script src="js/fileupload/Upload.js"></script>
+    <script src="vendors/lightbox/js/lightbox.js"></script>
+    <script src="js/FleetRoutes.js"></script>
+
+</body>
+</html>

@@ -14,7 +14,7 @@ namespace PaySmartDashboard.Controllers
     public class LOGINController : ApiController
     {
         [HttpPost]
-
+        [Route("api/LOGIN/ValidateCredentials")]
         public DataTable ValidateCredentials(UserLogin u)
         {
 

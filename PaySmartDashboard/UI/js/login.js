@@ -81,13 +81,13 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
                 $localStorage.userdetails = res.data;
                 $localStorage.pagesize = 10;
                 var roleid = $localStorage.userdetails[0].roleid;
-                window.location.href = "UI/index.html";
+                window.location.href = "UI/indexnew.html";
 
                 //switch (roleid) {
 
 
                 //    case 1:
-                //        window.location.href = "UI/index.html";
+                //        window.location.href = "UI/indexnew.html";
                 //        break;
                 //    case 2:
                 //        window.location.href = "UI/Index_finAdmin.html";
@@ -113,7 +113,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
                 //        window.location.href = "UI/Index_cmpUser.html";
                 //        break;
                 //    default:
-                //        window.location.href = "UI/index.html";
+                //        window.location.href = "UI/indexnew.html";
                 //        break;
 
                 //}

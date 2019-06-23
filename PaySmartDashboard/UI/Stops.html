@@ -1,0 +1,815 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home | BTPOS | Stops</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--Loading bootstrap css-->        
+    <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
+    <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->    
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
+    <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+    
+    <!--Loading style-->
+    <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetStops();" ng-model="Stops">
+    <div>
+        <!--BEGIN THEME SETTING-->
+        <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+        <div id="header-topbar-option-demo" class="page-header-topbar">
+            <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a id="logo" href="index.html" class="navbar-brand"><img src="images/logo-big.png" height="50" width="80" align="left" alt="" class="img-responsive"><font size="3">PaySmart Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
+                </div>
+                <div class="topbar-main">
+                    <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+                    <ul class="nav navbar navbar-top-links navbar-right mbn">
+
+                        <li class="dropdown topbar-user">
+                            <a data-hover="dropdown" href="Logfile.html" class="dropdown-toggle">&nbsp;<span class="hidden-xs">Session Log</span>&nbsp;</a>
+                            <ul class="dropdown-menu dropdown-user pull-right"></ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">{{dashboardDS.Table2.length}}</span></a>
+                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table2.length==0">
+                                <li><p>You have 0 new alerts</p></li>
+                            </ul>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li ng-repeat="A in dashboardDS.Table2">
+                                    <p>
+                                        <a href="ShippingOrder.html"><i class="fa fa-user"></i>{{A.Message}}</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">{{dashboardDS.Table3.length}}</span></a>
+                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table3.length==0">
+                                <li><p>You have 0 new notifications</p></li>
+                            </ul>
+
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li><p>You have {{dashboardDS.Table3.length}} new messages</p></li>
+                                <li>
+                                    <div class="dropdown-slimscroll">
+                                        <ul>
+                                            <li ng-repeat="N1 in dashboardDS.Table3">
+                                                <a href="#"><span class="info"><span class="name">{{N1.Name}}</span><span class="desc">{{N1.Message}}</span></span></a>
+                                            </li>
+
+
+
+                                            <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Smith<span class="label label-blue pull-right">New</span></span><span class="desc">Lorem ipsum dolor sit amet...</span></span></a></li>
+                                            <li><a href="#"><span class="avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" /></span><span class="info"><span class="name">John Doe<span class="label label-orange pull-right">10 min</span></span><span class="desc">Lorem ipsum dolor sit amet...</span></span></a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="last"><a href="#">Read all messages</a></li>
+                            </ul>
+
+                            <!--<ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table1">
+                        <li><p>{{A.Message}}</p></li>
+                    </ul>-->
+                        </li>
+                        <li class="dropdown topbar-user">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" height="20" width="20" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">{{uname}}</span>&nbsp;<span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-user pull-right">
+                                <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
+                                <li><a href="EmailInbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
+                                <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
+                                <li class="divider"></li>
+                                <li><a href="extra-lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
+                                <li><a href="../login.html"><i class="fa fa-key"></i>Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--END TOPBAR-->
+            <div id="wrapper">
+                <!--BEGIN SIDEBAR MENU-->
+                <nav id="sidebar" role="navigation" data-step="2" data-position="right" class="navbar-default navbar-static-side">
+                    <div class="sidebar-collapse menu-scroll">
+                        <ul id="side-menu" class="nav">
+                            <li class="user-panel">
+                                <div class="thumb"><img src="images/user.jpg" height="20" width="20" alt="" class="img-circle" /></div>
+                                <div class="info">
+                                    <p>{{uname}}</p>
+                                    <ul class="list-inline list-unstyled">
+                                        <li><a href="UserProfile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
+                                        <li><a href="email-inbox.html" data-hover="tooltip" title="Mail"><i class="fa fa-envelope"></i></a></li>
+                                        <li><a href="#" data-hover="tooltip" title="Setting" data-toggle="modal" data-target="#modal-config"><i class="fa fa-cog"></i></a></li>
+                                        <li><a href="login.html" data-hover="tooltip" title="Logout"><i class="fa fa-sign-out"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="active">
+                                <a href="indexnew.html" data-toggle="tooltip" data-placement="right" title="Application Dashboard for Equipment, Types, and Jobs">
+                                    <i class="fa fa-tachometer fa-fw active">
+                                        <div class="icon-bg bg-orange"></div>
+                                    </i><span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+
+                            <li class="active">
+                                <a href="#">
+                                    <i class="fa fa-globe">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">System Configuaration </span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li class="active">
+                                        <a href="general.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">General Settings</span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="Countries.html" data-toggle="tooltip" data-placement="right" title="Details of Contries"><i class="fa fa-angle-right"></i><span class="submenu-title">Countries</span></a></li>
+                                            <li><a href="TypeGroups.html" data-toggle="tooltip" data-placement="right" title="Details of Type Groups"><i class="fa fa-angle-right"></i><span class="submenu-title">Type Groups</span></a></li>
+                                            <li><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-angle-right"></i><span class="submenu-title">Types</span></a></li>
+                                            <li class="active"><a href="Stops.html" data-toggle="tooltip" data-placement="right" title="Details of stops"><i class="fa fa-angle-right"></i><span class="submenu-title">Stops</span></a></li>
+                                            <li><a href="MandatoryUserDocs.html" data-toggle="tooltip" data-placement="right" title="Details of Type User Docs"><i class="fa fa-angle-right"></i><span class="submenu-title">User Docs</span></a></li>
+                                            <li><a href="MandatoryVehicleDocs.html" data-toggle="tooltip" data-placement="right" title="Details of VehicleDocs"><i class="fa fa-angle-right"></i><span class="submenu-title">Vehicle Docs</span></a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Company Settings</span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="company.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Company Details</span></a></li>
+                                            <li><a href="CompanyRoles.html" data-toggle="tooltip" data-placement="right" title="Manage roles of Company"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Company Roles</span></a></li>
+                                            <li><a href="CompanyHierarchy.html" data-toggle="tooltip" data-placement="right" title="Manage hierarchy of Company"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Company Hierarchy</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="vehiclesettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Vehicle Settings</span></a></li>
+
+                                    <li>
+                                        <a href="usersettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">User Settings</span></a>
+
+                                    </li>
+                                    <li><a href="packagesettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Package Settings</span></a></li>
+                                    <li><a href="paymentsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Payment Gateway Settings</span></a></li>
+                                    <li><a href="transactionsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Transaction Settings</span></a></li>
+                                    <li><a href="statisticssettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Statistics Settings</span></a></li>
+                                    <li><a href="reportsettings.html" data-toggle="tooltip" data-placement="right" title="Details of Avertisement Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Report Settings</span></a></li>
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Users'"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Route Settings</span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="Routes.html" data-toggle="tooltip" data-placement="right" title="Details of Routes"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Routes</span></a></li>
+                                            <li><a href="Routedetails.html" data-toggle="tooltip" data-placement="right" title="Details of Routes"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Route Details</span></a></li>
+                                            <li><a href="RouteFare.html" data-toggle="tooltip" data-placement="right" title="Details of RouteFare"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Route Fare</span></a></li>
+                                            <li><a href="FleetOwnerFare.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnerFare"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owner Fare</span></a></li>
+                                            <li><a href="FleetOwnerRoutesDetails.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnerRoute"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owner Route Details</span></a></li>
+                                            <li><a href="FleetOwnerVehicleSchedule.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnerVehicleSchedule"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owner Vehicle Schedule</span></a></li>
+                                            <li><a href="FleetOwnerRouteFare.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnerRouteFare"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owner Route Fare</span></a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="DataLoad.html" data-toggle="tooltip" data-placement="right" title="Details of DataLoad"><i class="fa fa-angle-double-right"></i><span class="submenu-title">DataLoad</span></a></li>
+                                    <li><a href="EditHistory.html" data-toggle="tooltip" data-placement="right" title="Details of EditHistory"><i class="fa fa-angle-double-right"></i><span class="submenu-title">EditHistory</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-credit-card">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">System Management</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Alerts"><i class="fa fa-th-large"></i><span class="submenu-title">Company Management</span></a></li>
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Notifications"><i class="fa fa-taxi"></i><span class="submenu-title">Vehicle Management</span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-car"></i><span class="submenu-title">Vehicle List</span></a></li>
+                                            <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assigning Drivers"><i class="fa fa-user"></i><span class="submenu-title">Assign Driver</span></a></li>
+                                            <li><a href="VehicleLayout.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Layout"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Layout Schedule</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <!--Driver Mangement-->
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Drivers'"><i class="fa fa-user"></i><span class="submenu-title">Driver Management</span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of Drivers"><i class="fa fa-user"></i><span class="submenu-title">Driver List</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <!--Booking History-->
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Bookings'"><i class="fa fa-th-list fa-fw"></i><span class="submenu-title">Booking History</span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="BookingList.html" data-toggle="tooltip" data-placement="right" title="Details of Bookings"><i class="fa fa-th-list fa-fw"></i><span class="submenu-title">Booking List</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Details of Users'"><i class="fa fa-user"></i><span class="submenu-title">User Management</span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-user"></i><span class="submenu-title">Fleet Owners</span></a></li>
+                                            <li><a href="Users.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-user"></i><span class="submenu-title">User Details</span></a></li>
+                                            <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-user"></i><span class="submenu-title">User Roles</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-th-large"></i><span class="submenu-title">Pricing Management</span><span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of  Vehicle dist Base Pricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Vehicle Dist Base Pricing</span></a></li>
+                                            <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of  Vehicle Hours Base Pricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Vehicle Hours Base Pricing</span></a></li>
+                                            <li><a href="MeteredTaxiDistBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of MeteredTaxiDistBasePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Metered Taxi DistBase Pricing</span></a></li>
+                                            <li><a href="MeteredTaxiPricinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Users MeteredTaxiPricinglist"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Metered Taxi Pricing list</span></a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Trouble Ticket Details"><i class="fa fa-th-large"></i><span class="submenu-title">Payment Management</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Contact"><i class="fa fa-th-large"></i><span class="submenu-title">Transaction Management</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Statistics Management</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of SOS Message"><i class="fa fa-th-large"></i><span class="submenu-title">Report Management</span></a></li>
+
+
+
+                                    <!--<li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
+                        <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
+                        <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
+                        <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>-->
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-edit fa-fw">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Log Management</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Tranasactions Master"><i class="fa fa-list-alt"></i><span class="submenu-title">Security Events Monitoring</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Company Log MGNT</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">User Log MGNT</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Package Log MGNT</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Payment Gateway Log MGNT</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Transaction Log MGNT</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Statistics Log MGNT</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Report Log MGNT</span></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of Transactions Details"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle Log MGNT</span></a></li>
+                                </ul>
+                            </li>
+
+                            <!--<li>
+                    <a href="#">
+                        <i class="fa fa-edit fa-fw">
+                            <div class="icon-bg bg-green"></div>
+                        </i><span class="menu-title">Administration</span><span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Details of FleetOwners"><i class="fa fa-list-alt"></i><span class="submenu-title">Demo</span></a></li>
+                    </ul>
+                </li>-->
+                        </ul>
+                    </div>
+                </nav>      
+                <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
+                <div id="page-wrapper">
+                    <!--BEGIN TITLE & BREADCRUMB PAGE-->
+                    <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                        <div class="page-header pull-left">
+                            <div class="page-title">Stops</div>
+                        </div>
+                        <ol class="breadcrumb page-breadcrumb pull-right">
+                            <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="#">Configuration</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="Stops.html">Stops</a></li>
+
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
+                    <div class="page-content">
+                        <div id="table-action" class="row">
+                            <div class="col-lg-12">
+
+                                <div id="tableactionTabContent" class="tab-content">
+                                    <div id="table-table-tab" class="tab-pane fade in active">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+
+
+                                                <div class="table-container">
+                                                    <div class="row mbm">
+
+                                                        <div class="actions">
+                                                            <!----<button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add New Stop</button></a>--->
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-init="GetConfigData();">Add New Stop</button>
+                                                        </div>
+
+
+                                                        <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header modal-header-primary">
+                                                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                        <h4 id="modal-header-primary-label" class="modal-title">Edit Stops</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" ng-model="currGroup">
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Name:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="Stops1.Name" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Description:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="Stops1.Description" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Code:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="Stops1.Code" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="selCountry" class=" control-label">Latitude:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="Stops1.Latitude" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="selCountry" class=" control-label">longitude:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="Stops1.Longitude" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-actions">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(Stops1, 'U');">Save</button>
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                        <thead>
+                                                            <tr>
+
+
+                                                                <th width="10%">Name</th>
+                                                                <th width="10%">Description</th>
+                                                                <th width="10%">Code</th>
+                                                                <th width="10%">Latitude</th>
+                                                                <th width="10%">Longitude</th>
+                                                                <th width="9%">Active</th>
+                                                                <th width="9%">Update</th>
+
+                                                            </tr>
+                                                        <tbody>
+                                                            <tr ng-repeat="St in Stops">
+
+                                                                <td>{{St.Name}}</td>
+                                                                <td>{{St.Description}}</td>
+                                                                <td>{{St.Code}}</td>
+                                                                <td>{{St.Latitude}}</td>
+                                                                <td>{{St.Longitude}}</td>
+                                                                <td><input type="checkbox" checked /></td>
+                                                                <td>
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setStops(St);">
+                                                                        <i class="fa fa-edit"></i>&nbsp;
+                                                                        Edit
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </tbody>
+
+                                                    </table>
+                                                    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-header-primary">
+                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title">Add New Stop</h4>
+                                                                </div>
+                                                                <div class="modal-body" ng-model="newStop">
+
+
+
+                                                                    <div class="col-md-6">
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="inputFirstName" class="col-md-4 control-label">Country: </label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <select class="form-control" ng-options="n.Name for n in initdata.Table track by n.Id" ng-model="ctry" ng-change="CenterMap(ctry)">
+                                                                                    <option value="">Select</option>
+                                                                                </select><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">Stop Name:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input vs-google-autocomplete
+                                                                                       vs-autocomplete-validator
+                                                                                       ng-model="pickupPoint.place.name"
+                                                                                       vs-place="pickupPoint.place"
+                                                                                       vs-place-id="pickupPoint.components.placeId"
+                                                                                       vs-street-number="pickupPoint.components.streetNumber"
+                                                                                       vs-street="pickupPoint.components.street"
+                                                                                       vs-city="pickupPoint.components.city"
+                                                                                       vs-state="pickupPoint.components.state"
+                                                                                       vs-country-short="pickupPoint.components.countryCode"
+                                                                                       vs-country="pickupPoint.components.country"
+                                                                                       vs-district="pickupPoint.components.district"
+                                                                                       vs-post-code="pickupPoint.components.postCode"
+                                                                                       vs-latitude="pickupPoint.components.location.lat"
+                                                                                       vs-longitude="pickupPoint.components.location.long"
+                                                                                       type="text"
+                                                                                       name="pickupPoint"
+                                                                                       id="pickupPoint"
+                                                                                       class="form-control"
+                                                                                       placeholder="Enter any address" value="{{pickupPoint.name}}" ng-change="getDirections()" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">Latitude:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="srcLat" ng-change="location()" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">longitude:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="srcLon" ng-change="location()" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!--<div class="row mbm" style="margin-left:20px">
+                                                                <div class="col-md-6" style="text-align:right">
+                                                                    <label for="inputFirstName" class="col-md-4 control-label">Country: </label>
+                                                                    <div class="col-md-6">
+                                                                        <select class="form-control" ng-options="n.Name for n in initdata.Table track by n.Id" ng-model="ctry" ng-change="CenterMap(ctry)">
+                                                                            <option value="">Select</option>
+                                                                        </select><span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                            <form>
+                                                                <div class="form-group row">
+                                                                    <div class="col-xs-6">
+                                                                        <label for="pickupPoint">Source</label>
+                                                                        <input vs-google-autocomplete
+                                                                               vs-autocomplete-validator
+                                                                               ng-model="pickupPoint.place.name"
+                                                                               vs-place="pickupPoint.place"
+                                                                               vs-place-id="pickupPoint.components.placeId"
+                                                                               vs-street-number="pickupPoint.components.streetNumber"
+                                                                               vs-street="pickupPoint.components.street"
+                                                                               vs-city="pickupPoint.components.city"
+                                                                               vs-state="pickupPoint.components.state"
+                                                                               vs-country-short="pickupPoint.components.countryCode"
+                                                                               vs-country="pickupPoint.components.country"
+                                                                               vs-district="pickupPoint.components.district"
+                                                                               vs-post-code="pickupPoint.components.postCode"
+                                                                               vs-latitude="pickupPoint.components.location.lat"
+                                                                               vs-longitude="pickupPoint.components.location.long"
+                                                                               type="text"
+                                                                               name="pickupPoint"
+                                                                               id="pickupPoint"
+                                                                               class="form-control"
+                                                                               placeholder="Enter any address" value="{{pickupPoint.name}}" />
+                                                                    </div>
+                                                                    <div class="col-xs-6">
+                                                                        <label for="dropPoint">Destination</label>
+                                                                        <input vs-google-autocomplete
+                                                                               vs-autocomplete-validator
+                                                                               ng-model="dropPoint.place.name"
+                                                                               vs-place="dropPoint.place"
+                                                                               vs-place-id="dropPoint.components.placeId"
+                                                                               vs-street-number="dropPoint.components.streetNumber"
+                                                                               vs-street="dropPoint.components.street"
+                                                                               vs-city="dropPoint.components.city"
+                                                                               vs-state="dropPoint.components.state"
+                                                                               vs-country-short="dropPoint.components.countryCode"
+                                                                               vs-country="dropPoint.components.country"
+                                                                               vs-district="dropPoint.components.district"
+                                                                               vs-post-code="dropPoint.components.postCode"
+                                                                               vs-latitude="dropPoint.components.location.lat"
+                                                                               vs-longitude="dropPoint.components.location.long"
+                                                                               type="text"
+                                                                               name="dropPoint"
+                                                                               id="dropPoint"
+                                                                               class="form-control"
+                                                                               placeholder="Enter any address" value="{{dropPoint.name}}" />
+                                                                        <br />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="btn-medium green" style="margin-top:15px;margin-left:165px">
+                                                                            <button type="submit" class="btn-medium green" ng-click="getDirections()">Confirm</button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </form>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label for="inputFirstName" >Latitude: </label>
+                                                                    <div class="col-md-12"><input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="newStop.srcLat" /><span class="help-block"></span></div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label for="inputFirstName" >longitude: </label>
+                                                                    <div class="col-md-12">
+                                                                        <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="newStop.srcLon" /><span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>-->
+
+
+
+
+
+
+                                                                    </div>
+                                                                    <!--Jagan Updated on 08-08-2017-->
+                                                                    <div class="col-md-6">
+                                                                        <div class="portlet box">
+
+                                                                            <div id="map" style="width:100%;height:300px;background:yellow;margin-top:5px;"></div>
+                                                                            <div ng-app="mapApp">
+                                                                                <div id="map" ng-repeat="v in currentloc">
+                                                                                    latitude:{{v.Latitude}}
+                                                                                </div>
+
+                                                                                <!--<script>
+                                                                                        function myMap() {
+                                                                                            var mapOptions = {
+                                                                                                center: new google.maps.LatLng(17.3850, 78.4867),
+                                                                                                zoom: 10,
+                                                                                                mapTypeId: google.maps.MapTypeId.HYBRID
+                                                                                            }
+                                                                                            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                                                                                        }
+                                                                                    </script>
+
+                                                                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                                            </div>
+
+
+
+                                                                                        </div><br />
+
+
+                                                                                        <!--<div style="width:100%;">
+                                                                                            <div class="tab-content" style="width:49%;float:left; ">
+                                                                                                <h3><b>Alerts</b></h3>
+                                                                                                <div id="home" class="tab-pane fade in active">
+                                                                                                    <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
+                                                                                                        <a href="#" class="list-group-item">
+                                                                                                            <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                                                                                        </a>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
+                                                                                                </br>
+                                                                                                <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
+                                                                                            </div>
+
+                                                                                        </div>-->
+                                                                                <!--<div class="tab-content" style="width:49%;float:right; ">
+                                                                        <h3><b>Notifications</b></h3>
+                                                                        <div id="home" class="tab-pane fade in active">
+                                                                            <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
+                                                                                <a href="#" class="list-group-item">
+                                                                                    <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                                                                </a>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
+
+                                                                        <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
+
+                                                                    </div>-->
+
+
+
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <!--<script>
+                                                                            function myMap() {
+                                                                                var mapOptions = {
+                                                                                    center: new google.maps.LatLng(17.3850, 78.4867),
+                                                                                    zoom: 10,
+                                                                                    mapTypeId: google.maps.MapTypeId.HYBRID
+                                                                                }
+                                                                                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                                                                            }
+                                                                        </script>
+
+                                                                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                                                </div>
+
+
+
+                                                                            </div><br />
+
+
+                                                                            <!--<div style="width:100%;">
+                                                                                <div class="tab-content" style="width:49%;float:left; ">
+                                                                                    <h3><b>Alerts</b></h3>
+                                                                                    <div id="home" class="tab-pane fade in active">
+                                                                                        <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
+                                                                                            <a href="#" class="list-group-item">
+                                                                                                <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
+                                                                                    </br>
+                                                                                    <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
+                                                                                </div>
+
+                                                                            </div>-->
+                                                                    <!--<div class="tab-content" style="width:49%;float:right; ">
+                                                            <h3><b>Notifications</b></h3>
+                                                            <div id="home" class="tab-pane fade in active">
+                                                                <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
+                                                                    <a href="#" class="list-group-item">
+                                                                        <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                                                    </a>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
+
+                                                            <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
+
+                                                        </div>-->
+
+
+
+
+                                                                </div>
+                                                                <div class="form-actions">
+                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                        <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="SaveNew(newStop,'I')">Save</button>
+
+                                                                        <a href="Stops.html" class="btn btn-primary" ng-click="clearStops()">Cancel</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--END CONTENT-->
+                        </div>
+                        <!--END PAGE WRAPPER-->
+                    </div>
+                </div>
+
+                <!--BEGIN FOOTER-->
+                <div id="footer">
+                    <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                </div>
+                <!--END FOOTER-->
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Save confirmation!</h3>
+        </div>
+        <div class="modal-body">
+            <!--<ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>-->
+            {{mssg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </script>
+    </div>
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--loading bootstrap js-->
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+
+
+    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="vendors/iCheck/custom.min.js"></script>
+    <script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
+    <script src="js/jquery.menu.js"></script>
+    <script src="vendors/jquery-pace/pace.min.js"></script>
+    <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <script src="js/table-action.js"></script>
+    <!--CORE JAVASCRIPT-->
+
+    <script src="js/main.js"></script>
+    <script src="js/angular.js"></script>
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU&libraries=places&sensor=false"></script>
+    <script data-require="lodash-underscore@*" data-semver="2.4.1" src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
+    <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
+    <script src="Maps/vs-google-autocomplete.js"></script>
+    <script src="Maps/vs-autocomplete-validator.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script src="js/ngStorage.js"></script>
+
+    <script src="js/Stops.js"></script>
+
+
+</body>
+</html>

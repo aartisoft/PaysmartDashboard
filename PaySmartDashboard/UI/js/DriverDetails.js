@@ -155,10 +155,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.VehicleList = res.data.Table2;
             $scope.bankdetails = res.data.Table3;
             $scope.PendDocFiles = res.data.Table4;
-            $scope.transactions = res.data.Table5;
+            //$scope.transactions = res.data.Table5;
             $scope.imageSrc = $scope.Dl.Photo;
 
-            //assign fleet owner
+            //assign fleet owner    
             //assign country
             //assign vehicle group
             //assign state
@@ -205,12 +205,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 }
             }
 
-            for (i = 0; i < $scope.initdata.Table6.length; i++) {
-                if ($scope.initdata.Table6[i].Id == $scope.Dl.CurrentStateId) {
-                    $scope.Dl.CurrentStateId = $scope.initdata.Table6[i];
-                    break;
-                }
-            }         
+            //for (i = 0; i < $scope.initdata.Table6.length; i++) {
+            //    if ($scope.initdata.Table6[i].Id == $scope.Dl.CurrentStateId) {
+            //        $scope.Dl.CurrentStateId = $scope.initdata.Table6[i];
+            //        break;
+            //    }
+            //}         
 
             
             //for (i = 0; i < $scope.initdata.Table3.length; i++) {
@@ -606,9 +606,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Status: Dl.StatusId.Id,
             FirstName: Dl.Firstname,
             LastName: Dl.lastname,
-            VehicleGroup: Dl.vg.Id,
-            PaymentTypeId:Dl.pt.Id,
-            IsVerified: Dl.Isverified,
+            VehicleGroup:null ,//Dl.vg.Id,
+            PaymentTypeId:null,//Dl.pt.Id,
+            IsVerified:null , //Dl.Isverified,
             IsApproved:Dl.IsApproved
 
 

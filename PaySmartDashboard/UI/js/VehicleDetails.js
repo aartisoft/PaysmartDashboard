@@ -82,14 +82,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
-
-
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
-
     $scope.dashboardDS = $localStorage.dashboardDS;
-    
     var parseLocation = function (location) {
         var pairs = location.substring(1).split("&");
         var obj = {};
@@ -105,16 +101,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         return obj;
     };
-
     $scope.GetVehicleDetails = function () {
-
         $scope.selectedVehicle = parseLocation(window.location.search)['VID']; 
-
         $http.get('/api/VehicleMaster/GetVehcileDetails?VID=' + $scope.selectedVehicle).then(function (res, data) {
             $scope.vDetails = res.data.Table[0];           
             $scope.DocFiles = res.data.Table1;
             $scope.PendDocFiles = res.data.Table2;
-            $scope.v = res.data.Table3[0];
+            //$scope.v = res.data.Table3[0];
             $scope.imageSrc = $scope.vDetails.Photo;
             $scope.imageSrc1 = $scope.vDetails.FrontImage;
             $scope.imageSrc2 = $scope.vDetails.BackImage;
@@ -163,12 +156,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 }
             }
 
-            for (i = 0; i < $scope.initdata.Table7.length; i++) {
-                if ($scope.initdata.Table7[i].Id == $scope.vDetails.FleetOwnerId) {
-                    $scope.vDetails.f = $scope.initdata.Table7[i];
-                    break;
-                }
-            }
+            //for (i = 0; i < $scope.initdata.Table7.length; i++) {
+            //    if ($scope.initdata.Table7[i].Id == $scope.vDetails.FleetOwnerId) {
+            //        $scope.vDetails.f = $scope.initdata.Table7[i];
+            //        break;
+            //    }
+            //}
         });
         
       //  $scope.GetConfigData();
@@ -180,7 +173,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
         // $scope.imageSrc = $scope.listdrivers.Photo;
     }
-
     $scope.GetConfigData = function () {
 
         var vc = {
@@ -205,10 +197,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.GetVehicleDetails();
         });       
     }
-
     $scope.PendDocFiles = [];
     $scope.SetMissingDocTypes = function () {
-
     }
 
     $scope.onFileSelect = function (files, $event) {
@@ -257,8 +247,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.modifiedDoc = doc;
         });
     };
-
-
     function getdate(date) {
         var formateddate = date;
 
@@ -268,7 +256,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         return formateddate;
     }
-
     $scope.EditVehicleDoc = function (f) {
     
         for (cnt = 0; cnt < $scope.currobj.files1.length; cnt++) {
@@ -318,11 +305,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //    }
         //}
     }
-
     $scope.cancelNewDoc = function () {
         $scope.modifiedDoc = null;
     }
-
     $scope.updateDocType = function () {
         if ($scope.assetDoc != null) {
             $scope.assetDoc.docTypeId = $scope.assetDoc.docType.Id;
@@ -339,12 +324,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.modifiedDoc.ExpiryDate = getdateFormat($scope.assetDoc.expiryDate);
         }
     }
-
     $scope.SetParentDoc = function (a) {
         $scope.docOrderNo = a.OrderNo;
         $scope.CurrDocdocCatId = a.docCatId;
     }
-
     /*save job documents */
     $scope.SaveVehicleDoc = function () {
 
@@ -386,7 +369,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.showDialog(errmssg);
         });
     }
-
     $scope.GetFileContent = function (f) {
         if (f.Id == -1) {
             //this is newly added document, hence show without going to db
@@ -407,8 +389,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             });
         }
     }
-
-
     function openPDF(resData, fileName) {
 
         var blob = null;
@@ -453,7 +433,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             }
         }
     }
-
     $scope.UpdateIsVerified = function (d) {
        // alert();
         
@@ -510,7 +489,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (winLookup.focus)
             winLookup.focus();
     }
-
     function checkPopup(m_url, m_title) {
         if (winLookup.document) {
             // winLookup.document.write('<html><head><title>' + m_title + '</title></head><body height="100%" width="100%"><embed src="' + m_url + '" height="100%" width="100%" /></body></html>');
@@ -542,8 +520,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             setTimeout(checkPopup(m_url, m_title), 10); // check in another 10ms
         }
     }
-
-
     function b64toBlob(b64Data, contentType) {
         contentType = contentType || '';
         var sliceSize = 512;
@@ -568,7 +544,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var blob = new Blob(byteArrays, { type: contentType });
         return blob;
     }
-
     $scope.save = function (vDetails, flag) {
 
         if (vDetails.RegistrationNo == null) {
